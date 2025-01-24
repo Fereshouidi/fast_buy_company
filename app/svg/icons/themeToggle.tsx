@@ -3,7 +3,7 @@ import LightModeIcon from "./lightMode";
 import DarkModeIcon from "./darkMode";
 import { ThemeContext } from "@/app/contexts/ThemeContext";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
-import { SideBarContext } from "@/app/contexts/SideBarContext";
+// import { SideBarContext } from "@/app/contexts/SideBarContext";
 import { CSSProperties, useContext, useEffect, useState } from "react";
 
 type params = {
@@ -13,7 +13,7 @@ const ThemeToggleIcon = ({className}: params) => {
 
     const themeContext = useContext(ThemeContext);
     const languageContext = useContext(LanguageSelectorContext);
-    const sideBarContext = useContext(SideBarContext);
+    // const sideBarContext = useContext(SideBarContext);
     const [iconPlace, setIconPlace] = useState('');
 
     if(!themeContext){
@@ -22,9 +22,9 @@ const ThemeToggleIcon = ({className}: params) => {
     if(!languageContext){
         throw 'error languageContext !'
     }
-    if(!sideBarContext){
-        throw 'error sideBarContext !'
-    }
+    // if(!sideBarContext){
+    //     throw 'error sideBarContext !'
+    // }
 
     const {theme, setTheme} = themeContext;
 
@@ -56,7 +56,7 @@ const ThemeToggleIcon = ({className}: params) => {
         backgroundColor: 'var(--almost-white)',
         border: 'var(--border-width) solid var(--border-color)',
         borderRadius: '50px',
-        opacity: sideBarContext.sideBarExist ? '1' : '0',
+        opacity: true ? '1' : '0',
         transition: '0.3s',
     }
 

@@ -3,7 +3,7 @@ import english from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
 import { useEffect, useState, useContext, CSSProperties } from 'react';
 import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';
-import { SideBarContext } from '@/app/contexts/SideBarContext';
+// import { SideBarContext } from '@/app/contexts/SideBarContext';
 import LanguageIcon from '@/app/svg/icons/language';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 import { ActiveLanguageContext } from '@/app/contexts/activeLanguage';
@@ -18,14 +18,14 @@ const LanguageSelector = () => {
 
     const activeLanguage_ = useContext(ActiveLanguageContext);
 
-    const sideBarContext = useContext(SideBarContext);
+    // const sideBarContext = useContext(SideBarContext);
 
     if (!context) {
         throw new Error("LanguageSelector must be used within a LanguageSelectorContext.Provider");
     }
-    if (!sideBarContext) {
-        throw new Error("error sideBarContext !");
-    }
+    // if (!sideBarContext) {
+    //     throw new Error("error sideBarContext !");
+    // }
 
     const { activeLanguage, setActiveLanguage } = context;
 
@@ -54,7 +54,7 @@ const LanguageSelector = () => {
 
 
     const styleLi: CSSProperties = {
-        display: sideBarContext.sideBarExist? 'flex': 'none',
+        display: true ? 'flex': 'none',
         alignItems: 'center',
         fontWeight: 'var(--font-weight-semi-bold)',
     }

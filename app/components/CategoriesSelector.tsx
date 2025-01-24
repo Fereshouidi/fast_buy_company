@@ -1,11 +1,11 @@
 'use client';
 import { CSSProperties, useContext, useEffect, useState } from "react";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
-import { SideBarContext } from "@/app/contexts/SideBarContext";
+// import { SideBarContext } from "@/app/contexts/SideBarContext";
 import { getAllCategorie, getCategoriesByParent } from "@/app/crud";
 import './categorieSelector.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown, faExchangeAlt, faMinus, faPen, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faMinus, } from "@fortawesome/free-solid-svg-icons";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 import { useRouter } from "next/navigation";
 import { LoadingIconContext } from "@/app/contexts/loadingIcon";
@@ -29,14 +29,14 @@ const CategorieSelector = ({activeCategorie, setActiveCategorie}: params) => {
 
 
     
-    const sideBarContext = useContext(SideBarContext);
-    if (!sideBarContext) {
-        throw new Error("SideBarContext must be used within a SideBarContext.Provider");
-    }
+    // const sideBarContext = useContext(SideBarContext);
+    // if (!sideBarContext) {
+    //     throw new Error("SideBarContext must be used within a SideBarContext.Provider");
+    // }
 
-    if(!allCategories || !sideBarContext || !languageSelectorContext || !setLoadingIcon){
-        throw 'context error !'
-    }
+    // if(!allCategories || !sideBarContext || !languageSelectorContext || !setLoadingIcon){
+    //     throw 'context error !'
+    // }
     
     useEffect(() => {
         if (activeCategorie && refresh) {
