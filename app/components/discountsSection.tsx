@@ -16,7 +16,7 @@ type params = {
 }
 const DiscountsSection = ({exist, setExist}: params) => {
 
-    
+    const x = 0;
     const activeLanguage = useContext(activeLanguageContext)?.activeLanguage || english;
     const currencyType = useContext(CompanyInformationContext)?.currencyType;
     const primaryColor = useContext(CompanyInformationContext)?.primaryColor;
