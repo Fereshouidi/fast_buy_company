@@ -19,3 +19,5 @@ yarn.lock
 
 # تجاهل ملفات التغطية في الاختبارات
 coverage/
+node_modules/
+.next/
