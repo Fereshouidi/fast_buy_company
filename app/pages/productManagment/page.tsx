@@ -26,7 +26,7 @@ const ProductManagmentPage = () => {
         }
         fetchData()
         
-    }, [searchQuery, activeCategorie]);                  console.log('hi');
+    }, [searchQuery, activeCategorie]);           
     
 
     return (

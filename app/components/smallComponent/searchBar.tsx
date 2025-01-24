@@ -1,8 +1,8 @@
 "use client";
 import SearchIcon from "@/app/svg/icons/search";
-import React, { CSSProperties, useState, useContext, useEffect, useRef } from 'react';
-import english from '@/app/languages/english.json';
-import arabic from '@/app/languages/arabic.json';
+import React, { CSSProperties, useState, useContext, useRef } from 'react';
+// import english from '@/app/languages/english.json';
+// import arabic from '@/app/languages/arabic.json';
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import { getProductsByName } from "@/app/crud";
 import { productParams } from "@/app/contexts/productSelectForShowing";
@@ -69,7 +69,7 @@ const SearchBar = ({ searchQuery, setSearchQuery, discountsSectionExist, setDisc
         height: 'var(--primary-height)',
         position: 'relative',
         padding: '0',
-        direction: context.activeLanguage == "arabic"? 'rtl': 'ltr',
+        direction: activeLanguage.language == "arabic"? 'rtl': 'ltr',
         transition: '0.7s ease',
         zIndex: 999
     }
