@@ -19,7 +19,6 @@ const ProductManagmentPage = () => {
     const [productDetails, setProductDetails] = useState<productParams | undefined>(undefined);
     const [discountsSectionExist, setDiscountsSection] = useState<boolean>(false);
 
-
     useEffect(() => {
         const fetchData = async () => {
             const products_ = await getProductForManagementPage(activeCategorie?._id, searchQuery);
