@@ -4,6 +4,8 @@ import { productParams } from "../contexts/productSelectForShowing";
 import Card from "./productsCard/card";
 import { activeLanguageContext } from "../contexts/activeLanguage";
 import { CSSProperties, useContext } from "react";
+import english from '@/app/languages/english.json';
+
 
 type params = {
     products: productParams[] | undefined
@@ -13,7 +15,7 @@ type params = {
 }
 const ProductDisplaySection = ({products, setProducts, productDetails, setProductDetails}: params) => {
 
-    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
+    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage || english;
     
 
     const styleSection: CSSProperties = {

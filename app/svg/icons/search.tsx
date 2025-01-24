@@ -1,26 +1,27 @@
 import React, { useState, useContext, CSSProperties } from 'react';
-import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';
+// import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
+import { activeLanguageContext } from '@/app/contexts/activeLanguage';
 
 
 const SearchIcon = () => {
 
     const [hover, setHover] = useState(false);
-
-    const context = useContext(LanguageSelectorContext);
+    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
+    // const context = useContext(LanguageSelectorContext);
     const companyInformation = useContext(CompanyInformationContext)
 
-    if (!context) {
-        throw new Error("LanguageSelector must be used within a LanguageSelectorContext.Provider");
-    }
+    // if (!context) {
+    //     throw new Error("LanguageSelector must be used within a LanguageSelectorContext.Provider");
+    // }
 
-    const { activeLanguage } = context;
+    // const { activeLanguage } = context;
 
     
 
     const style: CSSProperties = {
         position: 'absolute',
-        right: activeLanguage === 'english' ? '5px' : activeLanguage === 'arabic'? 'calc(100% - 45px)': '5px',
+        right: activeLanguage?.language === 'english' ? '5px' : activeLanguage?.language === 'arabic'? 'calc(100% - 45px)': '5px',
         top: '50%',
         transform: 'translateY(-50%)',
         color: 'var(--white)',

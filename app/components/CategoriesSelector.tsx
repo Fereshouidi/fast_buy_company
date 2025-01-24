@@ -12,6 +12,7 @@ import { LoadingIconContext } from "@/app/contexts/loadingIcon";
 import { CategorieParams } from "../contexts/categories";
 import CategoriesParapsSection from "./categoriesParamSectin";
 import { activeLanguageContext } from "../contexts/activeLanguage";
+import english from '@/app/languages/english.json';
 
 type params = {
     activeCategorie: CategorieParams | undefined,
@@ -19,7 +20,7 @@ type params = {
 }
 const CategorieSelector = ({activeCategorie, setActiveCategorie}: params) => {
 
-    const activeLanguage = useContext(activeLanguageContext).activeLanguage;
+    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage || english;
     const [isHover, setIsHover] = useState<boolean>(false)
     const companyInformation = useContext(CompanyInformationContext);
     const setLoadingIcon = useContext(LoadingIconContext)?.setExist;
@@ -217,7 +218,7 @@ return(
                 allCategories.map((categorie, index) => {
                     return (
                     <ul key={index} style={isHover? styleChildrenHover : styleChildren}  >
-                        <ul style={activeLanguage?.language == 'arabic' ? { paddingRight: `${categorie.margin}px`, backgroundColor: activeCategorie?._id == categorie._id? companyInformation.primaryColor : null } : {paddingLeft: `${categorie.margin}px`, backgroundColor: activeCategorie?._id == categorie._id? companyInformation.primaryColor : null }} className={categorie.parentCategorie? "child" : categorieClicked? "parent-clicked": "parent"} key={categorie._id} onClick={() => getProductFromCategorie(categorie)} >{activeLanguage?.language == 'arabic' ? categorie.name.arabic : activeLanguage?.language == 'english' ? categorie.name.english : categorie.name.english}</ul>
+                        <ul style={activeLanguage?.language == 'arabic' ? { paddingRight: `${categorie.margin}px`, backgroundColor: activeCategorie?._id == categorie._id? companyInformation?.primaryColor : null } : {paddingLeft: `${categorie.margin}px`, backgroundColor: activeCategorie?._id == categorie._id? companyInformation.primaryColor : null }} className={categorie.parentCategorie? "child" : categorieClicked? "parent-clicked": "parent"} key={categorie._id} onClick={() => getProductFromCategorie(categorie)} >{activeLanguage?.language == 'arabic' ? categorie.name.arabic : activeLanguage?.language == 'english' ? categorie.name.english : categorie.name.english}</ul>
                         {categorie.childrenCategories.length > 0 ? <FontAwesomeIcon onClick={() => handleClick(categorie)} style={styleDownIcon} icon={categorie.childOpen? faMinus : faChevronDown } /> : null}
                     </ul>
                 )

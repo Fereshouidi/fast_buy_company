@@ -18,7 +18,7 @@ type paams = {
 const ImagesEdit = ({exist, setExist, productDetails, setProductDetails}: paams) => {
 
     const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
-    const primaryColor = useContext(CompanyInformationContext).primaryColor;
+    const primaryColor = useContext(CompanyInformationContext)?.primaryColor;
     const [loadingIcon, setLoadingIcon] = useState<boolean>(false);
     const [activeImage, setActiveImage] = useState<string>('');
     const [isThereChange, setIsThereChange] = useState<boolean>(false);

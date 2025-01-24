@@ -63,8 +63,8 @@ useEffect(() => {
       const storedLanguage = JSON.parse(storedLanguage_str) ;
 
       setactiveLanguage_(
-        // storedLanguage.language == 'english' || storedLanguage.language == 'arabic' ? 
-        // storedLanguage : 
+        storedLanguage.language == 'english' || storedLanguage.language == 'arabic' ? 
+        storedLanguage : 
         english
       );  
     }
@@ -144,13 +144,25 @@ useEffect(() => {
 
 
 
+useEffect(() => {
+  if (typeof window !== "undefined") {
+    const storedLanguage_str = localStorage.getItem("activeLanguage_");
+    if (storedLanguage_str) {
+      const storedLanguage = JSON.parse(storedLanguage_str);
+      setactiveLanguage_(storedLanguage.language === "english" || storedLanguage.language === "arabic"
+        ? storedLanguage
+        : english);
+    }
+  }
+}, []);
+
 
   if (screenWidth === null) {
     return <div>Loading...</div>; 
   }
 
   if (!conpanyInformations) {
-    return <LoadingIcon_theHolePage/>; 
+    return <LoadingIcon_theHolePage/>;
   }
 
   const style:CSSProperties = {
@@ -159,7 +171,7 @@ useEffect(() => {
     //backgroundColor: 'green'
   }
 
-  // alert(activeLanguage_.language);
+  //  alert(activeLanguage_?.language);
   
   return (
     <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin, currencyType: conpanyInformations.currencyType}} >

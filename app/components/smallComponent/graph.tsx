@@ -4,6 +4,7 @@ import './style.css'
 import { CSSProperties, useContext } from 'react';
 import { profitParams } from '@/app/contexts/types';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
+import english from '@/app/languages/english.json';
 
 type params = {
     profits: profitParams[], 
@@ -13,7 +14,7 @@ type params = {
 const Graph = ({profits, setProfits, duration}: params) => {
 
     const companyInformation = useContext(CompanyInformationContext);
-    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
+    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage || english;
      
     if (!profits) {
         return 'Loading...'    

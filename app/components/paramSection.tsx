@@ -1,8 +1,9 @@
 'use client';
 import { activeLanguageContext } from "../contexts/activeLanguage";
-import { CSSProperties, useContext, useState } from "react";
+import { CSSProperties, useContext } from "react";
 import { paramSectionContext } from "../contexts/paramSection";
 import LanguageSelector from "./smallComponent/language";
+import english from '@/app/languages/english.json';
 
 type params = {
     className?: string,
@@ -12,7 +13,7 @@ type params = {
 }
 const ParamSection = ({className, id, style}: params) => {
 
-    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
+    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage || english;
     const paramSection = useContext(paramSectionContext);
     // const [paramSectionExist, setParamSectionExist] = useState<boolean>(paramSectionContainer.exist);
 

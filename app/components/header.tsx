@@ -9,13 +9,15 @@ import ThemeToggleIcon from '../svg/icons/themeToggle';
 import ParamSection from './paramSection';
 import { paramSectionContext } from '../contexts/paramSection';
 import { ActivePageContext } from '../contexts/activePage';
+import english from '@/app/languages/english.json';
+
 
 const Header = () => {
 
     const companyInformation = useContext(CompanyInformationContext);
     const activePage = useContext(ActivePageContext);
     const paramSection = useContext(paramSectionContext);
-    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
+    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage || english;
 
     const handleParamSection = () => {
         paramSection.setContainerExist(!paramSection.containerExist);

@@ -8,6 +8,7 @@ import { activeLanguageContext } from "../contexts/activeLanguage";
 import { CategorieParams } from "../contexts/categories";
 import { BannerContext } from "../contexts/bannerForEverything";
 import { nameParams } from "../contexts/companyInformation";
+import english from '@/app/languages/english.json';
 
 type params = {
     activeCategorie: CategorieParams ;
@@ -19,14 +20,14 @@ type params = {
 }
 const CategoriesParapsSection = ({activeCategorie, setActiveCategorie, allCategories, setAllCategories, refresh, setRefresh}: params) => {
 
-    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
+    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage || english;
     const [isInputForAddActive, setIsInputForAddActive] = useState<boolean>(false);
     const [isInputForRenameActive, setIsInputForRenameActive] = useState<boolean>(false);
     const [rename, setRename] = useState<nameParams>({english: '', arabic: ''});
     const [newCategorie, setNewCategorie] = useState<CategorieParams |undefined>(undefined);
     const [isInputsForMoveActive, setIsInputsForMoveActive] = useState<boolean>(false);
     const [isInputsForDeleteActive, setIsInputsForDeleteActive] = useState<boolean>(false);
-    const setBannerexist = useContext(BannerContext).setBanner;
+    const setBannerexist = useContext(BannerContext)?.setBanner;
 
     const handlerenameClick = () => {
         if (activeCategorie) {
@@ -121,7 +122,7 @@ const CategoriesParapsSection = ({activeCategorie, setActiveCategorie, allCatego
         if (typeof updatedCategories == typeof allCategories) {
             setAllCategories(updatedCategories);
         }        
-        setBannerexist(true, activeLanguage.nameUpdatedSuccessfully, "success");
+        setBannerexist(true, activeLanguage?.nameUpdatedSuccessfully, "success");
     }
 
     const handleAddCategorie = async( ) => {

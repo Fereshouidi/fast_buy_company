@@ -3,7 +3,7 @@ import SearchIcon from "@/app/svg/icons/search";
 import React, { CSSProperties, useState, useContext, useRef } from 'react';
 // import english from '@/app/languages/english.json';
 // import arabic from '@/app/languages/arabic.json';
-import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
+// import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import { getProductsByName } from "@/app/crud";
 import { productParams } from "@/app/contexts/productSelectForShowing";
 import { useRouter } from "next/navigation";
@@ -11,6 +11,7 @@ import { LoadingIconContext } from "@/app/contexts/loadingIcon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTag } from "@fortawesome/free-solid-svg-icons";
 import { activeLanguageContext } from "@/app/contexts/activeLanguage";
+import english from '@/app/languages/english.json';
 
 type params = {
     searchQuery: string | undefined,
@@ -23,7 +24,7 @@ const SearchBar = ({ searchQuery, setSearchQuery, discountsSectionExist, setDisc
 
     const router = useRouter()
     
-    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
+    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage || english;
     const setLoadingIcon = useContext(LoadingIconContext)?.setExist;
     const [focus, setFocus] = useState(false);
     const [itemFocus, setItemFocus] = useState<string | null>(null);
@@ -31,18 +32,18 @@ const SearchBar = ({ searchQuery, setSearchQuery, discountsSectionExist, setDisc
     const inputRef = useRef<HTMLInputElement | null>(null);
     const [searchReasult, setSearchResult] = useState<productParams[] | undefined>(undefined)
 
-    const context = useContext(LanguageSelectorContext);
+    // const context = useContext(LanguageSelectorContext);
 
     
-    if (!context || !context.activeLanguage) {
-        throw new Error("LanguageSelector must be used within a LanguageSelectorContext.Provider");
-    }
+    // if (!context || !context.activeLanguage) {
+    //     throw new Error("LanguageSelector must be used within a LanguageSelectorContext.Provider");
+    // }
 
 
-    if (!context || !context.activeLanguage || !setLoadingIcon) {
-        console.error("error context !");
-        return null;
-    }
+    // if (!context || !context.activeLanguage || !setLoadingIcon) {
+    //     console.error("error context !");
+    //     return null;
+    // }
     
 
     const handleChange = async(event: React.ChangeEvent<HTMLInputElement>) => {

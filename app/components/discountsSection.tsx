@@ -8,6 +8,7 @@ import { faCheck, faPlus, faTrash, faX } from "@fortawesome/free-solid-svg-icons
 import { getAllDiscounts } from "../crud";
 import './style.css';
 import { discountParams } from "../contexts/productSelectForShowing";
+import english from '@/app/languages/english.json';
 
 type params = {
     exist: boolean,
@@ -16,9 +17,9 @@ type params = {
 const DiscountsSection = ({exist, setExist}: params) => {
 
     
-    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
-    const currencyType = useContext(CompanyInformationContext).currencyType;
-    const primaryColor = useContext(CompanyInformationContext).primaryColor;
+    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage || english;
+    const currencyType = useContext(CompanyInformationContext)?.currencyType;
+    const primaryColor = useContext(CompanyInformationContext)?.primaryColor;
     const [allDiscounts, setAllDiscounts] = useState<discountParams[] | undefined>(undefined);
     const [activeDiscount, setActiveDiscount] = useState<discountParams | undefined>(undefined);
     const [isChangeHappen, setIsChangeHappen] = useState<boolean>(false);
