@@ -1,9 +1,9 @@
 'use client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './style.css';
-import { faBan, faX } from '@fortawesome/free-solid-svg-icons';
+import { faX } from '@fortawesome/free-solid-svg-icons';
 import { CSSProperties, useContext, useEffect, useState } from 'react';
-import { ActiveLanguageContext } from '@/app/contexts/activeLanguage';
+import { activeLanguageContext } from '@/app/contexts/activeLanguage';
 import { productParams } from '@/app/contexts/productSelectForShowing';
 import Graph from '../smallComponent/graph';
 import { profitParams } from '@/app/contexts/types';
@@ -17,7 +17,7 @@ type params = {
 }
 const ProductDetail = ({productDetails, setProductDetails}: params) => {
 
-    const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
+    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
     const [profitLastWeek, setProfitLastWeek] = useState<profitParams[] | undefined>(undefined);
     const [profitLastMonth, setProfitLastMonth] = useState<profitParams[] | undefined>(undefined);
     const [profitAll, setProfitAll] = useState<profitParams[] | undefined>(undefined);
@@ -40,8 +40,8 @@ const ProductDetail = ({productDetails, setProductDetails}: params) => {
     const styleFaX: CSSProperties = {
         position: 'absolute',
         top: '0',
-        left: activeLanguage.language == 'arabic' ? '0' : '',
-        right: activeLanguage.language == 'arabic' ? '' : '0',
+        left: activeLanguage?.language == 'arabic' ? '0' : '',
+        right: activeLanguage?.language == 'arabic' ? '' : '0',
         margin: 'var(--large-margin)'
     }
     return (

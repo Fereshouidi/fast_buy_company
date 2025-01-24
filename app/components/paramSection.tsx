@@ -1,5 +1,5 @@
 'use client';
-import { ActiveLanguageContext } from "../contexts/activeLanguage";
+import { activeLanguageContext } from "../contexts/activeLanguage";
 import { CSSProperties, useContext, useState } from "react";
 import { paramSectionContext } from "../contexts/paramSection";
 import LanguageSelector from "./smallComponent/language";
@@ -12,7 +12,7 @@ type params = {
 }
 const ParamSection = ({className, id, style}: params) => {
 
-    const activeLanguage = useContext(ActiveLanguageContext).activeLanguage;
+    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
     const paramSection = useContext(paramSectionContext);
     // const [paramSectionExist, setParamSectionExist] = useState<boolean>(paramSectionContainer.exist);
 
@@ -32,7 +32,7 @@ const ParamSection = ({className, id, style}: params) => {
         top: 0,
         marginTop: 'var(--header-height)',
         left: 0,
-        direction: activeLanguage.language == 'arabic' ? 'ltr' : 'rtl',
+        direction: activeLanguage?.language == 'arabic' ? 'ltr' : 'rtl',
         width: '100vw',
         height: "100vh",
         backgroundColor: 'var(--black-almost-transparnt)',
@@ -44,10 +44,10 @@ const ParamSection = ({className, id, style}: params) => {
     }
         const style_: CSSProperties = {
         ...style,
-        direction: activeLanguage.language == 'arabic' ? 'rtl' : 'ltr',
+        direction: activeLanguage?.language == 'arabic' ? 'rtl' : 'ltr',
         margin: 0,
-        marginRight: paramSection.exist && activeLanguage.language != 'arabic' ? '0' : 'calc(-1 * calc(var(--long-width) *1.5))',
-        marginLeft: paramSection.exist && activeLanguage.language == 'arabic' ? '0' : 'calc(-1 * calc(var(--long-width) *1.5))',
+        marginRight: paramSection.exist && activeLanguage?.language != 'arabic' ? '0' : 'calc(-1 * calc(var(--long-width) *1.5))',
+        marginLeft: paramSection.exist && activeLanguage?.language == 'arabic' ? '0' : 'calc(-1 * calc(var(--long-width) *1.5))',
         backgroundColor: 'var(--white)',
         height: 'calc(100vh - var(--header-height))',
         width: 'calc(var(--long-width) *1.5)',

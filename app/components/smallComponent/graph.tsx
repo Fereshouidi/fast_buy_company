@@ -1,5 +1,5 @@
 'use client';
-import { ActiveLanguageContext } from '@/app/contexts/activeLanguage';
+import { activeLanguageContext } from '@/app/contexts/activeLanguage';
 import './style.css'
 import { CSSProperties, useContext } from 'react';
 import { profitParams } from '@/app/contexts/types';
@@ -13,7 +13,7 @@ type params = {
 const Graph = ({profits, setProfits, duration}: params) => {
 
     const companyInformation = useContext(CompanyInformationContext);
-    const activeLanguage = useContext(ActiveLanguageContext).activeLanguage;
+    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
      
     if (!profits) {
         return 'Loading...'    
@@ -71,8 +71,8 @@ const Graph = ({profits, setProfits, duration}: params) => {
     }
     
     const styleVerticalNumbering:CSSProperties = {
-        marginLeft: activeLanguage.language == 'arabic'? '' : '10%',
-        marginRight: activeLanguage.language == 'arabic'? '10%' : '',
+        marginLeft: activeLanguage?.language == 'arabic'? '' : '10%',
+        marginRight: activeLanguage?.language == 'arabic'? '10%' : '',
     }
     const styleColumn:CSSProperties = {
         backgroundColor: companyInformation.primaryColor,
@@ -84,11 +84,11 @@ const Graph = ({profits, setProfits, duration}: params) => {
 
         <div className='graph-container'>
             <h3 className='tittle' style={styleTittle}>{
-                duration == 'lastWeek' ?  activeLanguage.graphTittleForLastWeek + companyInformation.currencyType :
-                duration == 'lastMounth' ? activeLanguage.graphTittleForLastMonth + companyInformation.currencyType:
-                activeLanguage.graphTittleForAllSales + companyInformation.currencyType
+                duration == 'lastWeek' ?  activeLanguage?.graphTittleForLastWeek + companyInformation.currencyType :
+                duration == 'lastMounth' ? activeLanguage?.graphTittleForLastMonth + companyInformation.currencyType:
+                activeLanguage?.graphTittleForAllSales + companyInformation.currencyType
             }</h3>
-            
+
             <div className='graph'>
                 
                 <div className='horizontal-numbering'>
@@ -112,7 +112,7 @@ const Graph = ({profits, setProfits, duration}: params) => {
                 
                 <div className='vertical-numbering' style={styleVerticalNumbering}>
                     {
-                        profits.map((profit, index) => {
+                        profits.map((_, index) => {
                             return <span key={index}>{farmatDate(profits[index].day)}</span>
                         })
                     }

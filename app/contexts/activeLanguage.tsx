@@ -10,4 +10,4 @@ export interface activeLanguageParams {
 }
 
 
-export const ActiveLanguageContext = createContext<activeLanguageParams | undefined>(undefined);
+export const activeLanguageContext = createContext<activeLanguageParams | undefined>(undefined);

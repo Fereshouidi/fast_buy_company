@@ -2,7 +2,7 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { CSSProperties, useContext, useEffect, useState } from "react";
-import { ActiveLanguageContext } from "../contexts/activeLanguage";
+import { activeLanguageContext } from "../contexts/activeLanguage";
 import { CompanyInformationContext } from "../contexts/companyInformation";
 import { faCheck, faPlus, faTrash, faX } from "@fortawesome/free-solid-svg-icons";
 import { getAllDiscounts } from "../crud";
@@ -16,7 +16,7 @@ type params = {
 const DiscountsSection = ({exist, setExist}: params) => {
 
     
-    const activeLanguage = useContext(ActiveLanguageContext).activeLanguage;
+    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
     const currencyType = useContext(CompanyInformationContext).currencyType;
     const primaryColor = useContext(CompanyInformationContext).primaryColor;
     const [allDiscounts, setAllDiscounts] = useState<discountParams[] | undefined>(undefined);
@@ -149,15 +149,15 @@ const DiscountsSection = ({exist, setExist}: params) => {
             <div className="header">
                 <div className="item add-discount" >
                     <FontAwesomeIcon icon={faPlus}/>
-                    <h4>{activeLanguage.addPictureW}</h4>
+                    <h4>{activeLanguage?.addPictureW}</h4>
                 </div>
                 <div className="item delete-discount" style={styleTrash} >
                     <FontAwesomeIcon icon={faTrash}/>
-                    <h4>{activeLanguage.deleteW}</h4>
+                    <h4>{activeLanguage?.deleteW}</h4>
                 </div>
                 <div className="item done" style={styleDone} onClick={handleDone}>
                     <FontAwesomeIcon icon={faCheck}/>
-                    <h4>{activeLanguage.doneW}</h4>
+                    <h4>{activeLanguage?.doneW}</h4>
                 </div>
                 <div className="fa-x" >
                     <FontAwesomeIcon icon={faX} onClick={() => setExist(false)}/>
@@ -168,25 +168,25 @@ const DiscountsSection = ({exist, setExist}: params) => {
                 {allDiscounts?.map((discount, index) => {
                     return <div key={index} className="cart" onClick={() => activeDiscount?._id != discount._id ? setActiveDiscount(discount) : null} style={discount._id == activeDiscount?._id ? styleActiveDiscount : null}>
                         <div className="item">
-                            <h4>{activeLanguage.discountId}:</h4>
+                            <h4>{activeLanguage?.discountId}:</h4>
                             <span className="id">{discount._id}</span>
                         </div>
                         <div className="item">
-                            <h4>{activeLanguage.oldPriceW}: </h4> 
+                            <h4>{activeLanguage?.oldPriceW}: </h4> 
                             <input type="number" value={discount._id == activeDiscount?._id ? activeDiscount.oldPrice : discount.oldPrice} onChange={(e) => handleOldPrice(e)} />
                             <span>{currencyType}</span>
                         </div>
                         <div className="item">
-                            <h4>{activeLanguage.percentageW}:</h4> 
+                            <h4>{activeLanguage?.percentageW}:</h4> 
                             <input type="number" value={discount._id == activeDiscount?._id ? activeDiscount.percentage : discount.percentage} onChange={(e) => handlePercentage(e)}/>%
                         </div>
                         <div className="item">
-                            <h4>{activeLanguage.newPriceW}:</h4> 
+                            <h4>{activeLanguage?.newPriceW}:</h4> 
                             <input type="number" value={discount._id == activeDiscount?._id ? activeDiscount.newPrice : discount.newPrice} onChange={(e) => handleNewPrice(e)}/>
                             <span>{currencyType}</span>
                         </div>
                         <div className="item date">
-                            <h4>{activeLanguage.dateOfStartW}: </h4>  
+                            <h4>{activeLanguage?.dateOfStartW}: </h4>  
                             <input
                                 type="datetime-local"
                                 defaultValue={new Date(discount.startOfDiscount).toISOString().slice(0, 16)}
@@ -195,7 +195,7 @@ const DiscountsSection = ({exist, setExist}: params) => {
                             /> 
                         </div>                        
                         <div className=" item date">
-                            <h4>{activeLanguage.dateOfEndW}: </h4>  
+                            <h4>{activeLanguage?.dateOfEndW}: </h4>  
                             <input
                                 type="datetime-local"
                                 defaultValue={new Date(discount.endOfDiscount).toISOString().slice(0, 16)}

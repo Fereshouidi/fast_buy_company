@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import { LoadingIconContext } from "@/app/contexts/loadingIcon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTag } from "@fortawesome/free-solid-svg-icons";
-import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
+import { activeLanguageContext } from "@/app/contexts/activeLanguage";
 
 type params = {
     searchQuery: string | undefined,
@@ -23,11 +23,11 @@ const SearchBar = ({ searchQuery, setSearchQuery, discountsSectionExist, setDisc
 
     const router = useRouter()
     
-    const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
+    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
     const setLoadingIcon = useContext(LoadingIconContext)?.setExist;
     const [focus, setFocus] = useState(false);
     const [itemFocus, setItemFocus] = useState<string | null>(null);
-    // const [activeLanguage, setActiveLanguage] = useState(english);
+    // const [activeLanguage, setactiveLanguage] = useState(english);
     const inputRef = useRef<HTMLInputElement | null>(null);
     const [searchReasult, setSearchResult] = useState<productParams[] | undefined>(undefined)
 
@@ -118,12 +118,12 @@ const SearchBar = ({ searchQuery, setSearchQuery, discountsSectionExist, setDisc
 
                 <div id="open-discouts-section-btn" className="handling" onClick={() => setDiscountsSection(true)}>
                     <FontAwesomeIcon icon={faTag}/>
-                    <h4>{activeLanguage.discountW}</h4>
+                    <h4>{activeLanguage?.discountW}</h4>
                 </div>
 
                 <div id="add-product" className="handling">
                     <FontAwesomeIcon icon={faPlus}/>
-                    <h4>{activeLanguage.addProductW}</h4>
+                    <h4>{activeLanguage?.addProductW}</h4>
                 </div>
 
             </div>
@@ -132,7 +132,7 @@ const SearchBar = ({ searchQuery, setSearchQuery, discountsSectionExist, setDisc
                 <input 
                     type="text" 
                     placeholder={
-                        searchQuery? searchQuery : activeLanguage.searchWord +' ...'
+                        searchQuery? searchQuery : activeLanguage?.searchWord +' ...'
                     }
                     defaultValue={searchQuery?? ''}
                     ref={inputRef}

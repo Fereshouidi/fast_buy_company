@@ -4,7 +4,7 @@ import { faExchangeAlt, faPen, faPlus, faTrash } from "@fortawesome/free-solid-s
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { addCategorie, deleteCategorieById, renameCategorieById } from "../crud";
 import { CSSProperties, useContext, useEffect, useState } from "react";
-import { ActiveLanguageContext } from "../contexts/activeLanguage";
+import { activeLanguageContext } from "../contexts/activeLanguage";
 import { CategorieParams } from "../contexts/categories";
 import { BannerContext } from "../contexts/bannerForEverything";
 import { nameParams } from "../contexts/companyInformation";
@@ -19,7 +19,7 @@ type params = {
 }
 const CategoriesParapsSection = ({activeCategorie, setActiveCategorie, allCategories, setAllCategories, refresh, setRefresh}: params) => {
 
-    const activeLanguage = useContext(ActiveLanguageContext).activeLanguage;
+    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
     const [isInputForAddActive, setIsInputForAddActive] = useState<boolean>(false);
     const [isInputForRenameActive, setIsInputForRenameActive] = useState<boolean>(false);
     const [rename, setRename] = useState<nameParams>({english: '', arabic: ''});
@@ -141,16 +141,16 @@ const CategoriesParapsSection = ({activeCategorie, setActiveCategorie, allCatego
 
 
         if (newCategorie_) {
-            setBannerexist(true, activeLanguage.categorieAddedSuccessfully, 'success');
+            setBannerexist(true, activeLanguage?.categorieAddedSuccessfully, 'success');
         } else {
-            setBannerexist(true, activeLanguage.someErrorHappen, 'fail');
+            setBannerexist(true, activeLanguage?.someErrorHappen, 'fail');
         }
     }
 
     const styleConfirmBTN: CSSProperties = {
-        right: activeLanguage.language == 'arabic' ? '' : '0',
-        left: activeLanguage.language == 'arabic' ? '0' : '',
-        borderRadius: activeLanguage.language == 'arabic' ? '50px 0 0 50px' : '0 50px 50px 0'
+        right: activeLanguage?.language == 'arabic' ? '' : '0',
+        left: activeLanguage?.language == 'arabic' ? '0' : '',
+        borderRadius: activeLanguage?.language == 'arabic' ? '50px 0 0 50px' : '0 50px 50px 0'
     }
 
     const styleAddInput: CSSProperties = {
@@ -161,7 +161,7 @@ const CategoriesParapsSection = ({activeCategorie, setActiveCategorie, allCatego
         <div id={'categories-param-sectin'}>
             
             <div className="categorie-id">
-                <h4>{activeLanguage.categorieIDW}</h4>
+                <h4>{activeLanguage?.categorieIDW}</h4>
                 <p>{activeCategorie?._id?? '...'}</p>
             </div>
 
@@ -173,15 +173,15 @@ const CategoriesParapsSection = ({activeCategorie, setActiveCategorie, allCatego
                 </div>
                 <div id="rename" className="item" onClick={handlerenameClick}>
                     <FontAwesomeIcon className="icon" icon={faPen}/>
-                    <h6>{activeLanguage.renameW}</h6>
+                    <h6>{activeLanguage?.renameW}</h6>
                 </div>
                 <div id="move" className="item">
                     <FontAwesomeIcon className="icon" icon={faExchangeAlt}/>
-                    <h6>{activeLanguage.moveW}</h6>
+                    <h6>{activeLanguage?.moveW}</h6>
                 </div>
                 <div id="remove" className="item" onClick={handleRemoveClick}>
                     <FontAwesomeIcon className="icon" icon={faTrash}/>
-                    <h6>{activeLanguage.removeW}</h6>
+                    <h6>{activeLanguage?.removeW}</h6>
                 </div>
             </div>
 
@@ -189,27 +189,27 @@ const CategoriesParapsSection = ({activeCategorie, setActiveCategorie, allCatego
             {isInputForAddActive && <div className="input-div">
                 <input style={styleAddInput} type="text" onChange={(e) => handleNewCategorieName(e, 'english')} placeholder={' new categorie name ... '} /> 
                 <input style={styleAddInput} type="text" onChange={(e) => handleNewCategorieName(e, 'arabic')} placeholder={' اسم الصنف الجديد ... '}/> 
-                <h4 id="confirm-btn-for-addName" onClick={() => handleAddCategorie()}>{activeLanguage.confirmW}</h4>
+                <h4 id="confirm-btn-for-addName" onClick={() => handleAddCategorie()}>{activeLanguage?.confirmW}</h4>
             </div>}
 
             {isInputForRenameActive && <div className="input-div">
                 <div className="container">
                     <input type="text" onChange={(e) => handlerenameChange(e, 'english')} value={rename?.english}/> 
-                    <h4 className="confirm-btn-for-rename" style={styleConfirmBTN} onClick={renameConfirm} >{activeLanguage.confirmW}</h4>
+                    <h4 className="confirm-btn-for-rename" style={styleConfirmBTN} onClick={renameConfirm} >{activeLanguage?.confirmW}</h4>
                 </div>
                 <div className="container">
                     <input type="text" onChange={(e) => handlerenameChange(e, 'arabic')} value={rename?.arabic}/> 
-                    <h4 className="confirm-btn-for-rename" style={styleConfirmBTN} onClick={renameConfirm} >{activeLanguage.confirmW}</h4>
+                    <h4 className="confirm-btn-for-rename" style={styleConfirmBTN} onClick={renameConfirm} >{activeLanguage?.confirmW}</h4>
                 </div>
             </div>}
 
             {isInputsForMoveActive && <div className="input-div">
-                <input type="text" placeholder={activeLanguage.moveTo + ' ... '} /> 
-                <h4 className="confirm-btn" style={styleConfirmBTN}>{activeLanguage.confirmW}</h4>
+                <input type="text" placeholder={activeLanguage?.moveTo + ' ... '} /> 
+                <h4 className="confirm-btn" style={styleConfirmBTN}>{activeLanguage?.confirmW}</h4>
             </div>}
 
             {isInputsForDeleteActive && <div className="input-div-for-delete">
-                <h4 id="confirm-btn-for-delete" onClick={handleDelete}>{activeLanguage.confirmW}</h4>
+                <h4 id="confirm-btn-for-delete" onClick={handleDelete}>{activeLanguage?.confirmW}</h4>
             </div>}
 
         </div>

@@ -13,7 +13,7 @@ import { companyInformationsParams } from "./contexts/companyInformation";
 import { useRouter } from "next/navigation";
 import { LoadingIconContext } from "./contexts/loadingIcon";
 import LoadingIcon_theHolePage from "./svg/icons/loading/loadingHoleOfThePage";
-import { ActiveLanguageContext } from "./contexts/activeLanguage";
+import { activeLanguageContext } from "./contexts/activeLanguage";
 import { BannerContext } from './contexts/bannerForEverything';
 import { getConpanyInformations } from './crud';
 import StatisticsPage from './pages/statistics/page';
@@ -38,8 +38,8 @@ const App = () => {
   });
   const [customerData, setCustomerData] = useState<CustomerDataParams | undefined>(undefined);
   
-  const [activeLanguage, setActiveLanguage] = useState("english");
-  const [activeLanguage_, setActiveLanguage_] = useState<typeof english | typeof arabic>(english);
+  const [activeLanguage, setactiveLanguage] = useState("english");
+  const [activeLanguage_, setactiveLanguage_] = useState<typeof english | typeof arabic>(english);
   const [sideBarExist, setSideBarExist] = useState(true);
   const [loadingIconExist, setLoadingIconExit] = useState<boolean>(false);
   const [bannerForEveryThing, setBannerForEveryThing] = useState<boolean>(false);
@@ -62,7 +62,7 @@ useEffect(() => {
     if (storedLanguage_str) {
       const storedLanguage = JSON.parse(storedLanguage_str) ;
 
-      setActiveLanguage_(
+      setactiveLanguage_(
         storedLanguage.language == 'english' || storedLanguage.language == 'arabic' ? 
         storedLanguage : 
         english
@@ -121,10 +121,10 @@ useEffect(() => {
       document.body.classList.add(theme);
     }
 
-    if(activeLanguage_.language != 'arabic'){
+    if(activeLanguage_?.language != 'arabic'){
       document.body.classList.remove('arabic');
     }else{
-      document.body.classList.add(activeLanguage_.language?? '');
+      document.body.classList.add(activeLanguage_?.language?? '');
     }
 
     if(window.innerWidth > 800){
@@ -163,8 +163,8 @@ useEffect(() => {
   
   return (
     <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin, currencyType: conpanyInformations.currencyType}} >
-        <LanguageSelectorContext.Provider value={{ activeLanguage, setActiveLanguage }}>
-          <ActiveLanguageContext.Provider value={{activeLanguage: activeLanguage_, setAtiveLanguage: setActiveLanguage_}}>
+        <LanguageSelectorContext.Provider value={{ activeLanguage, setactiveLanguage }}>
+          <activeLanguageContext.Provider value={{activeLanguage: activeLanguage_, setAtiveLanguage: setactiveLanguage_}}>
             <ThemeContext.Provider value={{ theme, setTheme }}>
               {/* <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}> */}
                 <CustomerDataContext.Provider value={customerData}>
@@ -189,7 +189,7 @@ useEffect(() => {
                 </CustomerDataContext.Provider>
               {/* </SideBarContext.Provider> */}
             </ThemeContext.Provider>
-          </ActiveLanguageContext.Provider>
+          </activeLanguageContext.Provider>
         </LanguageSelectorContext.Provider>
     </CompanyInformationContext.Provider>
 

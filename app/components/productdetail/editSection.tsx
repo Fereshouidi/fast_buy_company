@@ -6,7 +6,7 @@ import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useEffect, useRef, useState } from "react";
 import LoadingIcon from "@/app/svg/icons/loading/loading";
-import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
+import { activeLanguageContext } from "@/app/contexts/activeLanguage";
 
 type params = {
     imagesEditSectionExist: boolean,
@@ -16,7 +16,7 @@ type params = {
 }
 const EditSection = ({productDetails, setProductDetails, imagesEditSectionExist, setImagesEditSectionExist}: params) => {
 
-    const activeLanguage = useContext(ActiveLanguageContext).activeLanguage;
+    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
     const [imagePrincipal, setImagePrincipal] = useState<string | undefined>(productDetails?.imagePrincipal);
     const [isCategorieInputExist, setIsCategorieInputExist] = useState<boolean>(true);
     const [isDiscountInputExist, setIsDiscountInputExist] = useState<boolean>(true);
@@ -157,35 +157,35 @@ const EditSection = ({productDetails, setProductDetails, imagesEditSectionExist,
         <div id='edit-section'>
 
         <div id='name' className='item'>
-            <h4>{activeLanguage.nameW}</h4>
+            <h4>{activeLanguage?.nameW}</h4>
             <input type="text" defaultValue={productDetails?.name.english?? ''} onChange={(e) => handleName(e, 'english')}/>
             <input type="text" defaultValue={productDetails?.name.arabic?? ''} onChange={(e) => handleName(e, 'arabic')}/>
         </div>
 
         <div id='price' className='item'>
-            <h4>{activeLanguage.priceW}</h4>
+            <h4>{activeLanguage?.priceW}</h4>
             <input type="number" defaultValue={productDetails?.price} onChange={(e) => handlePrice(e)}/>
         </div>
 
         <div id='quantity' className='item'>
-            <h4>{activeLanguage.quantityW}</h4>
+            <h4>{activeLanguage?.quantityW}</h4>
             <input type="number" placeholder="quantity..." defaultValue={productDetails?.quantity} onChange={(e) => handleQuantity(e)}/>
         </div>
 
         <div id='description' className='item description-item'>
-            <h4>{activeLanguage.descriptionW}</h4>
+            <h4>{activeLanguage?.descriptionW}</h4>
             <textarea defaultValue={productDetails?.description?.english?? ''} onChange={(e) => handleDescription(e, 'english')}/>
             <textarea defaultValue={productDetails?.description?.arabic?? ''} onChange={(e) => handleDescription(e, 'arabic')}/>
         </div>
 
         <div id='color' className='item'>
-            <h4>{activeLanguage.colorW}</h4>
+            <h4>{activeLanguage?.colorW}</h4>
             <input type="text" placeholder="color..." defaultValue={productDetails?.color?? ''} onChange={(e) => handleColor(e)}/>
-            <p><strong>{activeLanguage.remarqueW}:</strong>{activeLanguage.remarqueP}</p>
+            <p><strong>{activeLanguage?.remarqueW}:</strong>{activeLanguage?.remarqueP}</p>
         </div>
 
         <div id='image-principal' className='item'>
-            <h4>{activeLanguage.imagePrincipalW}</h4>
+            <h4>{activeLanguage?.imagePrincipalW}</h4>
             <input type="file" className="file" ref={imagePrincipalRef} onChange={(e) => handleImagePrincipal(e)}/>
             <div className="images-container">
                 <img src={productDetails?.imagePrincipal} alt="" onClick={() => imagePrincipalRef.current.click()}/>
@@ -194,7 +194,7 @@ const EditSection = ({productDetails, setProductDetails, imagesEditSectionExist,
         </div>
 
         <div id='images' className='item' onClick={handleImages}>
-            <h4>{activeLanguage.imagesW}</h4>
+            <h4>{activeLanguage?.imagesW}</h4>
             <input type="file" className="file" />
             <div className="images-container">
                 {productDetails?.images.slice(0, 8).map((image, index) => {
@@ -204,33 +204,33 @@ const EditSection = ({productDetails, setProductDetails, imagesEditSectionExist,
         </div>
 
         <div id='categorie' className='item'>
-            <h4>{activeLanguage.categorieID}</h4>
+            <h4>{activeLanguage?.categorieID}</h4>
             <input type="text" placeholder="ID..." defaultValue={productDetails?.categorie?._id} onChange={(e) => handleCategorie(e)}/>
-            {!isCategorieInputExist && <p>{activeLanguage.categorieNotExistP}</p>}
+            {!isCategorieInputExist && <p>{activeLanguage?.categorieNotExistP}</p>}
         </div>
 
         <div id='discount-code' className='item'>
-            <h4>{activeLanguage.discountCodeId}</h4>
+            <h4>{activeLanguage?.discountCodeId}</h4>
             <input type="text"placeholder="ID..." defaultValue={productDetails?.discountCode?._id?? ''}/>
         </div>
 
         <div id='discount' className='item'>
-            <h4>{activeLanguage.discountId}</h4>
+            <h4>{activeLanguage?.discountId}</h4>
             <input type="text" placeholder="ID..." defaultValue={productDetails?.discount?._id?? ''}/>
         </div>
 
         <div id='size' className='item'>
-            <h4>{activeLanguage.sizeW}</h4>
+            <h4>{activeLanguage?.sizeW}</h4>
             <input type="text" placeholder="size..." defaultValue={productDetails?.size?? ''} onChange={(e) => handleSize(e)}/>
         </div>
 
         <div id='delete' className='item'>
-            <h4>{activeLanguage.deleteW}</h4>
-            <span id="remove-product">{activeLanguage.removeProductW}</span>
+            <h4>{activeLanguage?.deleteW}</h4>
+            <span id="remove-product">{activeLanguage?.removeProductW}</span>
         </div>
 
 
-        <div id="commit-btn">{activeLanguage.commitChange}</div>
+        <div id="commit-btn">{activeLanguage?.commitChange}</div>
 
 
     </div>

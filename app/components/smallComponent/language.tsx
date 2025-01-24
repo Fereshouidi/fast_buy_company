@@ -6,7 +6,7 @@ import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext'
 // import { SideBarContext } from '@/app/contexts/SideBarContext';
 import LanguageIcon from '@/app/svg/icons/language';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
-import { ActiveLanguageContext } from '@/app/contexts/activeLanguage';
+import { activeLanguageContext } from '@/app/contexts/activeLanguage';
 
 const LanguageSelector = () => {
 
@@ -16,7 +16,7 @@ const LanguageSelector = () => {
     const [hoveredOption, setHoveredOption] = useState<string | null>(null);
     const [isHover, setIsHover] = useState<boolean>(false)
 
-    const activeLanguage_ = useContext(ActiveLanguageContext);
+    const activeLanguage_ = useContext(activeLanguageContext);
 
     // const sideBarContext = useContext(SideBarContext);
 
@@ -27,20 +27,20 @@ const LanguageSelector = () => {
     //     throw new Error("error sideBarContext !");
     // }
 
-    const { activeLanguage, setActiveLanguage } = context;
+    const { activeLanguage, setactiveLanguage } = context;
 
     const handleLanguage = (value: React.ChangeEvent<HTMLSelectElement>) => {
         const languageSelected = value.target.value;
         localStorage.setItem('activeLanguage', languageSelected);
-        setActiveLanguage(languageSelected);
+        setactiveLanguage(languageSelected);
         activeLanguage_?.setAtiveLanguage(languageSelected === 'arabic' ? arabic : english);
         localStorage.setItem('activeLanguage_', JSON.stringify(languageSelected === 'arabic' ? arabic : english));
     }
 
     useEffect(() => {
         const storedLanguage = localStorage.getItem('activeLanguage');
-        if (storedLanguage) {
-            setActiveLanguage(storedLanguage);
+        if (storedLanguage && setactiveLanguage) {
+            setactiveLanguage(storedLanguage);
         }
     }, []);
 

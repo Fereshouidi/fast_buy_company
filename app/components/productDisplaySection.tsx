@@ -2,7 +2,7 @@
 
 import { productParams } from "../contexts/productSelectForShowing";
 import Card from "./productsCard/card";
-import { ActiveLanguageContext } from "../contexts/activeLanguage";
+import { activeLanguageContext } from "../contexts/activeLanguage";
 import { CSSProperties, useContext } from "react";
 
 type params = {
@@ -13,12 +13,12 @@ type params = {
 }
 const ProductDisplaySection = ({products, setProducts, productDetails, setProductDetails}: params) => {
 
-    const activeLanguage = useContext(ActiveLanguageContext).activeLanguage;
+    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
     
 
     const styleSection: CSSProperties = {
-        paddingLeft: activeLanguage.language == 'arabic' ? '' : 'calc(var(--extra-long-width) /1.5)',
-        paddingRight: activeLanguage.language == 'arabic' ? 'calc(var(--extra-long-width) /1.5)' : '',
+        paddingLeft: activeLanguage?.language == 'arabic' ? '' : 'calc(var(--extra-long-width) /1.5)',
+        paddingRight: activeLanguage?.language == 'arabic' ? 'calc(var(--extra-long-width) /1.5)' : '',
     }
 
     return (
@@ -30,7 +30,7 @@ const ProductDisplaySection = ({products, setProducts, productDetails, setProduc
                     </div>
                 })}
 
-                {products?.length == 0  && <div>{activeLanguage.noResultW} !</div>}
+                {products?.length == 0  && <div>{activeLanguage?.noResultW} !</div>}
             </div>
 
         </div>
