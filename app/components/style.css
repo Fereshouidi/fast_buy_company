@@ -1,0 +1,227 @@
+header {
+    background-color: var(--white);
+    height: var(--header-height);
+    width: 100%;
+    box-shadow: 0 5px 15px var(--white-almost-transparnt);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--black);
+    z-index: 1099;
+}
+
+header .navigation {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: calc(var(--primary-size) /1.2);
+    opacity: 0.5;
+}
+header .navigation *{
+    margin: 0 var(--medium-margin);
+    cursor: pointer;
+}
+
+.setting-container {
+    display: flex;
+    align-items: center;
+}
+
+.theme-toggle {
+    margin: var(--medium-margin);
+}
+.theme-toggle {
+    margin: var(--medium-margin);
+}
+
+/* product-displays-ection */
+
+.product-displays-section {
+    /* background-color: red; */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* height: calc(100vh - calc(var(--header-height) *2));
+    width: calc(100vw - calc(var(--extra-long-width) /1.5)); */
+    padding-top: calc(var(--header-height) *2);
+    /* padding-left: calc(var(--extra-long-width) /1.5); */
+    top: 0;
+    left: 0;
+    overflow-y: scroll;
+    z-index: 0;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 20px;
+    background-color: var(--white);
+}
+.product-displays-section::-webkit-scrollbar {
+    width: 0;
+  }
+.product-displays-section .container{
+    width: 95%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: var(--almost-white);
+    border-radius: 20px;
+}
+
+
+#Discounts-Section {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 980;
+    width: 90%;
+    height: 95%;
+    background-color: var(--white);
+    box-shadow: 0 5px 15px var(--ashen-semi-transparent);
+    padding: var(--small-padding);
+    border-radius: 20px;
+    color: black;
+    /* resize: both;
+    overflow: auto; */
+}
+#Discounts-Section .header{
+    /* position: fixed;
+    top: 0; */
+    background-color: var(--white);
+    width: 100%;
+    height: var(--primary-height);
+    padding: var(--medium-padding);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    opacity: 0.8;
+    /* box-shadow: 0 5px 15px var(--black-almost-transparnt); */
+    border-bottom: 1px solid var(--black-almost-transparnt);
+}
+#Discounts-Section .header .item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: var(--small-margin);
+    background-color: var(--ashen-semi-transparent);
+    padding: var(--small-padding) var(--medium-padding);
+    border-radius: 50px;
+    color: white;
+    font-size: calc(var(--small-size) *1.2);
+    cursor: pointer;
+    /* position: relative;
+    position: relative;
+    background-color: blue; */
+}
+
+#Discounts-Section .header .item * {
+    background-color: transparent;
+}
+#Discounts-Section .header .item *:hover {
+    background-color: transparent;
+}
+/* #Discounts-Section .header .item :active {
+    background-color: var(--ashen);     
+} */
+#Discounts-Section .header :hover{ 
+    background-color: var(--black);
+    color: var(--white);     
+    cursor: pointer;
+}
+#Discounts-Section .header :active{ 
+    background-color: var(--ashen);     
+}
+.delete-discount :hover {
+    background-color: transparent;
+}
+#Discounts-Section .header .fa-x{ 
+    position: absolute;
+    right: var(--large-margin);
+    top: 0;
+    right: 0;
+    padding: var(--large-padding);
+    border-radius: 50px;
+    color: var(--black);
+}
+#Discounts-Section .header .fa-x :hover{
+    background-color: var(--white);
+    color: var(--black);
+    cursor: pointer;
+}
+#Discounts-Section .header .fa-x *{
+    position: absolute;
+    right: var(--large-margin);
+    top: 0;
+    right: 0;
+    padding: var(--large-padding);
+    border-radius: 50px 0 50px 50px;
+}
+
+#Discounts-Section .display-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    background-color: var(--white-almost-transparnt);
+    width: 100%;
+    height: calc(100% - var(--primary-height));
+    padding: var(--small-padding);
+    overflow-y: scroll;
+    border-radius: 20px;
+}
+#Discounts-Section .display-section::-webkit-scrollbar {
+    width: 0;
+}
+
+#Discounts-Section  .display-section .cart {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    background-color: var(--white);
+    border-radius: 20px;
+    margin: var(--small-margin);
+    padding: var(--medium-padding);
+    color: var(--black);
+    opacity: 0.8;
+    box-shadow: 0 5px 15px var(--white-almost-transparnt);
+    border: 1px solid var(--ashen-semi-transparent);
+    
+}
+#Discounts-Section  .display-section .cart .item {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin: var(--small-margin);
+    border-radius: 20px;
+}
+#Discounts-Section  .display-section .cart .item h4{
+    font-size: small;
+}
+#Discounts-Section  .display-section .cart .item .id {
+    font-size: small;
+    padding: var(--small-padding) var(--large-padding);
+    user-select: text;
+    margin: 0 var(--small-margin);
+    border-radius: 50px;
+    border: 1px solid var(--ashen);
+    opacity: 0.7;
+}
+#Discounts-Section  .display-section .cart .item input{
+    font-size: small;
+    padding: var(--small-padding);
+    margin: 0 var(--small-margin);
+    border-radius: 50px;
+    border: 1px solid var(--black);
+    outline: none;
+    background-color: var(--white);
+    color: var(--black);
+    /* width: fit-content;
+    display: inline-block; */
+}

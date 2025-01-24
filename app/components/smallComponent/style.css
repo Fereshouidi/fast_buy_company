@@ -1,0 +1,166 @@
+
+.tittle {
+    color: var(--black);
+}
+/* theme toggle */
+
+.theame-toggle {
+    background-color: transparent;
+    width: var(--primary-width);
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    height: auto;
+}
+
+#ball-container {
+    background-color: var(--almost-white);
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: calc(var(--small-padding) /1.2);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+}
+
+#ball {
+    background-color: var(--black);
+    width: calc(var(--half-width) /1.1);
+    height: calc(var(--half-width) /1.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    margin: 0;
+    color: var(--white);
+}
+
+/* Grafic */
+
+.graph-container {  
+    /* background-color: red; */
+    height: 80%;
+    cursor: pointer;
+    width: 80%;
+}
+.graph-container .tittle{  
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: var(--medium-padding);
+    opacity: 0.9;
+    font-size: var(--primary-size);
+    font-weight: 200;
+}
+.graph {
+    border-radius: 0.5px solid var(--black);
+    /* background-color: red; */
+    width: 100%;
+    height: 90%;
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    /* justify-content: end; */
+    /* align-items: center; */
+    position: relative;
+    flex-wrap: wrap;
+    color: var(--black)
+}
+.graph .horizontal-numbering{
+    width: 10%;
+    height: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    flex-direction: column;
+    opacity: 0.5;
+    font-size: var(--small-size);
+    padding: 0 var(--small-padding);
+    /* background-color: blue; */
+}
+.graph .vertical-numbering{
+    width: 90%;
+    height: 5%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    opacity: 0.5;
+    font-size: var(--small-size);
+    /* background-color: blue; */
+}
+.graph .vertical-numbering span{
+    width: 13.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgb(52, 17, 19); */
+}
+.graph .display {
+    width: 90%;
+    height: 95%;
+    /* background-color: var(--white); */
+    display: flex;
+    justify-content: space-around;
+    align-items: end;
+    border: 0.05px solid var(--black);
+    border-radius: 10px 10px 10px 0;
+    position: relative;
+    right: 0;
+    background-image: 
+    linear-gradient(to right, black 0.3px, transparent 0.4px),
+    linear-gradient(to bottom, black 0.3px, transparent 0.4px); 
+    background-size: 50px 50px; 
+    color: var(--black);
+    background-color: var(--black-almost-transparnt);
+}
+.graph .column {
+    position: relative;
+    border: 0.05px solid var(--black);
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+    width: var(--primary-width);
+    height: 80%;
+    transition: 0.7s ease;
+}
+.graph .column span{
+    color: white;
+    margin: var(--medium-margin);
+    font-size: var(--small-size);
+}
+.graph .column .few-profit-span{
+    position: absolute;
+    top: -30px;
+    color: white;
+    font-size: var(--small-size);
+}
+
+#handling-section {
+    min-width: 25%;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#handling-section .handling {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: var(--small-margin);
+    /* background-color: var(--ashen-semi-transparent); */
+    padding: var(--medium-padding);
+    border-radius: 50px;
+    color: var(--black);
+    font-size: calc(var(--small-size) *1.2);
+    cursor: pointer;
+    min-width: var(--double-width);
+}
+#handling-section :hover{ 
+    background-color: var(--black);  
+    color: var(--white);   
+}
+#handling-section :active{ 
+    background-color: var(--ashen);  
+    color: var(--white);   
+}

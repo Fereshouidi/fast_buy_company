@@ -1,0 +1,247 @@
+#categories-param-sectin {
+    width: 100%;
+    /* min-height: var(--header-height); */
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    flex-wrap: wrap;
+    background-color: var(--white);
+    /* background-color: red; */
+    margin: calc(var(--header-height) /4) 0;
+    color: var(--black);
+    z-index: 980;
+}
+#categories-param-sectin .categorie-id {
+  /* background-color: red; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+#categories-param-sectin .categorie-id p{
+  border: 1px solid var(--ashen);
+  color: var(--ashen);
+  width: 90%;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  height: 25px;
+  margin: var(--small-margin) 0;
+  user-select: text !important;
+
+  /* padding: var(--small-padding); */
+}
+#categories-param-sectin #edit-section .item{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: var(--extra-small-margin);
+    opacity: 0.7;
+    cursor: pointer;
+}
+#categories-param-sectin #edit-section .item:hover{
+    color: var(--ashen);
+}
+#categories-param-sectin #edit-section .item .icon{
+    font-size: calc(var(--primary-size) /1.3);   
+    margin: var(--extra-small-margin); 
+}
+#categories-aram-sectin #edit-section .item h6{
+    font-size: calc(var(--primary-size) /1.7);    
+    /* background-color: red; */
+}
+
+#categories-param-sectin #edit-section{
+    color: var(--black);
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+  #categories-param-sectin #edit-section div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #categories-param-sectin .input-div {
+    width: 90%;
+    margin: var(--extra-small-margin) 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    padding: 0;
+  }
+  #categories-param-sectin .input-div-for-delete {
+    width: 90%;
+    margin: var(--extra-small-margin) 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 0;
+  }
+  #categories-param-sectin input {
+    width: 100%;
+    height: 100%;
+    font-size: calc(var(--primary-size) /1.3);
+    /* margin: var(--extra-small-margin) 0; */
+    padding: var(--medium-padding);
+    border-radius: 20px;
+    outline: none;
+    border: 1px solid var(--ashen);
+    opacity: 0.7;
+    transition: 0.3s ease;
+    background-color: var(--almost-white);
+    color: var(--black);
+
+  }
+  #categories-param-sectin .input-div .confirm-btn{
+    position: absolute;
+    /* right: 0; */
+    margin: 0;
+    padding: 0 var(--small-padding);
+    /* top: 0; */
+    font-size: var(--small-size);
+    border: var(--black);
+    background-color: var(--black);
+    color: var(--white);
+    min-width: calc(var(--primary-width) /1.2);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 50px 50px 0;
+    border: 1px solid var(--ashen);
+    cursor: pointer;
+  }
+  #categories-param-sectin .input-div .confirm-btn:hover{
+    background-color: var(--ashen);
+  }
+
+  #categories-param-sectin .input-div .container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: var(--extra-small-margin);
+    position: relative;
+    /* background-color: red; */
+    padding: 0;
+  }
+  #categories-param-sectin .input-div .container .confirm-btn-for-rename{
+    position: absolute;
+    /* right: 0; */
+    margin: 0;
+    padding: 0 var(--small-padding);
+    /* top: 0; */
+    font-size: var(--small-size);
+    border: var(--black);
+    background-color: var(--black);
+    color: var(--white);
+    min-width: calc(var(--primary-width) /1.2);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 50px 50px 0;
+    border: 1px solid var(--ashen);
+    cursor: pointer;
+  }
+  #categories-param-sectin .input-div .container .confirm-btn-for-rename:active{
+    background-color: var(--ashen);
+  }
+  #categories-param-sectin .input-div #confirm-btn-for-addName{
+    width: 100%;
+    background-color: var(--black);
+    color: var(--white);
+    padding: var(--medium-padding);
+    margin-top: var(--small-margin);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    cursor: pointer;
+    position: relative;
+}
+  #categories-param-sectin .input-div #confirm-btn-for-addName:active{
+    background-color: var(--ashen);
+  }
+  #categories-param-sectin .input-div-for-delete #confirm-btn-for-delete{
+    width: 100%;
+    background-color: var(--black);
+    color: var(--white);
+    padding: var(--medium-padding);
+    margin-top: var(--small-margin);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    cursor: pointer;
+    position: relative;
+}
+  #categories-param-sectin .input-div-for-delete #confirm-btn-for-delete:active{
+    background-color: red;
+  }
+
+.parent{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: var(--black);
+
+}
+.parent-clicked{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: var(--black);
+
+}
+
+.child{
+    background-color: var(--white);
+    color: var(--black);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 0px
+
+}
+.child:hover{
+    background-color: var(--almost-white);
+}
+
+
+.scrollDiv {
+    background-color: var(--white);
+  }
+
+.scrollDiv::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  .scrollDiv::-webkit-scrollbar-track {
+    background: var(--white); 
+  }
+
+  .scrollDiv::-webkit-scrollbar-thumb {
+    background: var(--almost-white); 
+    border-radius: 4px; 
+  }
+
+  .scrollDiv::-webkit-scrollbar-thumb:hover {
+    background: var(--ashen); 
+  }
+
+

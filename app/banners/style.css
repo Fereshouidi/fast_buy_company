@@ -1,0 +1,92 @@
+.banner-not-exist{
+    width: 100vw;
+    height: calc(100vh - var(--header-height));
+    background-color: var(--black-almost-transparnt);
+    position: fixed;
+    z-index: 998;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    top: -100vh;
+
+}
+.banner-exist{
+    width: 100vw;
+    height: calc(100vh - var(--header-height));
+    background-color: var(--black-almost-transparnt);
+    position: fixed;
+    top: var(--header-height);
+    z-index: 998;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: var(--black);
+}
+
+.banner-exist .banner {
+    width: calc(var(--long-width) *1.7);
+    background-color: var(--white);
+    box-shadow: 0 5px 15px var(--ashen);
+    margin: var(--medium-margin);
+    border-radius: 20px;
+    padding: var(--medium-padding);
+    transition: 0.5s ease;
+
+
+}
+.banner-exist .banner *{
+    border-radius: 20px;
+}
+
+.banner-exist .header {
+    width: 100%;
+    height: var(--half-height);
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.banner-exist .header .icon{
+    position: absolute;
+    right: 7px;
+}
+
+.banner-exist .content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--large-padding);
+}
+
+.banner-exist .fa-ban{
+    margin: 5px;
+    color: red;
+}
+.banner-exist .fa-check{
+    margin: 5px;
+    color: green;
+}
+
+.banner-exist p{
+    font-size: var(--medium-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.banner-exist .verification-p{
+    font-size: var(--medium-size);
+}
+
+@media (max-width: 800px) {
+
+    .banner-exist{
+        top: var(--header-height-for-phone);
+    }
+    .banner-exist p{
+        font-size: var(--medium-size);
+    }
+    .banner-exist .verification-p{
+        font-size: var(--medium-size);
+    }
+}

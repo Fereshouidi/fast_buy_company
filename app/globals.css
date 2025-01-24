@@ -1,21 +1,308 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Serif+Ahom&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+
+
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* colors */
+  
+  --white-almost-transparnt: rgba(248, 248, 248, 0.229);
+  --almost-white: rgb(247, 247, 247);
+  --white: #ffffff;
+  --black: #000000;
+  --almost-black: rgb(23, 23, 23);
+  --black-almost-transparnt: rgba(0, 0, 0, 0.148);
+  --ashen: rgb(123, 123, 123);
+  --ashen-almost-white: rgb(220, 220, 220);
+  --ashen-semi-transparent:  rgba(123, 123, 123, 0.463);
+  --primary-color: #FF9B38;
+  --primary-color-clicked: #ff9328;
+  --primary-color-semi-transparent: #ff9c387a;
+  --primary-color-light: #FFD500;  
+  --primary-color-dark: #B88A03;
+  --primary-blue: #0066CC;
+  --primary-blue-light: #3388FF;
+  --primary-blue-dark: #004D99;
+  --primary-green: #28A745;
+  --secondary-orange: #FF7F32;
+  --danger-red: #FF4136;
+
+  /* background and text colors for dark mode */
+  --background-light: #ffffff;
+  --background-dark: #333333;
+  --text-light: #000000;
+  --text-dark: #ffffff;
+
+  /* font family */
+  --primary-font: 'Arial', sans-serif;
+  --secondary-font: 'Courier New', monospace;
+
+  /* sizes */
+  --primary-size: 16px;
+  --small-size: calc(var(--primary-size)/1.5);
+  --half-size: calc(var(--primary-size)/2);
+  --double-size: calc(var(--primary-size)*2);
+  --big-size: calc(var(--primary-size)*1.5);
+  --biggest-size: 24px;
+  --extra-small-size: 12px;
+
+  /* fonts weight */
+  --font-weight-thin: 100;     
+  --font-weight-extra-light: 200; 
+  --font-weight-light: 300;    
+  --font-weight-regular: 400;  
+  --font-weight-medium: 500;   
+  --font-weight-semi-bold: 600; 
+  --font-weight-bold: 700;     
+  --font-weight-extra-bold: 800;
+  --font-weight-black: 900;
+
+  /* borders */
+  --border-radius: 50px;
+  --border-color: #c6c6c6a2;
+  --border-width: 0.1px;
+  --slim-border: 0.05px solid #c6c6c6a2;
+
+  /* opacity levels */
+  --opacity-light: 0.8;
+  --opacity-medium: 0.5;
+  --opacity-dark: 0.2;
+
+  /* margins */
+  --extra-small-margin: calc(var(--small-margin)/2);
+  --small-margin: calc(var(--medium-margin)/2);
+  --medium-margin: 10px;
+  --large-margin: calc(var(--medium-margin)*2);
+  --extra-large-margin: calc(var(--large-margin)*2);
+
+  /* padding */
+  --small-padding: 5px;
+  --medium-padding: calc(var(--small-padding)*2);
+  --large-padding: calc(var(--medium-padding)*2);
+  --extra-large-padding: calc(var(--large-padding)*2);
+  --extra-small-padding: calc(var(--small-padding)/2);
+
+  /* gradients */
+  --gradient-primary: linear-gradient(45deg, #FFD500, #FF6F00);
+  --gradient-blue: linear-gradient(45deg, #3388FF, #004D99);
+
+  /* heights */
+  --extra-long-height: calc(var(--long-height)*2);
+  --long-height: calc(var(--double-height)*2);
+  --double-height: calc(var(--primary-height)*2);
+  --primary-height: 50px;
+  --half-height: calc(var(--primary-height)/2);
+  --short-height: calc(var(--half-height)/2);
+  --extra-short-height: calc(var(--short-height)/2);
+  --header-height: 75px;
+  --header-height-for-phone: calc(var(--header-height) / 1.2);
+
+  /* widths */
+  --extra-long-width: calc(var(--long-width)*2);
+  --long-width: calc(var(--double-width)*2);
+  --double-width: calc(var(--primary-width)*2);
+  --primary-width: 50px;
+  --half-width: calc(var(--primary-width)/2);
+  --short-width: calc(var(--half-width)/2);
+  --extra-short-width: calc(var(--short-width)/2);
+  --side-bar-width: calc(var(--long-width) * 1.3);
+
+  /* direction */
+  --rtl: rtl;
+  --ltr: ltr;
+  --right: 0;
+  --left: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  user-select: none;
+  user-select: none;
+  /* color: var(--black); */
+}
+
+.invisible {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  
+  h2 {
+    font-size: var(--primary-size);
+    margin: 0;
+    padding: 0;
+    color: var(--black);
   }
+
+  
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+body{
+  background-color: var(--almost-white);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
+.computer {
+  padding-top: var(--header-height);
+}
+.phone {
+  padding-top: calc(var(--header-height)/1.2);
+}
+
+svg {
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+}
+
+.page {
+  width: 100%;
+}
+
+.primary-border{
+  border: var(--border-width) solid var(--border-color) ;
+  border-radius: var(--border-radius);
+}
+
+header div{
+  margin: var(--small-margin);
+}
+
+.logo{
+    max-width: var(--long-width);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    direction: ltr
+}
+.logo img{
+    width: 25%;
+    max-height: 100%;
+    margin: var(--medium-margin);
+    border-radius: 15px
+}
+.logo h1{
+    width: '70%';
+    max-height: '100%';
+}
+
+input {
+  display: inline-block;
+  width: max-content;
+
+}
+
+#app {
+  background-color: var(--white);
+}
+#app *{
+  transition: color 0.5s, background-color 0.5s;
+  direction: ltr;
+}
+#app p, #app h1, #app h2, #app h4, #app button, #app a {
+  background-color: var(--white);
+  color: var(--black);
+}
+.dark {
+  --white-almost-transparnt: rgba(0, 0, 0, 0.089);
+  --almost-white: rgb(25, 25, 25);
+  --white: #000000;
+  --black: #ffffff;
+  --almost-black: rgb(245, 245, 245);
+  --black-almost-transparnt: rgba(255, 255, 255, 0.082);
+}
+.dark .dark header, .dark div, .dark p, .dark h1, .dark h2, .dark h4, .dark button, .dark a {
+  --white-almost-transparnt: rgba(0, 0, 0, 0.089);
+  --almost-white: rgb(25, 25, 25);
+  --white: #000000;
+  --black: #ffffff;
+  --almost-black: rgb(231, 231, 231);
+  --black-almost-transparnt: rgba(255, 255, 255, 0.082);
+  --border-color: #616161a2;
+}
+
+
+.arabic div:not(.ReactStars), 
+.arabic span:not(.ReactStars) {
+  direction: rtl;
+}
+
+
+.sideBar-background{
+  text-decoration: dashed;
+  height: 100vh;
+  background-color: var(--ashen-semi-transparent);
+  color: var(--black);
+  position: fixed;
+  z-index: 999;
+  top: var(--header-height);
+}
+.sideBar-background .sideBar{
+  width: var(--side-bar-width);
+  height: 100vh;
+  background-color: var(--white);
+  padding: 0 5px;
+  overflow: scroll;
+  scrollbar-width: none;
+  padding-bottom: 230px;
+}
+.sideBar-background .sideBar li{
+  width: 100%;
+  height: var(--primary-height);
+  border-bottom: var(--border-width) solid var(--border-color);
+  justify-content: start;
+  align-items: center;
+  position: relative;
+}
+.sideBar-background .sideBar li a{
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  color: var(--black);
+}
+.sideBar-background .sideBar li a:hover{
+  outline: none;
+  color: var(--white);
+
+}
+.sideBar-background .sideBar li:not(.categoriesSelector):hover{
+  color: var(--white);
+}
+.sideBar-background .sideBar li svg:not(.toggle svg){
+  margin: 0 10px;
+}
+.sideBar-background .sideBar li .toggle svg{
+  margin: 3px,
+}
+
+.sideBar-background-invisible{
+  width: 0;
+  height: 100vh;
+  background-color: var(--ashen-semi-transparent);
+  position: fixed;
+  top: var(--header-height);
+}
+.sideBar-background-invisible .sideBar{
+  width: 0;
+  height: 100vh;
+  background-color: var(--white);
+}
+
