@@ -63,8 +63,8 @@ useEffect(() => {
       const storedLanguage = JSON.parse(storedLanguage_str) ;
 
       setactiveLanguage_(
-        storedLanguage.language == 'english' || storedLanguage.language == 'arabic' ? 
-        storedLanguage : 
+        // storedLanguage.language == 'english' || storedLanguage.language == 'arabic' ? 
+        // storedLanguage : 
         english
       );  
     }

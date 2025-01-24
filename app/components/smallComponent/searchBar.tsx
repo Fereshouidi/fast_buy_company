@@ -73,7 +73,6 @@ const SearchBar = ({ searchQuery, setSearchQuery, discountsSectionExist, setDisc
         transition: '0.7s ease',
         zIndex: 999
     }
-    
     const inputStyle:CSSProperties = {
         backgroundColor: 'var(--almost-white)',
         color: 'var(--black)',
@@ -82,7 +81,6 @@ const SearchBar = ({ searchQuery, setSearchQuery, discountsSectionExist, setDisc
         padding: '0 20px',
         boxSizing: 'border-box',
     }
-    
     const inputStyleOnFocus:CSSProperties = {
         ...inputStyle,
         outline: 'none',
