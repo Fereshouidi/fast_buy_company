@@ -9,7 +9,7 @@ import { CustomerDataContext } from "./contexts/customerData";
 import { CustomerDataParams } from "./contexts/customerData";
 import { CompanyInformationContext } from "./contexts/companyInformation";
 import { companyInformationsParams } from "./contexts/companyInformation";
-import { SideBarContext } from "@/app/contexts/SideBarContext";
+// import { SideBarContext } from "@/app/contexts/SideBarContext";
 import { useRouter } from "next/navigation";
 import { LoadingIconContext } from "./contexts/loadingIcon";
 import LoadingIcon_theHolePage from "./svg/icons/loading/loadingHoleOfThePage";
@@ -166,7 +166,7 @@ useEffect(() => {
         <LanguageSelectorContext.Provider value={{ activeLanguage, setActiveLanguage }}>
           <ActiveLanguageContext.Provider value={{activeLanguage: activeLanguage_, setAtiveLanguage: setActiveLanguage_}}>
             <ThemeContext.Provider value={{ theme, setTheme }}>
-              <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}>
+              {/* <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}> */}
                 <CustomerDataContext.Provider value={customerData}>
                   <LoadingIconContext.Provider value={{exist: loadingIconExist , setExist: setLoadingIconExit}}>
                     <BannerContext.Provider value={{bannerexist: bannerForEveryThing,bannerText: bannerText , setBanner: setBanner}}>
@@ -187,7 +187,7 @@ useEffect(() => {
                     </BannerContext.Provider>
                   </LoadingIconContext.Provider>
                 </CustomerDataContext.Provider>
-              </SideBarContext.Provider>
+              {/* </SideBarContext.Provider> */}
             </ThemeContext.Provider>
           </ActiveLanguageContext.Provider>
         </LanguageSelectorContext.Provider>
