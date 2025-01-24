@@ -82,19 +82,16 @@ const DiscountsSection = ({exist, setExist}: params) => {
     }
     const handleDateOfStart = (e: React.ChangeEvent<HTMLInputElement>) => {
         
-        const updatedDiscount = ({
-            ...activeDiscount,
-            startOfDiscount: new Date(e.target.value)
-        })
-
-        setActiveDiscount(updatedDiscount);
-
-        // setAllDiscounts(
-        //     allDiscounts.map(discount => 
-        //         discount._id === activeDiscount._id ? updatedDiscount : discount
-        //     )
-        // );
-        setIsChangeHappen(true);
+        if (e.target.value) {
+            const updatedDiscount = ({
+                ...activeDiscount,
+                startOfDiscount: new Date(e.target.value)
+            })
+            
+            setActiveDiscount(updatedDiscount);
+            setIsChangeHappen(true);
+        }
+        
     }
     const handleDateOfEnd = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.value) {
@@ -104,6 +101,7 @@ const DiscountsSection = ({exist, setExist}: params) => {
             })
             
             setActiveDiscount(updatedDiscount);
+            setIsChangeHappen(true);
         }
 
 
@@ -191,7 +189,8 @@ const DiscountsSection = ({exist, setExist}: params) => {
                             <h4>{activeLanguage.dateOfStartW}: </h4>  
                             <input
                                 type="datetime-local"
-                                value={discount.startOfDiscount ? new Date(discount.startOfDiscount).toISOString().slice(0, 16) : ""}
+                                defaultValue={new Date(discount.startOfDiscount).toISOString().slice(0, 16)}
+                                //value={discount.startOfDiscount ? new Date(discount.startOfDiscount).toISOString().slice(0, 16) : ""}
                                 onChange={(e) => handleDateOfStart(e)}
                             /> 
                         </div>                        
@@ -199,8 +198,8 @@ const DiscountsSection = ({exist, setExist}: params) => {
                             <h4>{activeLanguage.dateOfEndW}: </h4>  
                             <input
                                 type="datetime-local"
-                                defaultValue={new Date(discount.startOfDiscount).toISOString().slice(0, 16)}
-                                value={discount._id != activeDiscount?._id ? new Date(discount.startOfDiscount).toISOString().slice(0, 16) : null}
+                                defaultValue={new Date(discount.endOfDiscount).toISOString().slice(0, 16)}
+                                //value={discount._id != activeDiscount?._id ? new Date(discount.startOfDiscount).toISOString().slice(0, 16) : null}
                                 onChange={(e) => handleDateOfEnd(e)}
                             />
 
