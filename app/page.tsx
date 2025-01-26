@@ -184,6 +184,9 @@ useEffect(() => {
   }
 
 
+  if (screenWidth && screenWidth < 1200) {
+    alert(activeLanguage_?.noSmallDisplayP);
+  }
   //  alert(activeLanguage_?.language);
   
   return (
