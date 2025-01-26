@@ -64,5 +64,6 @@
     "discountUpdatedP": "The discount has been updated successfully",
     "discountDeletedP": "The discount has been deleted successfully",
     "unknowErrorP": "something wrong happen !",
-    "productUpdatedSuccessfullyP": "The product has been updated successfully"
+    "productUpdatedSuccessfullyP": "The product has been updated successfully",
+    "noSmallDisplayP": "This application does not work on screens smaller than 1200 pixels"
 }

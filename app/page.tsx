@@ -171,6 +171,18 @@ useEffect(() => {
     //backgroundColor: 'green'
   }
 
+  const styleSmallDisplay:CSSProperties = {
+    width: '100vw',
+    height: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    backgroundColor: 'var(--white)',
+  }
+
 
   //  alert(activeLanguage_?.language);
   
@@ -197,7 +209,7 @@ useEffect(() => {
 
                           </div> :
                           
-                          <div>This application does not work on screens smaller than 1200 pixels</div>
+                          <div style={styleSmallDisplay}>{activeLanguage_?.noSmallDisplayP}</div>
 
                           }
                         </ActivePageContext.Provider>
