@@ -1,26 +1,35 @@
 'use client';
 
 import { productParams } from "@/app/contexts/productSelectForShowing";
-import { getCategorieById, uploadImage } from "@/app/crud";
+import { getCategorieById, getDiscountById, uploadImage } from "@/app/crud";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useEffect, useRef, useState } from "react";
 import LoadingIcon from "@/app/svg/icons/loading/loading";
 import { activeLanguageContext } from "@/app/contexts/activeLanguage";
+import { updateProduct } from "@/app/crud";
+import { LoadingIconContext } from "@/app/contexts/loadingIcon";
+import LoadingIcon_theHolePage from "@/app/svg/icons/loading/loadingHoleOfThePage";
+import { BannerContext } from "@/app/contexts/bannerForEverything";
 
 type params = {
     imagesEditSectionExist: boolean,
     setImagesEditSectionExist: (value: boolean) => void,
     productDetails: productParams | undefined, 
     setProductDetails: (value: productParams) => void;
+    allProducts: productParams[],
+    setAllProducts: (value: productParams[]) => void;
 }
-const EditSection = ({productDetails, setProductDetails, imagesEditSectionExist, setImagesEditSectionExist}: params) => {
+const EditSection = ({productDetails, setProductDetails, allProducts, setAllProducts, imagesEditSectionExist, setImagesEditSectionExist}: params) => {
 
     const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
     const [imagePrincipal, setImagePrincipal] = useState<string | undefined>(productDetails?.imagePrincipal);
     const [isCategorieInputExist, setIsCategorieInputExist] = useState<boolean>(true);
     const [isDiscountInputExist, setIsDiscountInputExist] = useState<boolean>(true);
     const [loadingImagePrincipal, setLoadingImagePrincipal] = useState<boolean>(false);
+    const [loadingCommit, setLoadingICommit] = useState<boolean>(false);
+    const setBanner = useContext(BannerContext)?.setBanner;
+
     
     const imagePrincipalRef = useRef(null);
 
@@ -134,7 +143,7 @@ const EditSection = ({productDetails, setProductDetails, imagesEditSectionExist,
         if (e.target) {
             console.log(e.target.value);
             
-            const categorie = await getCategorieById(e.target.value);
+            const categorie = await getDiscountById(e.target.value);
             if (categorie) {
                 setProductDetails({
                     ...productDetails,
@@ -146,6 +155,39 @@ const EditSection = ({productDetails, setProductDetails, imagesEditSectionExist,
             }
 
         }
+    }
+    const handleDiscount = async(e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target) {
+            console.log(e.target.value);
+            
+            const discount = await getDiscountById(e.target.value);
+            if (discount || !e.target.value) {
+                console.log(discount);
+                
+                setProductDetails({
+                    ...productDetails,
+                    discount: discount
+                });
+                setIsDiscountInputExist(true);
+            } else {
+                setIsDiscountInputExist(false);
+            }
+
+        }
+    }
+
+
+    const handleCommit = async() => {
+        setLoadingICommit(true);
+        const updatedProduct = await updateProduct(productDetails);
+        if (updatedProduct) {
+            const updatedAllProducts = allProducts.map((product) => 
+                product._id === updatedProduct._id ? updatedProduct : product
+            );
+            setAllProducts(updatedAllProducts);
+            setBanner(true, activeLanguage.productUpdatedSuccessfullyP, 'success' );
+        }
+        setLoadingICommit(false);
     }
 
     useEffect(() => {
@@ -216,7 +258,8 @@ const EditSection = ({productDetails, setProductDetails, imagesEditSectionExist,
 
         <div id='discount' className='item'>
             <h4>{activeLanguage?.discountId}</h4>
-            <input type="text" placeholder="ID..." defaultValue={productDetails?.discount?._id?? ''}/>
+            <input type="text" placeholder="ID..." defaultValue={productDetails?.discount?._id?? ''} onChange={handleDiscount}/>
+            {!isDiscountInputExist && <p>{activeLanguage?.discountW}</p>}
         </div>
 
         <div id='size' className='item'>
@@ -230,7 +273,8 @@ const EditSection = ({productDetails, setProductDetails, imagesEditSectionExist,
         </div>
 
 
-        <div id="commit-btn">{activeLanguage?.commitChange}</div>
+        <div id="commit-btn" onClick={handleCommit}>{activeLanguage?.commitChange}</div>
+        <LoadingIcon className={loadingCommit? "loading-commit-click": ''} />
 
 
     </div>

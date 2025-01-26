@@ -55,5 +55,14 @@
     "percentageW": "percentage",
     "newPriceW": "New price",
     "dateOfStartW": "Date of start",
-    "dateOfEndW": "Date of end"
+    "dateOfEndW": "Date of end",
+    "StickerW": "Sticker",
+    "noDiscountP": "There are no discounts !",
+    "saveW": "save",
+    "newDiscountW": "New Discount",
+    "discountAddedP": "The discount has been added successfully",
+    "discountUpdatedP": "The discount has been updated successfully",
+    "discountDeletedP": "The discount has been deleted successfully",
+    "unknowErrorP": "something wrong happen !",
+    "productUpdatedSuccessfullyP": "The product has been updated successfully"
 }

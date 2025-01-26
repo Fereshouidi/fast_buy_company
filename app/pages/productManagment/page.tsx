@@ -34,7 +34,7 @@ const ProductManagmentPage = () => {
             <CategorieSelector activeCategorie={activeCategorie} setActiveCategorie={setActiveCategorie}/>
             <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery}  discountsSectionExist={discountsSectionExist} setDiscountsSection={setDiscountsSection} />
             <ProductDisplaySection products={products} setProducts={setProducts} productDetails={productDetails} setProductDetails={setProductDetails}/>
-            <ProductDetail productDetails={productDetails} setProductDetails={setProductDetails}/>
+            <ProductDetail productDetails={productDetails} setProductDetails={setProductDetails} allProducts={products} setAllProducts={setProducts}/>
             <DiscountsSection exist={discountsSectionExist} setExist={setDiscountsSection} />
         </div>
     )

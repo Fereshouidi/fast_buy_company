@@ -4,18 +4,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0;
+    /* padding: 0; */
     /* background-color: blue; */
 }
 
-#container #loadingIcon {
+/* #container #loadingIcon {
     width: 15px;
     height: 15px;
     border: 2px solid var(--white-almost-transparnt);
     border-radius: 50%;
     animation: simple-spin 1s linear infinite;
     margin: 0;
-}
+} */
 
 .container-of-loading-icon-hole-page {
     width: 100%;

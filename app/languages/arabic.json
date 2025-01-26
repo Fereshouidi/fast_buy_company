@@ -55,7 +55,17 @@
     "percentageW": "النسبة المئوية",
     "newPriceW": "السعر الجديد",
     "dateOfStartW": "بداية التخفيض",
-    "dateOfEndW": "نهاية التخفيض"
+    "dateOfEndW": "نهاية التخفيض",
+    "StickerW": "ملصق",
+    "noDiscountP": "لا يوجد تخفيظات !",
+    "saveW": "حفظ",
+    "newDiscountW": "تخفيض جديد",
+    "discountAddedP": "تم اظافة التخفيض بنجاح",
+    "discountUpdatedP": "تم تحديث التخفيض بنجاح",
+    "discountDeletedP": "تم مسح التخفيض بنجاح",
+    "unknowErrorP": "حدث خطأ ما !",
+    "productUpdatedSuccessfullyP": "تم تحديث المنتج بنجاح"
+
 }
 
 

@@ -232,7 +232,7 @@ input {
   --white: #000000;
   --black: #ffffff;
   --almost-black: rgb(231, 231, 231);
-  --black-almost-transparnt: rgba(255, 255, 255, 0.082);
+  --black-almost-transparnt: rgba(255, 255, 255, 0.111);
   --border-color: #616161a2;
 }
 

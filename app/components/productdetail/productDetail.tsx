@@ -14,8 +14,10 @@ import ImagesEdit from './imagesEdit';
 type params = {
     productDetails: productParams | undefined, 
     setProductDetails: (value: productParams) => void;
+    allProducts: productParams[],
+    setAllProducts: (value: productParams[]) => void;
 }
-const ProductDetail = ({productDetails, setProductDetails}: params) => {
+const ProductDetail = ({productDetails, setProductDetails, allProducts, setAllProducts}: params) => {
 
     const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
     const [profitLastWeek, setProfitLastWeek] = useState<profitParams[] | undefined>(undefined);
@@ -52,7 +54,7 @@ const ProductDetail = ({productDetails, setProductDetails}: params) => {
                     { productDetails && <Graph profits={profitLastWeek} setProfits={setProfitLastWeek} duration={'lastWeek'} />}
                 </div>
                 
-                {productDetails && <EditSection productDetails={productDetails} setProductDetails={setProductDetails} imagesEditSectionExist={imagesEditSectionExist} setImagesEditSectionExist={setImagesEditSectionExist} />}
+                {productDetails && <EditSection productDetails={productDetails} setProductDetails={setProductDetails} allProducts={allProducts} setAllProducts={setAllProducts} imagesEditSectionExist={imagesEditSectionExist} setImagesEditSectionExist={setImagesEditSectionExist} />}
 
                 <ImagesEdit exist={imagesEditSectionExist} setExist={setImagesEditSectionExist} productDetails={productDetails} setProductDetails={setProductDetails}/>
 

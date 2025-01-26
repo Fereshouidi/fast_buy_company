@@ -1,4 +1,4 @@
-const url = 'https://fast-buy-back-end.vercel.app/api';
+const url = 'http://localhost:3002/api';
 import axios from "axios";
 
 //https://fast-buy-back-end.vercel.app/api
@@ -489,3 +489,66 @@ export const getAllDiscounts = async () => {
     }
 }
 
+export const updateDiscountById = async (updatedDiscount) => {
+    
+    try {
+        const response = await axios.put(url + `/update/discount/by/id`, {updatedDiscount});  
+        return response.data;
+
+    }catch(err) {
+        throw err;
+    }
+}
+
+export const addDiscount = async (newDiscount) => {
+    
+    try {
+        const response = await axios.post(url + `/add/discount`, {newDiscount});  
+        console.log(response.data);
+        
+        return response.data;
+
+    }catch(err) {
+        throw err;
+    }
+}
+
+export const deleteDiscountById = async (discountId) => {
+    
+    try {
+        const response = await axios.delete(url + `/delete/discount/by/id`, {
+            params: {discountId}
+        });  
+        return response.data;
+
+    }catch(err) {
+        return null;
+    }
+}
+
+export const updateProduct = async (updatedProduct) => {    
+    
+    try {
+        const response = await axios.put(url + `/update/product`, {updatedProduct});  
+        console.log(response.data.product);
+        
+        return response.data.product;
+
+    }catch(err) {
+        return null;
+    }
+
+}
+
+export const getDiscountById = async(discountId) => {
+    try{
+        const response = await axios.get(url + '/get/discount/by/id', {
+            params: {discountId}
+        })
+        const data = response.data;        
+        return data;
+
+    }catch(err){
+        return null;
+    }
+}

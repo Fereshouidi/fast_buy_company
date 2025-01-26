@@ -102,6 +102,7 @@ header .navigation *{
     opacity: 0.8;
     /* box-shadow: 0 5px 15px var(--black-almost-transparnt); */
     border-bottom: 1px solid var(--black-almost-transparnt);
+    z-index: 999;
 }
 #Discounts-Section .header .item{
     display: flex;
@@ -139,7 +140,7 @@ header .navigation *{
 .delete-discount :hover {
     background-color: transparent;
 }
-#Discounts-Section .header .fa-x{ 
+#Discounts-Section .fa-x{ 
     position: absolute;
     right: var(--large-margin);
     top: 0;
@@ -161,6 +162,9 @@ header .navigation *{
     padding: var(--large-padding);
     border-radius: 50px 0 50px 50px;
 }
+.fa-x :hover{
+    cursor: pointer;
+}
 
 #Discounts-Section .display-section {
     display: flex;
@@ -174,12 +178,13 @@ header .navigation *{
     padding: var(--small-padding);
     overflow-y: scroll;
     border-radius: 20px;
+    position: relative;
 }
 #Discounts-Section .display-section::-webkit-scrollbar {
     width: 0;
 }
 
-#Discounts-Section  .display-section .cart {
+#Discounts-Section  .display-section .cart:not(.add-discount-card) {
     display: flex;
     flex-direction: column;
     width: 30%;
@@ -188,7 +193,6 @@ header .navigation *{
     margin: var(--small-margin);
     padding: var(--medium-padding);
     color: var(--black);
-    opacity: 0.8;
     box-shadow: 0 5px 15px var(--white-almost-transparnt);
     border: 1px solid var(--ashen-semi-transparent);
     
@@ -200,6 +204,8 @@ header .navigation *{
     align-items: center;
     margin: var(--small-margin);
     border-radius: 20px;
+    opacity: 0.8;
+
 }
 #Discounts-Section  .display-section .cart .item h4{
     font-size: small;
@@ -208,7 +214,7 @@ header .navigation *{
     font-size: small;
     padding: var(--small-padding) var(--large-padding);
     user-select: text;
-    margin: 0 var(--small-margin);
+    margin: var(--small-margin);
     border-radius: 50px;
     border: 1px solid var(--ashen);
     opacity: 0.7;
@@ -224,4 +230,77 @@ header .navigation *{
     color: var(--black);
     /* width: fit-content;
     display: inline-block; */
+}
+#Discounts-Section  .display-section .cart .item .file {
+    display: none;
+}
+#Discounts-Section  .display-section .cart .item .sticker-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    margin: 0 var(--medium-margin);
+}
+
+#Discounts-Section  .display-section .no-discounts {
+    opacity: 0.7;
+}
+
+.add-discount-card-container {
+    position: fixed;
+    width: 100%;
+    height: calc(100% - 60px);
+    background-color: var(--black-almost-transparnt);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(1px);
+}
+.add-discount-card-container .add-discount-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 30%;
+    background-color: var(--white);
+    border-radius: 20px;
+    margin: var(--small-margin);
+    padding: var(--large-padding);
+    color: var(--black);
+    box-shadow: 0 5px 15px var(--ashen);
+    border: 1px solid var(--ashen-semi-transparent);
+    position: relative;
+}
+.add-discount-card-container .add-discount-card .new-discountW {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: var(--medium-margin);
+    margin-bottom: var(--large-margin);
+}
+.add-discount-card-container .add-discount-card .save-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--black);
+    color: var(--white);
+    padding: var(--medium-padding) var(--medium-padding);
+    border-radius: 50px;
+    cursor: pointer;
+    margin: var(--medium-margin);
+    font-size: small;
+    opacity: 0.8;
+}
+.add-discount-card-container .add-discount-card .save-btn-not-work {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--ashen-semi-transparent);
+    color: white;
+    padding: var(--medium-padding) var(--medium-padding);
+    border-radius: 50px;
+    cursor: pointer;
+    margin: var(--medium-margin);
+    font-size: small;
+    opacity: 0.8;
+}
+.add-discount-card-container .add-discount-card .save-btn:active {
+    background-color: var(--ashen);
 }
