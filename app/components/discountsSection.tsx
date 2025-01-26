@@ -194,7 +194,7 @@ const DiscountsSection = ({exist, setExist}: params) => {
         backgroundColor: activeDiscount ? 'red': ''
     }
     const styleDone: CSSProperties = {
-        backgroundColor: isChangeHappen ? 'green': 'var(--ashen-semi-transparent)'
+        backgroundColor: isChangeHappen ? 'green': ''
     }
     return (
         <div id="Discounts-Section" className={exist? '' : 'invisible'}>

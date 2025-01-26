@@ -130,8 +130,8 @@ header .navigation *{
     background-color: var(--ashen);     
 } */
 #Discounts-Section .header :hover{ 
-    background-color: var(--black);
-    color: var(--white);     
+    background-color: var(--ashen);
+    color: white;     
     cursor: pointer;
 }
 #Discounts-Section .header :active{ 

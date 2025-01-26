@@ -171,6 +171,7 @@ useEffect(() => {
     //backgroundColor: 'green'
   }
 
+
   //  alert(activeLanguage_?.language);
   
   return (
@@ -185,7 +186,8 @@ useEffect(() => {
                       <paramSectionContext.Provider value={{containerExist: paramSectionContainerExist, setContainerExist: setParamSectionContainerExist, exist: paramSectionExist, setExist: setParamSectionExist}}>
                         <ActivePageContext.Provider value={{activePage: activePage, setActivePage: setActivePage}} >
 
-                          <div style={style}>
+                          { screenWidth && screenWidth > 1200 ? <div style={style}>
+                          
                             <LoadingIcon_theHolePage/>
                             <Banner/>
 
@@ -193,7 +195,11 @@ useEffect(() => {
                             {activePage == 'Statistics' && <StatisticsPage/>}
                             {activePage == 'productsManagement' && <ProductManagmentPage/>}
 
-                          </div>
+                          </div> :
+                          
+                          <div>This application does not work on screens smaller than 1200 pixels</div>
+
+                          }
                         </ActivePageContext.Provider>
                       </paramSectionContext.Provider>
                     </BannerContext.Provider>
