@@ -201,7 +201,7 @@ const AddDiscountSection = ({exist, setExist, allDiscounts, setAllDiscounts}: pa
                     {loading && <LoadingIcon/>}
                 </div>
 
-                <h4 className={isDone ? "save-btn" : "save-btn-not-work"} onClick={handleDone}>{activeLanguage.saveW}</h4>
+                <h4 className={isDone ? "save-btn" : "save-btn-not-work"} onClick={handleDone}>{activeLanguage?.saveW}</h4>
             </div>
 
         </div>
