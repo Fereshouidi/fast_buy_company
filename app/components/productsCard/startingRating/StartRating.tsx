@@ -3,32 +3,8 @@ import ReactStars from 'react-stars';
 import './reactStars.css';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 import { useContext } from 'react';
+import { productParams } from '@/app/contexts/productSelectForShowing';
 
-type productParams = {
-    name: LanguageParams,
-    imagePrincipal: string,
-    price: number,
-    discount: discountParams,
-    totalRating: number,
-    currencyType: string
-
-}
-
-type LanguageParams = {
-    english: string,
-    arabic: string
-}
-
-
-type discountParams = {
-    createdAt: Date,
-    discountSticker: string,
-    newPrice: number,
-    oldPrice: number,
-    percentage: number,
-    startOfDiscount: Date, 
-    endOfDiscount: Date
-};
 
 const StarRating = ({product}: {product : productParams}) => {
 
