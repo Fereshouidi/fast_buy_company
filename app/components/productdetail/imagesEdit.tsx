@@ -114,7 +114,7 @@ const ImagesEdit = ({exist, setExist, productDetails, setProductDetails}: paams)
         <div className={exist? "images-edit" : 'invisible'}>
             <div className="header">
                 <div className="item add-picture" onClick={handleAddClick}>
-                    <input type="file" multiple className="file" ref={inputFileRef} onChange={(e) => handleAddImage(e)}/>
+                    <input type="file" multiple className="file" style={{display: 'none'}} ref={inputFileRef} onChange={(e) => handleAddImage(e)}/>
                     <FontAwesomeIcon icon={faPlus}/>
                     <h4>{activeLanguage?.addPictureW}</h4>
                 </div>
@@ -129,7 +129,7 @@ const ImagesEdit = ({exist, setExist, productDetails, setProductDetails}: paams)
             </div>
             <section className="images-display">{
                 productDetails?.images.length > 0 ? productDetails.images.map((image, index) => {
-                    return <img style={activeImage == image ? styleActiveImage: null} key={index} src={image} onClick={() => setActiveImage(image)} /> 
+                    return image && <img style={activeImage == image ? styleActiveImage: null} key={index} src={image} onClick={() => setActiveImage(image)} />
                 })
                 : <div className="no-image" >{activeLanguage?.noImagesP}</div>
             }</section>

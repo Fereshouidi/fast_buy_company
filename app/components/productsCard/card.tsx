@@ -88,10 +88,14 @@ const goToCardShow = (product: productParams) => {
         <div id="card" style={cardHover? StyleWithHover : Style} onMouseEnter={setHover} onMouseLeave={unsetHover} onClick={() => goToCardShow(product)}>
             <img src={product.imagePrincipal} alt="" style={StyleImage} />
             <div style={StyleCartInformation}>
-                <h4 style={styleH4}>{
+            <h4 style={styleH4}>{
                     languageContext.activeLanguage == "english" ?
-                    product.name.english
-                    : product.name.arabic    
+                    product.name?.english.length > 15 ? 
+                        product.name?.english.slice(0, 15) + '...'
+                        : product.name?.english ?? ''
+                    : product.name?.arabic.length > 15 ?
+                        product.name?.arabic.slice(0, 15) + '...'
+                        : product.name?.arabic ?? ''   
                 }</h4>
                 <StarRating product={product}/>
                 <div style={styleBoxAndPricesDiv}>

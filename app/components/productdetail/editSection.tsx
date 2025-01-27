@@ -1,7 +1,7 @@
 'use client';
 
 import { productParams } from "@/app/contexts/productSelectForShowing";
-import { getCategorieById, getDiscountById, uploadImage } from "@/app/crud";
+import { deleteProductById, getCategorieById, getDiscountById, uploadImage } from "@/app/crud";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useEffect, useRef, useState } from "react";
@@ -38,12 +38,12 @@ const EditSection = ({productDetails, setProductDetails, allProducts, setAllProd
             if (language === 'english') {
                 setProductDetails({
                     ...productDetails,
-                    name: {english: e.target.value, arabic: productDetails.name.arabic}
+                    name: {english: e.target.value, arabic: productDetails.name?.arabic ?? ''}
                 })
             }else {
                 setProductDetails({
                     ...productDetails,
-                    name: {arabic: e.target.value, english: productDetails.name.english}
+                    name: {arabic: e.target.value, english: productDetails.name?.english?? ''?? ''}
                 })
             }
 
@@ -143,7 +143,7 @@ const EditSection = ({productDetails, setProductDetails, allProducts, setAllProd
         if (e.target) {
             console.log(e.target.value);
             
-            const categorie = await getDiscountById(e.target.value);
+            const categorie = await getCategorieById(e.target.value);
             if (categorie) {
                 setProductDetails({
                     ...productDetails,
@@ -175,7 +175,20 @@ const EditSection = ({productDetails, setProductDetails, allProducts, setAllProd
 
         }
     }
-
+    const handleDelete = async(e: React.MouseEvent<HTMLSpanElement>) => {
+        setLoadingICommit(true);
+        const done = await deleteProductById(productDetails?._id);
+        if (done) {
+            const updatedAllProducts = allProducts.filter(product => product._id !== productDetails._id);
+            setAllProducts(updatedAllProducts);
+            setProductDetails(undefined);
+            setBanner(true, activeLanguage.productDeletedSuccessfullyP, 'success' );
+        } else {
+            setBanner(true, activeLanguage.someErrorHappen, 'fail' );
+        }
+        setLoadingICommit(false);
+    }
+    
 
     const handleCommit = async() => {
         setLoadingICommit(true);
@@ -200,8 +213,8 @@ const EditSection = ({productDetails, setProductDetails, allProducts, setAllProd
 
         <div id='name' className='item'>
             <h4>{activeLanguage?.nameW}</h4>
-            <input type="text" defaultValue={productDetails?.name.english?? ''} onChange={(e) => handleName(e, 'english')}/>
-            <input type="text" defaultValue={productDetails?.name.arabic?? ''} onChange={(e) => handleName(e, 'arabic')}/>
+            <input type="text" maxLength={50} defaultValue={productDetails?.name?.english?? ''} onChange={(e) => handleName(e, 'english')}/>
+            <input type="text" maxLength={50} defaultValue={productDetails?.name?.arabic ?? ''} onChange={(e) => handleName(e, 'arabic')}/>
         </div>
 
         <div id='price' className='item'>
@@ -216,13 +229,13 @@ const EditSection = ({productDetails, setProductDetails, allProducts, setAllProd
 
         <div id='description' className='item description-item'>
             <h4>{activeLanguage?.descriptionW}</h4>
-            <textarea defaultValue={productDetails?.description?.english?? ''} onChange={(e) => handleDescription(e, 'english')}/>
-            <textarea defaultValue={productDetails?.description?.arabic?? ''} onChange={(e) => handleDescription(e, 'arabic')}/>
+            <textarea maxLength={500} defaultValue={productDetails?.description?.english?? ''} onChange={(e) => handleDescription(e, 'english')}/>
+            <textarea maxLength={500} defaultValue={productDetails?.description?.arabic?? ''} onChange={(e) => handleDescription(e, 'arabic')}/>
         </div>
 
         <div id='color' className='item'>
             <h4>{activeLanguage?.colorW}</h4>
-            <input type="text" placeholder="color..." defaultValue={productDetails?.color?? ''} onChange={(e) => handleColor(e)}/>
+            <input type="text" maxLength={20} placeholder="color..." defaultValue={productDetails?.color?? ''} onChange={(e) => handleColor(e)}/>
             <p><strong>{activeLanguage?.remarqueW}:</strong>{activeLanguage?.remarqueP}</p>
         </div>
 
@@ -264,12 +277,12 @@ const EditSection = ({productDetails, setProductDetails, allProducts, setAllProd
 
         <div id='size' className='item'>
             <h4>{activeLanguage?.sizeW}</h4>
-            <input type="text" placeholder="size..." defaultValue={productDetails?.size?? ''} onChange={(e) => handleSize(e)}/>
+            <input type="text" maxLength={20} placeholder="size..." defaultValue={productDetails?.size?? ''} onChange={(e) => handleSize(e)}/>
         </div>
 
-        <div id='delete' className='item'>
+        <div id='delete' className='item' >
             <h4>{activeLanguage?.deleteW}</h4>
-            <span id="remove-product">{activeLanguage?.removeProductW}</span>
+            <span id="remove-product" onClick={handleDelete}>{activeLanguage?.removeProductW}</span>
         </div>
 
 

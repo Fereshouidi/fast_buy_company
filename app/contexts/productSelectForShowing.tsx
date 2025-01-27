@@ -4,21 +4,21 @@ import { discountCodeParams } from "./discountCode";
 import { CategorieParams } from "./categories";
 
 export type productParams = {
-    _id: string,
-    name: LanguageParams,
-    description: LanguageParams,
-    color: string,
-    size: string,
-    imagePrincipal: string,
-    images: string[],
-    price: number,
-    discount: discountParams,
-    totalRating: number,
-    currencyType: string,
-    categorie: CategorieParams ,
-    quantity: number,
+    _id?: string,
+    name?: LanguageParams,
+    description?: LanguageParams,
+    color?: string,
+    size?: string,
+    imagePrincipal?: string,
+    images?: string[],
+    price?: number,
+    discount?: discountParams,
+    totalRating?: number,
+    currencyType?: string,
+    categorie?: CategorieParams ,
+    quantity?: number,
     discountCode?: discountCodeParams | undefined,
-    finalPrice: number ,
+    finalPrice?: number ,
 }
 
 type LanguageParams = {
@@ -27,7 +27,7 @@ type LanguageParams = {
 }
 
 export type discountParams = {
-    _id: string,
+    _id?: string,
     createdAt: Date,
     discountSticker: string,
     newPrice: number,

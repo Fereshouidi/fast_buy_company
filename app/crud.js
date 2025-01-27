@@ -1,4 +1,4 @@
-const url = 'https://fast-buy-back-end.vercel.app/api';
+const url = 'http://localhost:3002/api';
 import axios from "axios";
 
 //https://fast-buy-back-end.vercel.app/api
@@ -79,15 +79,28 @@ export const getProductsByCategorie = async(id) => {
     }
 }
 
-export const getCategorieById = async(id) => {
+// export const getCategorieById = async(id) => {
+//     try{
+//         const response = await axios.get(url + '/get/categorie/by/id', {
+//             params: {categorieId: id}
+//         })
+//         const data = response.data;
+//         return data;
+//     }catch(err){
+//         return false;
+//     }
+// }
+
+export const getCategorieById = async(categorieId) => {
     try{
         const response = await axios.get(url + '/get/categorie/by/id', {
-            params: {id}
+            params: {categorieId}
         })
-        const data = response.data;
+        const data = response.data;        
         return data;
+
     }catch(err){
-        return false;
+        return null;
     }
 }
 
@@ -545,6 +558,30 @@ export const getDiscountById = async(discountId) => {
         const response = await axios.get(url + '/get/discount/by/id', {
             params: {discountId}
         })
+        const data = response.data;        
+        return data;
+
+    }catch(err){
+        return null;
+    }
+}
+
+export const addProduct = async(productData) => {
+    
+    try{
+        const response = await axios.post(url + '/add/Product', productData);
+        const data = response.data;        
+        return data;
+
+    }catch(err){
+        return null;
+    }
+}
+
+export const deleteProductById = async(productId) => {
+    
+    try{
+        const response = await axios.delete(url + '/delete/product/by/id/'+ productId);
         const data = response.data;        
         return data;
 

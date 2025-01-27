@@ -50,6 +50,7 @@
     "selectAllW": "select All",
     "doneW": "Done",
     "noImagesP": "there's no images !",
+    "noImageP": "there's no image !",
     "discountIdW": "Discount ID",
     "oldPriceW": "Old price",
     "percentageW": "percentage",
@@ -64,6 +65,9 @@
     "discountUpdatedP": "The discount has been updated successfully",
     "discountDeletedP": "The discount has been deleted successfully",
     "unknowErrorP": "something wrong happen !",
+    "productAddedSuccessfullyP": "The product has been added successfully",
     "productUpdatedSuccessfullyP": "The product has been updated successfully",
-    "noSmallDisplayP": "This application does not work on screens smaller than 1200 pixels"
+    "productDeletedSuccessfullyP": "The product has been deleted successfully",
+    "noSmallDisplayP": "This application does not work on screens smaller than 1200 pixels",
+    "newProductW": "New Product"
 }

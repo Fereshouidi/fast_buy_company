@@ -10,6 +10,7 @@ import '../style.css';
 import { CategorieParams } from "@/app/contexts/categories";
 import ProductDetail from "@/app/components/productdetail/productDetail";
 import DiscountsSection from "@/app/components/discountsSection";
+import AddProductSection from "@/app/components/productdetail/addProductSection";
 
 const ProductManagmentPage = () => {
 
@@ -18,6 +19,8 @@ const ProductManagmentPage = () => {
     const [activeCategorie, setActiveCategorie] = useState<CategorieParams | undefined>(undefined);
     const [productDetails, setProductDetails] = useState<productParams | undefined>(undefined);
     const [discountsSectionExist, setDiscountsSection] = useState<boolean>(false);
+    const [isAddProductSectionExist, setIsAddProductSectionExist] = useState<boolean>(false);
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,11 +35,19 @@ const ProductManagmentPage = () => {
     return (
         <div className="page">
             <CategorieSelector activeCategorie={activeCategorie} setActiveCategorie={setActiveCategorie}/>
-            <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery}  discountsSectionExist={discountsSectionExist} setDiscountsSection={setDiscountsSection} />
+            <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery}  discountsSectionExist={discountsSectionExist} setDiscountsSection={setDiscountsSection} isAddProductSectionExist={isAddProductSectionExist} setIsAddProductSectionExist={setIsAddProductSectionExist}/>
             <ProductDisplaySection products={products} setProducts={setProducts} productDetails={productDetails} setProductDetails={setProductDetails}/>
             <ProductDetail productDetails={productDetails} setProductDetails={setProductDetails} allProducts={products} setAllProducts={setProducts}/>
             <DiscountsSection exist={discountsSectionExist} setExist={setDiscountsSection} />
+            <AddProductSection exist={isAddProductSectionExist} setExist={setIsAddProductSectionExist} allProducts={products} setAllProducts={setProducts}/>
         </div>
     )
 }
 export default ProductManagmentPage;
+
+type params = {
+    productDetails: productParams | undefined, 
+    setProductDetails: (value: productParams) => void;
+    allProducts: productParams[],
+    setAllProducts: (value: productParams[]) => void;
+}

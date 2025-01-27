@@ -18,9 +18,11 @@ type params = {
     setSearchQuery: (value: string) => void
     discountsSectionExist: boolean,
     setDiscountsSection: (value: boolean) => void
+    isAddProductSectionExist: boolean,
+    setIsAddProductSectionExist: (value: boolean) => void
 }
 
-const SearchBar = ({ searchQuery, setSearchQuery, discountsSectionExist, setDiscountsSection}: params) => {
+const SearchBar = ({ searchQuery, setSearchQuery, discountsSectionExist, setDiscountsSection, isAddProductSectionExist, setIsAddProductSectionExist}: params) => {
 
     const router = useRouter()
     
@@ -120,7 +122,7 @@ const SearchBar = ({ searchQuery, setSearchQuery, discountsSectionExist, setDisc
                     <h4>{activeLanguage?.discountW}</h4>
                 </div>
 
-                <div id="add-product" className="handling">
+                <div id="add-product" className="handling" onClick={()=> setIsAddProductSectionExist(true)}>
                     <FontAwesomeIcon icon={faPlus}/>
                     <h4>{activeLanguage?.addProductW}</h4>
                 </div>
@@ -162,14 +164,14 @@ const SearchBar = ({ searchQuery, setSearchQuery, discountsSectionExist, setDisc
                             onMouseLeave={() => setItemFocus(null)}
                             onClick={(e) => goToSearchPage(
                                 activeLanguage.language == 'arabic' ?
-                                product.name.arabic :
-                                product.name.english
+                                product.name?.arabic ?? '' :
+                                product.name?.english?? ''?? ''
                             , e)}   
                         >
                         {
                             activeLanguage.language == 'arabic' ?
-                            product.name.arabic :
-                            product.name.english
+                            product.name?.arabic ?? '' :
+                            product.name?.english?? ''?? ''
                         }
                         </div>
                     })    

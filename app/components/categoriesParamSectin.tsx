@@ -195,11 +195,11 @@ const CategoriesParapsSection = ({activeCategorie, setActiveCategorie, allCatego
 
             {isInputForRenameActive && <div className="input-div">
                 <div className="container">
-                    <input type="text" onChange={(e) => handlerenameChange(e, 'english')} value={rename?.english}/> 
+                    <input type="text" onChange={(e) => handlerenameChange(e, 'english')} value={rename?.english?? ''}/> 
                     <h4 className="confirm-btn-for-rename" style={styleConfirmBTN} onClick={renameConfirm} >{activeLanguage?.confirmW}</h4>
                 </div>
                 <div className="container">
-                    <input type="text" onChange={(e) => handlerenameChange(e, 'arabic')} value={rename?.arabic}/> 
+                    <input type="text" onChange={(e) => handlerenameChange(e, 'arabic')} value={rename?.arabic ?? ''}/> 
                     <h4 className="confirm-btn-for-rename" style={styleConfirmBTN} onClick={renameConfirm} >{activeLanguage?.confirmW}</h4>
                 </div>
             </div>}

@@ -36,8 +36,8 @@ const Header = () => {
                 <img src={companyInformation.logo} alt="logo" />
                 <h3>{
                     activeLanguage?.language == 'arabic' ?
-                    companyInformation.name.arabic :
-                    companyInformation.name.english
+                    companyInformation.name?.arabic ?? '' :
+                    companyInformation.name?.english?? ''?? ''
                 
                 }</h3>
             </div>

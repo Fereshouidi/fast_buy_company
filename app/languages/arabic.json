@@ -50,6 +50,7 @@
     "selectAllW": "select All",
     "doneW": "تم",
     "noImagesP": "لا يوجد صور !",
+    "noImageP": "لا يوجد صورة !",
     "discountIdW": "معرف التخفيض",
     "oldPriceW": "السعر القديم",
     "percentageW": "النسبة المئوية",
@@ -65,7 +66,10 @@
     "discountDeletedP": "تم مسح التخفيض بنجاح",
     "unknowErrorP": "حدث خطأ ما !",
     "productUpdatedSuccessfullyP": "تم تحديث المنتج بنجاح",
-    "noSmallDisplayP": "هذا التطبيق لا يعمل على الشاشات الاصغر من 800بكسل"
+    "productAddedSuccessfullyP": "تم اظافة المنتج بنجاح",
+    "productDeletedSuccessfullyP": "تم مسح المنتج بنجاح",
+    "noSmallDisplayP": "هذا التطبيق لا يعمل على الشاشات الاصغر من 800بكسل",
+    "newProductW": "منتج جديد"
 
 }
 
