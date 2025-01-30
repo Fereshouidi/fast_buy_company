@@ -29,10 +29,6 @@ const ProccessiongSection = ({orders, setOrders}: params) => {
     }, [orders])
 
     
-
-    if (typeof window == 'undefined') {
-        return;
-    }
     
     const style: CSSProperties = {
         width: '100%',

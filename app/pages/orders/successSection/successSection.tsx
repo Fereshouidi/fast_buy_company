@@ -51,7 +51,7 @@ const SuccessSection = ({orders, setOrders}: params) => {
         display: 'flex',
         alignItems: 'center',
         flexDirection: 'column',
-        margin: window.innerWidth > 800 ? 'var(--large-margin) 0' : '',
+        // margin: window.innerWidth > 800 ? 'var(--large-margin) 0' : '',
 
     }
     const StyleEmptySuccessOrderDiv: CSSProperties = {
