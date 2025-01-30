@@ -22,6 +22,7 @@ import { ActivePageContext } from './contexts/activePage';
 import Header from './components/header';
 import ProductManagmentPage from './pages/productManagment/page';
 import Banner from './banners/bannerForEveryThing';
+import OrderManagmentPage from './pages/orders/page';
 
 
 
@@ -209,6 +210,7 @@ useEffect(() => {
                             <Header/>
                             {activePage == 'Statistics' && <StatisticsPage/>}
                             {activePage == 'productsManagement' && <ProductManagmentPage/>}
+                            {activePage == 'ordersManagement' && <OrderManagmentPage/> }
 
                           </div> :
                           

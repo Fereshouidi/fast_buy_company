@@ -1,0 +1,45 @@
+table * {
+    border: 1px solid var(--ashen);
+    background-color: var(--almost-white);
+    text-align: center;
+    padding: var(--small-padding);
+    font-size: var(--small-size);
+    color: var(--black);
+}
+
+
+#cancel-order-btn {
+    color: rgb(255, 0, 0);
+}    
+#cancel-order-btn:active{
+    color: rgb(247, 0, 0);
+}
+#cancel-order-btn:hover{
+    color: rgb(216, 0, 0);
+}
+    
+
+/*     
+    .cancel-order-btn :visited{
+    background-color: red;
+    }
+    
+    #cancel-order-btn :link{
+    background-color: red;
+    }
+    
+    #cancel-order-btn :focus-within{
+    background-color: red;
+    }
+    
+    #cancel-order-btn :focus-visible{
+    background-color: red;
+    }
+    
+    #cancel-order-btn :focus-within{
+    background-color: red;
+    }
+     */
+    /* #cancel-order-btn {
+        background-color: red;
+    } */

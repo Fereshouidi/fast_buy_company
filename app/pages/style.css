@@ -2,3 +2,39 @@
     background-color: var(white);
     position: relative;
 }
+.scroll::-webkit-scrollbar {
+    width: 0;
+  }
+
+#cancel-order-btn :active{
+background-color: red;
+}
+
+  
+#cancel-order-btn :hover{
+background-color: red;
+}
+
+#cancel-order-btn :focus{
+background-color: red;
+}
+
+.cancel-order-btn :visited{
+background-color: red;
+}
+
+#cancel-order-btn :link{
+background-color: red;
+}
+
+#cancel-order-btn :focus-within{
+background-color: red;
+}
+
+#cancel-order-btn :focus-visible{
+background-color: red;
+}
+
+#cancel-order-btn :focus-within{
+background-color: red;
+}

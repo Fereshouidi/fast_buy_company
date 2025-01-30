@@ -2,6 +2,8 @@
 import { createContext } from "react";
 import { discountCodeParams } from "./discountCode";
 import { CategorieParams } from "./categories";
+import { CustomerDataParams } from "./customerData";
+import { purchaseParams } from "./purchaseData";
 
 export type productParams = {
     _id?: string,
@@ -19,6 +21,9 @@ export type productParams = {
     quantity?: number,
     discountCode?: discountCodeParams | undefined,
     finalPrice?: number ,
+    buyers?: CustomerDataParams[],
+    evaluators?: CustomerDataParams[],
+    inPurchases?: purchaseParams[],
 }
 
 type LanguageParams = {

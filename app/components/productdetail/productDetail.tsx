@@ -7,9 +7,13 @@ import { activeLanguageContext } from '@/app/contexts/activeLanguage';
 import { productParams } from '@/app/contexts/productSelectForShowing';
 import Graph from '../smallComponent/graph';
 import { profitParams } from '@/app/contexts/types';
-import { getProfitOfProductLastWeek } from '@/app/crud';
+import { getProfitOfProductLastWeek, getPurchasesByProduct, getReviewsByProduct } from '@/app/crud';
 import EditSection from './editSection';
 import ImagesEdit from './imagesEdit';
+import { reviewParams } from '@/app/contexts/reviews';
+import ReviewsSection from './reviewSection/reviewSection';
+import { purchaseParams } from '@/app/contexts/purchaseData';
+import InPurchaseSection from './inPurchaseSection/inPurchaseSection';
 
 type params = {
     productDetails: productParams | undefined, 
@@ -25,11 +29,19 @@ const ProductDetail = ({productDetails, setProductDetails, allProducts, setAllPr
     const [profitAll, setProfitAll] = useState<profitParams[] | undefined>(undefined);
     const [profitDuration, setProfitDuration] = useState<'lastWeek' | 'lastMounth' | 'all'>('lastWeek');
     const [imagesEditSectionExist, setImagesEditSectionExist] = useState<boolean>(false);
+    const [allProductReviews, setAllProductReviews] = useState<reviewParams[] | undefined>(undefined);
+    const [reviewsSectionExist, setReviewsSectionExist] = useState<boolean>(false);
+    const [allProductInPurchase, setAllProductInpurchse] = useState<purchaseParams[] | undefined>(undefined);
+    const [inPurchaseSectionExist, setInPurchaseSectionExist] = useState<boolean>(false);
 
     useEffect(() => {
         const fetchData = async () => {
             const profits = await getProfitOfProductLastWeek(productDetails?._id);
+            const reviews = await getReviewsByProduct(productDetails?._id);
+            const inPurchases = await getPurchasesByProduct(productDetails?._id);
             setProfitLastWeek(profits);
+            setAllProductReviews(reviews);
+            setAllProductInpurchse(inPurchases);
         }
         fetchData()
         
@@ -50,14 +62,33 @@ const ProductDetail = ({productDetails, setProductDetails, allProducts, setAllPr
         <section className={productDetails ? "whole-section" : 'whole-section-invisible'}> 
             <div className='product-detail-section'>
                 <FontAwesomeIcon className='faX' style={styleFaX} icon={faX} onClick={() => setProductDetails(undefined)}/>
-                <div className='statistics'>
+                <div className={productDetails ? 'statistics' : 'invisible'}>
                     { productDetails && <Graph profits={profitLastWeek} setProfits={setProfitLastWeek} duration={'lastWeek'} />}
+                    <div className='other-statistics'>
+                        <h5 className='product-id'>
+                            <span>Product Id :</span>
+                            <p>{productDetails?._id}</p>
+                        </h5>
+                        <h5>
+                            <span>Buyer :</span>
+                            <p>{productDetails?.buyers?.length}</p>
+                        </h5>
+                        <h5  onClick={() => setInPurchaseSectionExist(true)}>
+                            <span>In Shopping cart :</span>
+                            <p>{allProductInPurchase?.length}</p>
+                        </h5>
+                        <h5 onClick={() => setReviewsSectionExist(true)}>
+                            <span>reviews :</span>
+                            <p>{productDetails?.evaluators.length}</p>
+                        </h5>
+                    </div>
                 </div>
                 
                 {productDetails && <EditSection productDetails={productDetails} setProductDetails={setProductDetails} allProducts={allProducts} setAllProducts={setAllProducts} imagesEditSectionExist={imagesEditSectionExist} setImagesEditSectionExist={setImagesEditSectionExist} />}
 
                 <ImagesEdit exist={imagesEditSectionExist} setExist={setImagesEditSectionExist} productDetails={productDetails} setProductDetails={setProductDetails}/>
-
+                <ReviewsSection exist={reviewsSectionExist} setExist={setReviewsSectionExist} reviews={allProductReviews}/>
+                <InPurchaseSection exist={inPurchaseSectionExist} setExist={setInPurchaseSectionExist} purchases={allProductInPurchase}/>
             </div>
         </section>
     )

@@ -37,7 +37,50 @@
     width: 40%;
     height: 100%;
 }
+.whole-section .product-detail-section .other-statistics {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    color: var(--almost-black);
+    padding-top: var(--medium-padding);
+    user-select: text !important;
+    margin-top: var(--small-margin);
+    border-top: 0.5px solid var(--black-almost-transparnt);
+    /* background-color: red; */
+}
+.whole-section .product-detail-section .product-id{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: text;
+}
+.whole-section .product-detail-section .product-id * {
+    user-select: text !important;
+}
+.whole-section .product-detail-section .product-id p{
+    font-size: calc(var(--primary-size) /1.5);
+    /* background-color: red; */
+}
+.whole-section .product-detail-section h5{
+    /* width: 45%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: var(--medium-margin) var(--small-margin);
+    /* background-color: red; */
+    cursor: pointer;
 
+}
+.whole-section .product-detail-section h5 span {
+    margin: 0 var(--small-margin);
+    opacity: 0.7;
+}.whole-section .product-detail-section h5 p {
+    margin: 0 var(--extra-small-margin);
+    opacity: 0.8;
+}
 .whole-section .product-detail-section #edit-section {
     width: 60%;
     height: 100%;
@@ -386,7 +429,7 @@
     justify-content: center;
     flex-wrap: wrap;
     color: var(--black);
-
+    
 }
 #add-product-section::-webkit-scrollbar {
     display: none;
@@ -431,6 +474,7 @@
     border: 1px solid var(--ashen);
     background-color: var(--white);
     color: var(--black);
+    backdrop-filter: blur(0);
 }
 #add-product-section .description-item {
     /* flex: 90%; */
@@ -440,6 +484,8 @@
     padding: 40px var(--medium-margin) var(--medium-margin) var(--medium-margin) ;
     padding-top: 40px;
     /* height: 70px; */
+    backdrop-filter: blur(0);
+
 }
 #add-product-section .description-item textarea {
     width: 50%;
@@ -538,4 +584,34 @@
 .no-image{
     opacity: 0.8;
     font-size: small;
+}
+
+
+.in-purchases-section .item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--almost-white);
+    width: 90%;
+    padding: var(--large-padding);
+    border-radius: 20px;
+    opacity: 0.8;
+    position: relative;
+    color: var(--black);
+    border-bottom: 1px solid var(--black-almost-transparnt);
+}
+.in-purchases-section .item .componnent {
+    display: flex; 
+}
+.in-purchases-section .item .componnent h4 {
+    display: flex; 
+    color: var(--almost-black);
+    opacity: 0.8;
+}
+.in-purchases-section .item .componnent p {
+    margin: 0 var(--small-margin);
+    color: var(--black);
+}
+.in-purchases-section .item .name {
+    cursor: pointer;
 }

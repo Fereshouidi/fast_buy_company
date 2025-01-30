@@ -102,7 +102,7 @@ const getAllChildrenIds = (parent: CategorieParams, categories: CategorieParams[
         if (!categorie.childOpen) {
             const otherCategories = await getCategoriesByParent(categorie._id);
             otherCategories.forEach((categorieChild: CategorieParams) => {
-                categorieChild.margin = categorie.margin + 10; 
+                categorieChild.margin = categorie.margin + 20; 
             });
             setAllCategories((prev) => {
                 const targetIndex = prev.findIndex((item) => item._id === categorie._id);

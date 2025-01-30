@@ -13,5 +13,6 @@ export interface purchaseParams {
     discountCode?: discountCodeParams | null
     like?: boolean 
     customerRating: number | undefined
-    customerNote: string | undefined
+    customerNote: string | undefined,
+    createdAt?: Date | undefined,
 }
