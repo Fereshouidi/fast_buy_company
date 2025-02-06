@@ -12,7 +12,7 @@ const StatisticsPage = () => {
     const [profitLastMonth, setProfitLastMonth] = useState<profitParams[] | undefined>(undefined);
     const [profitAll, setProfitAll] = useState<profitParams[] | undefined>(undefined);
     // const [activeProfit, setActiveProfit] = useEffect<profitP
-    const adminData = useContext(AdminContext).admin;
+    const adminData = useContext(AdminContext)?.admin;
     const [profitDuration, setProfitDuration] = useState<'lastWeek' | 'lastMounth' | 'all'>('lastWeek');
 
     useEffect(() => {

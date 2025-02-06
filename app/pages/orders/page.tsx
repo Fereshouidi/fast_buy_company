@@ -15,7 +15,7 @@ const OrderManagmentPage = () => {
 
     const [orders, setOrders] = useState<OrderParams[] | undefined>(undefined);
     const [activeSection, setActiveSection] = useState<'processingSection' | 'failseSection' | 'successSection'>('successSection');
-    const adminData = useContext(AdminContext).admin;
+    const adminData = useContext(AdminContext)?.admin;
 
     useEffect(() => {
         const fetchData = async () => {

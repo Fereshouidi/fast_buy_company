@@ -23,7 +23,7 @@ const ProductManagmentPage = () => {
     const [productDetails, setProductDetails] = useState<productParams | undefined>(undefined);
     const [discountsSectionExist, setDiscountsSection] = useState<boolean>(false);
     const [isAddProductSectionExist, setIsAddProductSectionExist] = useState<boolean>(false);
-    const adminData = useContext(AdminContext).admin;
+    const adminData = useContext(AdminContext)?.admin;
     const setBanner = useContext(BannerContext)?.setBanner;
 
 
