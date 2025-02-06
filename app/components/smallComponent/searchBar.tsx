@@ -23,8 +23,6 @@ type params = {
 }
 
 const SearchBar = ({ searchQuery, setSearchQuery, discountsSectionExist, setDiscountsSection, isAddProductSectionExist, setIsAddProductSectionExist}: params) => {
-
-    const router = useRouter()
     
     const activeLanguage = useContext(activeLanguageContext)?.activeLanguage || english;
     const setLoadingIcon = useContext(LoadingIconContext)?.setExist;
@@ -151,31 +149,6 @@ const SearchBar = ({ searchQuery, setSearchQuery, discountsSectionExist, setDisc
                     <SearchIcon/>
                 </div>
 
-                {/* <div className="result-section" style={styleResultSection}>{
-                    searchReasult?.map(product => {
-                        const isHovered = itemFocus === product._id;
-                        return <div
-                            key={product._id}                         
-                            style={{
-                            ...styleItem,
-                            backgroundColor: isHovered ? "var(--almost-white)" : "",
-                            }}
-                            onMouseEnter={() => setItemFocus(product._id)}
-                            onMouseLeave={() => setItemFocus(null)}
-                            onClick={(e) => goToSearchPage(
-                                activeLanguage.language == 'arabic' ?
-                                product.name?.arabic ?? '' :
-                                product.name?.english?? ''?? ''
-                            , e)}   
-                        >
-                        {
-                            activeLanguage.language == 'arabic' ?
-                            product.name?.arabic ?? '' :
-                            product.name?.english?? ''?? ''
-                        }
-                        </div>
-                    })    
-                }</div> */}
             </div>
         </div>
     )

@@ -1,8 +1,8 @@
 import { createContext } from "react";
 
 interface activePageParams {
-    activePage: 'Statistics' | 'AdminSetting' | 'productsManagement' | 'ordersManagement' | 'CustomersManagement' | 'AdminsManagement' | 'CompanyManagement',
-    setActivePage: (value: 'Statistics' | 'AdminSetting' | 'productsManagement' | 'ordersManagement' | 'CustomersManagement' | 'AdminsManagement' | 'CompanyManagement') => void;
+    activePage: 'statistics' | 'productsManagement' | 'ordersManagement' | 'customersManagement' | 'adminsManagement' | 'companyManagement' | 'register',
+    setActivePage: (value: 'statistics' | 'productsManagement' | 'ordersManagement' | 'customersManagement' | 'adminsManagement' | 'companyManagement' | 'register') => void;
 }
 
-export const ActivePageContext = createContext<activePageParams | undefined>(undefined)
+export const ActivePageContext = createContext<activePageParams | undefined>(undefined);

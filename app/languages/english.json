@@ -163,5 +163,12 @@
     "logOutP": "Close account",
     "logOutW": "Log out",
     "verif": "verif",
-    "cancelW": "cancel"
+    "cancelW": "cancel",
+    "productIdW": "Product ID",
+    "buyersW": "buyers",
+    "deleveryBoysW": "delevery Boys",
+    "adminsW": "admins",
+    "noPermessionP": "you dont have permission to be in this page !",
+    "formW": "form",
+    "addAdminExplaination": "Add a new admin with default data, then give it to him so that he can log in. Then he will enter the rest of his real data so that he can begin working according to his permission."
 }

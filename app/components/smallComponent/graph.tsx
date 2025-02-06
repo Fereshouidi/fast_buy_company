@@ -22,7 +22,7 @@ const Graph = ({profits, setProfits, duration}: params) => {
     const maximumValue = Math.max(...profits?.map(item => item.totalEarning)) *1.2 ;
 
 
-    console.log(maximumValue);
+    console.log(profits);
     
     const farmatDate = (date: Date) => {
        const date_ = new Date(date);

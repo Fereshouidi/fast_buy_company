@@ -38,3 +38,252 @@ background-color: red;
 #cancel-order-btn :focus-within{
 background-color: red;
 }
+
+.admins-management-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+}
+
+.admins-management-page .header {
+    /* position: fixed; */
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background-color: var(--white);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 var(--medium-padding);
+}
+.admins-management-page .header .left-side {
+    width: 32%;
+    height: 100%;
+    /* background-color: red; */
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 0 50px;
+}
+.admins-management-page .header .left-side .handling {
+    background-color: var(--ashen-semi-transparent);
+    margin: var(--small-margin);
+    font-size: calc(var(--primary-size) / 1.5);
+    color: var(--white);
+    border-radius: 50px;
+    padding: var(--small-padding) var(--medium-padding);
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.admins-management-page .header .left-side .handling:hover {
+    color: var(--white);
+    background-color: var(--black);
+}
+
+.admins-management-page .header .mid-side {
+    width: 33%;
+    height: 100%;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 50px;
+}
+.admins-management-page .header .mid-side .handling {
+    background-color: var(--ashen-semi-transparent);
+    margin: var(--small-margin);
+    font-size: calc(var(--primary-size) / 1.5);
+    color: var(--black);
+    border-radius: 50px;
+    padding: var(--small-padding) var(--medium-padding);
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.admins-management-page .header .mid-side .handling:hover {
+    color: var(--white);
+    background-color: var(--black);
+}
+.admins-management-page .header .mid-side .handling:active {
+    background-color: var(--ashen);
+}
+.admins-management-page .header .right-side {
+    width: 33%;
+    /* background-color: blue; */
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 0 50px;
+
+}
+.admins-management-page .header .switch-sections {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin: 0 var(--medium-margin);
+}
+.admins-management-page .header .switch-sections h4 {
+    background-color: var(--ashen-semi-transparent);
+    color: white;
+    border-radius: 50px;
+    padding: var(--medium-padding);
+    margin: 0 var(--small-margin);
+    min-width: var(--double-width);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: calc(var(--primary-size) /1.5);
+}
+.admins-management-page .header .switch-sections h4 *{
+    opacity: 0.8;
+}
+.admins-management-page .header .switch-sections h4:hover {
+    background-color: var(--ashen);
+}
+
+.header .statistics {
+    margin: 0 var(--medium-margin);
+    /* background-color: red; */
+    height: 100%;
+    /* color: blue; */
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    padding: 5px;
+}
+.header .statistics .item {
+    display: flex;
+    /* margin: var(--medium-margin); */
+    opacity: 0.7;
+    font-size: calc(var(--primary-size) / 1.5);
+}
+
+/* .header .add {
+    margin: var(--medium-margin);
+    font-size: calc(var(--primary-size) / 1.2);
+    color: var(--black);
+    border-radius: 50px;
+    padding: var(--medium-padding);
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.header .add:hover {
+    color: var(--white);
+    background-color: var(--black);
+} */
+
+.admins-management-page table {
+    width: 100%;
+}
+.admins-management-page table td{
+    margin: 0;
+    padding: 0;
+    background-color: var(--white);
+    /* height: 20px; */
+    height: 50px;
+    position: relative;
+
+}
+.admins-management-page table td *{
+    border: none;
+    background-color: var(--white);
+    height: 50px;
+    padding: 0;
+    position: relative;
+    height: 50px;
+    /* width: 100%; */
+}
+.admins-management-page table .verif{
+    color: green;
+}
+.admins-management-page table .not-verif{
+    
+}
+
+.admins-management-page table .ids-selected {
+    background-color: rgba(212, 167, 167, 0.11);
+}
+
+.admins-management-page table .permission-close {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15%;
+    /* background-color: red; */
+}
+.admins-management-page table .permission-close .fa-angle-down {
+    width: 15px;
+    height: 15px;
+    font-size: 5px;
+    margin: 0 var(--small-margin);
+}
+.admins-management-page table #permission-list{
+    /* background-color: red; */
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    border: 0.5px solid var(--ashen);
+    position: absolute;
+    z-index: 501;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0 5%;
+    /* transition: 0.5s; */
+}
+.admins-management-page table #permission-list-close{
+    /* background-color: blue; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 500;
+    /* transition: 0.5s; */
+
+    /* border: 0.5px solid var(--ashen); */
+    /* position: absolute; */
+    /* top: 0;
+    left: 0; */
+}
+.admins-management-page table #permission-list .permission-div{
+    width: 100%;
+    /* padding: 10px 5%; */
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-top: 0.5px solid var(--ashen);
+    /* background-color: red; */
+    /* margin: 2px; */
+}
+.admins-management-page table #permission-list .permission-div:hover{
+    background-color: var(--white-almost-transparnt);
+}
+.admins-management-page table #permission-list .permission-div *{
+    /* width: 100%; */
+    /* height: 100%; */
+    padding: 0 20%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background-color: transparent;
+    margin: 0;
+}

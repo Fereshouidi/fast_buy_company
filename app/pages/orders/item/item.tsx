@@ -10,16 +10,21 @@ import Thread from "./component/thread";
 import TableDetails from "./component/table";
 import OrderDetailsTable from "./component/orderDetailsTable";
 import { activeLanguageContext } from "@/app/contexts/activeLanguage";
+import { updateOrderStatus } from "@/app/crud";
+import { LoadingIconContext } from "@/app/contexts/loadingIcon";
+
 
 type parmas = {
     order: OrderParams
-    setOrders?: (value: OrderParams[]) => void
+    setOrders?: (value: OrderParams[] | ((prev: OrderParams[]) => OrderParams[])) => void
 }
 const Item = ({order, setOrders}: parmas) => {
 
     const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
     const [mostProductExpensive, setMostProductExpensive] = useState<productParams[] | undefined>(undefined);
     const [detailsDisplayed, setDetailsDisplayed] = useState<boolean>(false);
+    const setLoadingIcon = useContext(LoadingIconContext)?.setExist;
+
 
     useEffect(() => {
         if (order.products) {   
@@ -30,6 +35,22 @@ const Item = ({order, setOrders}: parmas) => {
         }
     }, [])
 
+    const updateStatus = async (e: React.MouseEvent<HTMLElement>, status: "processing" | "packaged" | "shipped" | "delivered" | "canceled" | "failed" | "Being returned" | "returned" | "cart" | "out_of_stock" | "ready_for_pickup") => {
+        e.stopPropagation();
+        setLoadingIcon(true);
+        if (order) {
+            const done = await updateOrderStatus(order._id, status);
+            if (done) {
+                setOrders && setOrders((prev: OrderParams[]) => 
+                    prev.map((item) => 
+                        item._id === order._id ? { ...item, status } : item
+                    )
+                );
+            }
+        }
+        
+        setLoadingIcon(false);
+    }
 
     const getDuration = (time: Date) => {
         const date = new Date(time);
@@ -112,6 +133,19 @@ const Item = ({order, setOrders}: parmas) => {
     const style_duration: CSSProperties = {
         margin: 'var(--small-margin)',
     }
+    const styleCancel: CSSProperties = {
+        // width: '100%',
+        // display: 'flex',
+        // justifyContent: 'end',
+        // alignItems: 'center',
+        fontSize: 'calc(var(--small-size) * 1.2)',
+        padding: 'var(--medium-padding)',
+        borderRadius: '50px'
+        // position: "relative",
+        // right: activeLanguage?.language != 'arabic' ? 'var(--extra-large-margin)' : '',
+        // left: activeLanguage?.language != 'arabic' ? '' : 'var(--extra-large-margin)',
+        // backgroundColor: 'red'
+    }
     
     return (
 
@@ -119,7 +153,9 @@ const Item = ({order, setOrders}: parmas) => {
 
             <div style={styleCloseItem}>
 
+
                 <div style={style_imagesèand_id_Div}>
+
 
                     <ImagesDiv most3ProductExpensive={mostProductExpensive} style={styleImagesDiv}/>
 
@@ -128,7 +164,10 @@ const Item = ({order, setOrders}: parmas) => {
                 </div>
 
 
+                {order?.status != "delivered" && order?.status != "failed" && <div id="cancel-order-btn" style={styleCancel} onClick={(e) => updateStatus(e, 'failed')}>{activeLanguage?.cancelW}</div>}
+
                 <div style={style_duration_and_status_div}>
+
 
                     {order?.status != 'delivered' && order?.status != 'failed'  &&  <h5 style={style_duration}>{getDuration(order?.createdAt)}</h5>}
                     <Status order={order} style={styleStatus}/>

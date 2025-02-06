@@ -15,7 +15,7 @@ import { LoadingIconContext } from "./contexts/loadingIcon";
 import LoadingIcon_theHolePage from "./svg/icons/loading/loadingHoleOfThePage";
 import { activeLanguageContext } from "./contexts/activeLanguage";
 import { BannerContext } from './contexts/bannerForEverything';
-import { getConpanyInformations } from './crud';
+import { getAdminById, getConpanyInformations, updateAdminById } from './crud';
 import StatisticsPage from './pages/statistics/page';
 import { paramSectionContext } from './contexts/paramSection';
 import { ActivePageContext } from './contexts/activePage';
@@ -23,6 +23,11 @@ import Header from './components/header';
 import ProductManagmentPage from './pages/productManagment/page';
 import Banner from './banners/bannerForEveryThing';
 import OrderManagmentPage from './pages/orders/page';
+import Register from './pages/register/page';
+import { AdminContext, AdminDataParam } from './contexts/adminData';
+import AdminsManagement from './pages/adminsManagement/page';
+import AdminsManagementPage from './pages/adminsManagement/page';
+import SigninForm from './pages/register/component/signin/signinForm';
 
 
 
@@ -37,17 +42,19 @@ const App = () => {
     }
     return "light";
   });
-  const [customerData, setCustomerData] = useState<CustomerDataParams | undefined>(undefined);
   
   const [activeLanguage, setactiveLanguage] = useState("english");
   const [activeLanguage_, setactiveLanguage_] = useState<typeof english | typeof arabic>(english);
+  const [adminData, setAdminData] = useState<AdminDataParam | undefined>(undefined);
   const [sideBarExist, setSideBarExist] = useState(true);
   const [loadingIconExist, setLoadingIconExit] = useState<boolean>(false);
   const [bannerForEveryThing, setBannerForEveryThing] = useState<boolean>(false);
   const [bannerText, setBannerText] = useState<string | undefined>(undefined);
   const [paramSectionContainerExist, setParamSectionContainerExist] = useState<boolean>(false);
   const [paramSectionExist, setParamSectionExist] = useState<boolean>(false);
-  const [activePage, setActivePage] = useState<'Statistics' | 'AdminSetting' | 'productsManagement' | 'ordersManagement' | 'CustomersManagement' | 'AdminsManagement' | 'CompanyManagement'>('Statistics');
+  const [activePage, setActivePage] = useState<'statistics' | 'productsManagement' | 'ordersManagement' | 'customersManagement' | 'adminsManagement' | 'companyManagement' | 'register'>('statistics');
+  // const [logInExist, setLogInExist] = useState<boolean>(false);
+  // const [signinExist, setSignInExist] = useState<boolean>(false);
 
   const setBanner = (visibility: boolean, text: string | undefined) => {
     setBannerForEveryThing(visibility)
@@ -75,6 +82,44 @@ useEffect(() => {
   }, [typeof window !== "undefined" ? localStorage.getItem('activeLanguage_') : null]) 
 
 
+  //localStorage.setItem('adminData', '679fef2bbcfc0235ddf86b86');
+  //localStorage.removeItem('adminData');
+  //localStorage.setItem('adminData',  '67a13d0016ae24ea00827b7f');
+  
+  
+  useEffect(() => {
+    const fetchData = async () => {
+
+      if (typeof window != "undefined") {
+        const admintData_id = localStorage.getItem('adminData');
+        
+        if ( admintData_id ) {
+
+          const admin = await getAdminById(admintData_id);
+
+          // if (!admin.verification) {
+          //   //setBanner(true, 'you have to verificate your account firt !');
+          //   setSignInExist(true)
+          //   setActivePage('register')
+          //   console.log(admin);
+          //   //return;
+          //   //setActivePage('register')
+          // }
+          if (admin) {
+            setAdminData(admin);
+            setActivePage(admin?.permissions[0]?? 'statistics')
+          }
+          
+        } else {
+          //setActivePage('register')
+          //return router.push('pages/register')
+        }
+      }
+
+    }
+    fetchData();
+  }, [typeof window != 'undefined' ? localStorage.getItem('adminData') : null])
+
 
 useEffect(() => {
   
@@ -100,11 +145,7 @@ useEffect(() => {
       };
     }
   }, []);
-
-
-
-
-
+  
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -136,14 +177,6 @@ useEffect(() => {
     
   }, [theme, activeLanguage_, screenWidth]);
   
-  useEffect(() => {
-    if(customerData && !customerData?.verification && conpanyInformations?.activateAccountWhileSignin){
-        router.push('/pages/register')
-    }
-    
-}, [customerData, conpanyInformations])
-
-
 
 useEffect(() => {
   if (typeof window !== "undefined") {
@@ -157,6 +190,25 @@ useEffect(() => {
   }
 }, []);
 
+
+
+
+  useEffect(() => {
+
+    // if (adminData) {
+    //   const fetchData = async () => {
+    //     await updateAdminById(adminData);
+    //   }
+    //   fetchData()
+    // }
+
+    // if (!adminData?.verification) {
+    //   setActivePage('register')
+    // }
+
+    console.log(adminData);
+    
+  }, [adminData])
 
   if (screenWidth === null) {
     return <div>Loading...</div>; 
@@ -196,32 +248,37 @@ useEffect(() => {
           <activeLanguageContext.Provider value={{activeLanguage: activeLanguage_, setAtiveLanguage: setactiveLanguage_}}>
             <ThemeContext.Provider value={{ theme, setTheme }}>
               {/* <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}> */}
-                <CustomerDataContext.Provider value={customerData}>
                   <LoadingIconContext.Provider value={{exist: loadingIconExist , setExist: setLoadingIconExit}}>
                     <BannerContext.Provider value={{bannerexist: bannerForEveryThing,bannerText: bannerText , setBanner: setBanner}}>
                       <paramSectionContext.Provider value={{containerExist: paramSectionContainerExist, setContainerExist: setParamSectionContainerExist, exist: paramSectionExist, setExist: setParamSectionExist}}>
                         <ActivePageContext.Provider value={{activePage: activePage, setActivePage: setActivePage}} >
+                          <AdminContext.Provider value={{admin: adminData, setAdmin: setAdminData}} >
 
                           { screenWidth && screenWidth > 1200 ? <div style={style}>
                           
                             <LoadingIcon_theHolePage/>
                             <Banner/>
 
-                            <Header/>
-                            {activePage == 'Statistics' && <StatisticsPage/>}
+                            {adminData && <Header/>}
+                            {activePage == 'statistics' && <StatisticsPage/>}
                             {activePage == 'productsManagement' && <ProductManagmentPage/>}
                             {activePage == 'ordersManagement' && <OrderManagmentPage/> }
+                            {activePage == 'adminsManagement' && <AdminsManagementPage/>}
+                            {/* {activePage == 'register' && <Register logInExist={logInExist} signinExist={signinExist} adminData={adminData} setAdminData={setAdminData}/>} */}
+                            {!adminData && <Register logInExist={true} signinExist={false} adminData={adminData} setAdminData={setAdminData}/>}
+                            {adminData && !adminData?.verification && <Register logInExist={false} signinExist={true} adminData={adminData} setAdminData={setAdminData}/>}
 
                           </div> :
                           
                           <div style={styleSmallDisplay}>{activeLanguage_?.noSmallDisplayP}</div>
 
                           }
+
+                          </AdminContext.Provider>
                         </ActivePageContext.Provider>
                       </paramSectionContext.Provider>
                     </BannerContext.Provider>
                   </LoadingIconContext.Provider>
-                </CustomerDataContext.Provider>
               {/* </SideBarContext.Provider> */}
             </ThemeContext.Provider>
           </activeLanguageContext.Provider>

@@ -178,6 +178,20 @@ export const sendActivationToken = async(email, username, companyEmail, companyP
     }
 }
 
+export const sendActivationTokenForAdmin = async(email, adminName, companyEmail, companyPassword, activeLanguage, activationToken) => {
+    try{
+        await axios.post(url + '/send/activationToken/for/admin', {
+            email, adminName, companyEmail, companyPassword, activeLanguage, activationToken
+        });
+        
+        return true;
+
+    }catch(err) {
+        console.log(err);
+        return false;
+    }
+}
+
 export const getCustomerById = async (id) => {
     
     try {
@@ -605,11 +619,42 @@ export const getPurchasesByProduct = async(productId) => {
     }
 }
 
+export const getDeliveredPurchasesByProduct = async(productId) => {
+    
+    try{
+        const response = await axios.get(url + '/get/delivered/purchases/by/product', {
+            params: {productId}
+        });
+        const data = response.data;  
+              
+        return data;
+
+    }catch(err){
+        return null;
+    }
+}
+
+export const getDeliveredPurchasesByBuyer = async(buyerId) => {
+    
+    try{
+        const response = await axios.get(url + '/get/delivered/purchases/by/buyer', {
+            params: {buyerId}
+        });
+        const data = response.data;  
+              
+        return data;
+
+    }catch(err){
+        console.error(err);
+        return null;
+    }
+}
+
 export const gtAllOrders = async() => {
     
     try{
         const response = await axios.get(url + '/gt/allOrders');
-        const data = response.data;  
+        const data = response.data;
               
         return data;
 
@@ -631,3 +676,116 @@ export const updateOrderStatus = async(orderId, newStatus) => {
     }
 }
 
+export const createAdmin = async(adminData) => {    
+    
+    try{
+        const response = await axios.post(`${url}/create/admin`, {adminData});
+        const data = response.data;  
+        return data;
+
+    }catch(err){
+        console.log(err);
+        return null;
+    }
+}
+
+export const getAdminById = async(id) => {    
+    console.log(id);
+    
+    try{
+        const response = await axios.post(`${url}/get/admin/by/id/${id}`);
+        const data = response.data;  
+        return data;
+
+    }catch(err){
+        console.log(err);
+        return null;
+    }
+}
+
+export const adminLogIn = async (userName, password) => {
+
+    try{
+        const response = await axios.get(url + '/get/admin/byCredentials', {
+            params: {userName, password}
+        });
+        const data = response.data;  
+              
+        return data;
+
+    }catch(err){
+        console.error(err.status);
+        return err;
+    }
+
+}
+
+export const getAllAdmin = async() => {
+    try{
+        const response = await axios.get(url + '/get/all/admin');
+        const data = response.data;
+        console.log(data);
+        
+        return data;
+    }catch(err){
+        throw err;
+    }
+}
+
+export const updateAdminById = async(updatedAdmin) => {
+    // console.log(updatedAdmin);
+    
+    try{
+        const response = await axios.put(url + '/update/admin/by/id', {
+            id: updatedAdmin?._id,
+            updatedAdmin
+        });
+        const data = response.data;
+        console.log(data);
+        
+        return data;
+    }catch(err){
+        throw err;
+    }
+}
+
+export const updateManyAdmins = async(updatedAdmins) => {
+
+    console.log(updatedAdmins);
+
+    updatedAdmins.forEach(admin => {
+        delete admin.password;
+    });
+
+    try{
+        const response = await axios.put(url + '/update/manyAdmins', {updatedAdmins});
+        const data = response.data;
+        console.log(data);
+        
+        return data;
+    }catch(err){
+        throw err;
+    }
+}
+
+export const deleteManyAdmin = async(admins) => {
+
+    const adminsId = [];
+    admins.map(admin => {
+        adminsId.push(admin._id);
+    })
+    console.log(adminsId);
+
+
+    try{
+        const response = await axios.delete(url + '/delete/manyAdmin', {
+            params: {adminsId}
+        });
+        const data = response.data;
+        console.log(data);
+        
+        return data;
+    }catch(err){
+        throw err;
+    }
+}

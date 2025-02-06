@@ -4,20 +4,30 @@ import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 import { CSSProperties, useContext } from "react";
 import { activeLanguageContext } from "@/app/contexts/activeLanguage";
 import { purchaseParams } from "@/app/contexts/purchaseData";
+import { CustomerDataParams } from "@/app/contexts/customerData";
+import { buyingDataParams } from "../productDetail";
 
 type params = {
-    purchase: purchaseParams | undefined
+    buyingData: buyingDataParams | undefined
 }
-const Item = ({purchase}: params) => {
+// type buyingDataParams = {
+//     customer: CustomerDataParams | undefined, 
+//     quantity: number, 
+//     lastBuyingDate: Date
+// }
+const Item = ({buyingData}: params) => {
     
     const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
     const companyInformation = useContext(CompanyInformationContext);
 
+    console.log(buyingData);
+    
 
     const getDuration = (time: Date) => {
+        
         const date = new Date(time);
         const now = new Date();
-        const diff = now.getTime() - date.getTime();
+        const diff = now.getTime() - date.getTime();        
         const hours = Math.floor(diff / (1000 * 60 * 60));
         const days = Math.floor(hours / 24);
         const months = Math.floor(days / 30);
@@ -48,17 +58,17 @@ const Item = ({purchase}: params) => {
 
             <div className="componnent name">
                 <h4>{activeLanguage?.customerW + ' :'}</h4>
-                <p>{purchase?.buyer?.userName}</p>
+                <p>{buyingData?.customer?.userName}</p>
             </div>
 
             <div className="componnent quantity">
                 <h4>{activeLanguage?.quantityW + ' :'}</h4>
-                <p>{purchase?.quantity}</p>
+                <p>{buyingData?.quantity}</p>
             </div>
 
             <div className="componnent duration">
                 <h4>{activeLanguage?.durationW + ' :'}</h4>
-                <p>{getDuration(purchase?.putItInCart)}</p>
+                <p>{getDuration(buyingData?.lastBuyingDate)}</p>
             </div>
 
         </div>

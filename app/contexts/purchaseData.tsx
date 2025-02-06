@@ -15,4 +15,6 @@ export interface purchaseParams {
     customerRating: number | undefined
     customerNote: string | undefined,
     createdAt?: Date | undefined,
+    putItInCart?: Date ,
+    orderedAt?: Date
 }

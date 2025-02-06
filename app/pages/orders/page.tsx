@@ -1,18 +1,21 @@
 "use client";
 
-import { useState, useEffect, CSSProperties } from "react";
+import { useState, useEffect, CSSProperties, useContext } from "react";
 import ProccessiongSection from './proccessingSection/proccessionSection';
 import FailSection from './failedSection/failSection';
 import SuccessSection from './successSection/successSection';
 import { OrderParams } from '@/app/contexts/order';
 import SwitchSections from './switchSections';
 import { gtAllOrders } from "@/app/crud";
+import DeleveryBoysSection from "./deleveryBoysSection/deleveryBoysSection";
+import { AdminContext } from "@/app/contexts/adminData";
 
 const OrderManagmentPage = () => {
 
 
     const [orders, setOrders] = useState<OrderParams[] | undefined>(undefined);
     const [activeSection, setActiveSection] = useState<'processingSection' | 'failseSection' | 'successSection'>('successSection');
+    const adminData = useContext(AdminContext).admin;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -31,17 +34,18 @@ const OrderManagmentPage = () => {
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'row' ,
-    padding: 'var(--large-padding)',
+    // padding: 'var(--large-padding)',
     overflow: 'hidden',
   }
 
   const style_fs_and_ss: CSSProperties = {
     width: '50%',
-    height: 'calc(100vh - calc( var(--header-height) *2) )',
+    height: 'calc(100vh - calc( var(--header-height) *1) )',
     backgroundColor: 'var(--white)' ,
     display: 'flex',
-    margin: 'var(--large-margin)',
-    borderRadius: '20px',
+    // margin: 'var(--large-margin)',
+    margin: '0',
+    // borderRadius: '20px',
     //backgroundColor: 'red',
     padding: '0',
     boxSizing: 'border-box',
@@ -56,10 +60,23 @@ const OrderManagmentPage = () => {
     console.log(orders);
     
   }, [orders])
+
+  
+  if (!adminData?.permissions?.includes('ordersManagment')) {
+
+    return (
+        <div className="page">
+          'You do not have orders management permissions !'
+        </div>
+    )
+
+  } else {
+
     return (
 
       <div style={style}>
-          {/* <ProccessiongSection orders={orders} setOrders={setOrders}/> */}
+
+          <DeleveryBoysSection/>
           <div style={style_fs_and_ss} >
               <SwitchSections activeSection={activeSection} setActiveSection={setActiveSection}/>
               {activeSection == 'processingSection' &&  <ProccessiongSection orders={orders} setOrders={setOrders}/>}
@@ -68,9 +85,7 @@ const OrderManagmentPage = () => {
           </div>
                               
       </div>
-
-
-
     )
+  }
 }
 export default OrderManagmentPage;

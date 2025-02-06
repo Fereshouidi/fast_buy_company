@@ -43,12 +43,12 @@ const Header = () => {
             </div>
 
             <div className='navigation'>
-                <h5 style={{color: activePage.activePage == 'Statistics' ? companyInformation.primaryColor : ''}} onClick={() => activePage.setActivePage("Statistics")}>{activeLanguage?.StatisticsW}</h5>
+                <h5 style={{color: activePage.activePage == 'statistics' ? companyInformation.primaryColor : ''}} onClick={() => activePage.setActivePage("statistics")}>{activeLanguage?.StatisticsW}</h5>
                 <h5 style={{color: activePage.activePage == 'productsManagement' ? companyInformation.primaryColor : ''}} onClick={() => activePage.setActivePage("productsManagement")}>{activeLanguage?.productsManagementW}</h5>
                 <h5 style={{color: activePage.activePage == 'ordersManagement' ? companyInformation.primaryColor : ''}} onClick={() => activePage.setActivePage("ordersManagement")}>{activeLanguage?.ordersManagementW}</h5>
-                <h5 style={{color: activePage.activePage == 'CustomersManagement' ? companyInformation.primaryColor : ''}} onClick={() => activePage.setActivePage("CustomersManagement")}>{activeLanguage?.CustomersManagementW}</h5>
-                <h5 style={{color: activePage.activePage == 'AdminsManagement' ? companyInformation.primaryColor : ''}} onClick={() => activePage.setActivePage("AdminsManagement")}>{activeLanguage?.AdminsManagementW}</h5>
-                <h5 style={{color: activePage.activePage == 'CompanyManagement' ? companyInformation.primaryColor : ''}} onClick={() => activePage.setActivePage("CompanyManagement")}>{activeLanguage?.CompanyManagementW}</h5>
+                <h5 style={{color: activePage.activePage == 'customersManagement' ? companyInformation.primaryColor : ''}} onClick={() => activePage.setActivePage("customersManagement")}>{activeLanguage?.CustomersManagementW}</h5>
+                <h5 style={{color: activePage.activePage == 'adminsManagement' ? companyInformation.primaryColor : ''}} onClick={() => activePage.setActivePage("adminsManagement")}>{activeLanguage?.AdminsManagementW}</h5>
+                <h5 style={{color: activePage.activePage == 'companyManagement' ? companyInformation.primaryColor : ''}} onClick={() => activePage.setActivePage("companyManagement")}>{activeLanguage?.CompanyManagementW}</h5>
             </div>
 
             <div className='setting-container'>

@@ -107,16 +107,7 @@ const Thread = ({order, setOrders}: parmas) => {
         justifyContent: 'end',
         alignItems: 'center'
     }
-    const styleCancel: CSSProperties = {
-        display: 'flex',
-        justifyContent: 'end',
-        alignItems: 'center',
-        fontSize: 'calc(var(--small-size) * 1.5)',
-        position: "absolute",
-        right: activeLanguage?.language != 'arabic' ? 'var(--extra-large-margin)' : '',
-        left: activeLanguage?.language != 'arabic' ? '' : 'var(--extra-large-margin)',
-        bottom: '-20px',
-    }
+
     
     return (
         <div style={style}>
@@ -126,19 +117,19 @@ const Thread = ({order, setOrders}: parmas) => {
 
                 <div id="fromOrderedToProcessing" style={{...fromOrderedToProcessing, backgroundColor: order?.status == 'processing' || order?.status == 'packaged' || order?.status == 'shipped' || order?.status == 'delivered' || order?.status == 'failed'   ? primaryColor : 'var(--ashen)'}}>
                     <div style={{...styleCurentPoint, backgroundColor: order?.status == 'processing' || order?.status == 'packaged' || order?.status == 'shipped' || order?.status == 'delivered' || order?.status == 'failed'   ? primaryColor : 'var(--ashen)'}}></div>
-                    <div style={{...styleCurentPoint, backgroundColor: order?.status == 'processing' || order?.status == 'packaged' || order?.status == 'shipped' || order?.status == 'delivered' || order?.status == 'failed'   ? primaryColor : 'var(--ashen)'}} onClick={(e) => updateStatus(e, "processing")}></div>
+                    <div style={{...styleCurentPoint, backgroundColor: order?.status == 'processing' || order?.status == 'packaged' || order?.status == 'shipped' || order?.status == 'delivered' || order?.status == 'failed'   ? primaryColor : 'var(--ashen)'}} onClick={order?.status != 'failed' && order?.status != 'delivered' ? (e) => updateStatus(e, "processing") : null}></div>
                 </div>
 
                 <div id="fromProcessingToPackeget" style={{...fromProcessingToPackeget, backgroundColor: order?.status == 'packaged' || order?.status == 'shipped' || order?.status == 'delivered' || order?.status == 'failed'  ? primaryColor : 'var(--ashen)',}}>
-                    <div style={{...styleCurentPoint, backgroundColor: order?.status == 'packaged' || order?.status == 'shipped' || order?.status == 'delivered' || order?.status == 'failed'   ? primaryColor : 'var(--ashen)'}}  onClick={(e) => updateStatus(e, "packaged")}></div>
+                    <div style={{...styleCurentPoint, backgroundColor: order?.status == 'packaged' || order?.status == 'shipped' || order?.status == 'delivered' || order?.status == 'failed'   ? primaryColor : 'var(--ashen)'}}  onClick={order?.status != 'failed' && order?.status != 'delivered' ? (e) => updateStatus(e, "packaged") : null}></div>
                 </div>
 
                 <div id="frompackagedToShipped" style={{...frompackagedToShipped, backgroundColor: order?.status == 'shipped' || order?.status == 'delivered' || order?.status == 'failed'  ? primaryColor : 'var(--ashen)'}}>
-                    <div style={{...styleCurentPoint, backgroundColor: order?.status == 'shipped' || order?.status == 'delivered' || order?.status == 'failed'  ? primaryColor : 'var(--ashen)'}}  onClick={(e) => updateStatus(e, "shipped")}></div>
+                    <div style={{...styleCurentPoint, backgroundColor: order?.status == 'shipped' || order?.status == 'delivered' || order?.status == 'failed'  ? primaryColor : 'var(--ashen)'}}  onClick={order?.status != 'failed' && order?.status != 'delivered' ? (e) => updateStatus(e, "shipped") : null}></div>
                 </div>
 
                 <div id="finalStep" style={{...fromShippedToDelivered, backgroundColor: order?.status == 'delivered' ? 'green' : order?.status == 'failed' ? 'red' :  'var(--ashen)'}}>
-                    <div style={{...styleCurentPoint, backgroundColor: order?.status == 'delivered' ? 'green' : order?.status == 'failed' ? 'red' :  'var(--ashen)'}}  onClick={(e) => updateStatus(e, "delivered")}></div>
+                    <div style={{...styleCurentPoint, backgroundColor: order?.status == 'delivered' ? 'green' : order?.status == 'failed' ? 'red' :  'var(--ashen)'}}  onClick={order?.status != 'failed' && order?.status != 'delivered' ? (e) => updateStatus(e, "delivered") : null}></div>
                 </div>
 
 
@@ -154,7 +145,6 @@ const Thread = ({order, setOrders}: parmas) => {
 
             </div>
 
-            {order?.status != "delivered" && order?.status != "failed" && <div id="cancel-order-btn" style={styleCancel} onClick={(e) => updateStatus(e, 'failed')}>{activeLanguage?.cancelW}</div>}
 
         </div>
     )

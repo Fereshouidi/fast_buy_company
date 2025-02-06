@@ -1,0 +1,119 @@
+.add-admin-section {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    z-index: 999;
+    background-color: var(--black-almost-transparnt);
+    backdrop-filter: blur(0.5px);
+    width: 100%;
+    height: calc(100vh - var(--header-height));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.add-admin-section .form {
+    width: 500px;
+    position: relative;
+    color: var(--black);
+}
+.add-admin-section .form *{
+    opacity: 0.8;
+}
+.cancel {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: calc(var(--medium-margin) *1.5);
+}
+.add-admin-section input {
+    width: 90%;
+    padding: calc(var(--medium-padding) *1.5);
+    border-radius: 50px;
+    outline: none;
+    margin: var(--small-margin);
+}
+.add-admin-section .permissions {
+    margin: var(--medium-margin);
+    /* background-color: red; */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+}
+.add-admin-section .permissions .permission-div {
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.add-admin-section .form .submate-btn {
+    width: 90%;
+    padding: calc(var(--medium-padding) *1.5);
+    border-radius: 50px;
+    outline: none;
+    margin: var(--small-margin);
+    background-color: var(--black);
+    color: var(--white);
+    border: none;
+}
+.add-admin-section .form .submate-btn:active {
+    background-color: var(--ashen);
+}
+.add-admin-section .form .add-admin-explaination {
+    font-size: small;
+    width: 100%;
+    padding: 5%;
+}
+
+.make-sure-section {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    z-index: 999;
+    background-color: var(--black-almost-transparnt);
+    backdrop-filter: blur(0.5px);
+    width: 100%;
+    height: calc(100vh - var(--header-height));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.make-sure-section .form {
+    width: 500px;
+    position: relative;
+    color: var(--black);
+}
+.make-sure-section .form p{
+    width: 100%;
+    padding: 5%;
+    margin: var(--medium-margin) 0;
+    opacity: 0.8;
+}
+.make-sure-section .form .handling {
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.make-sure-section .form .handling h4 {
+    width: 45%;
+    background-color: blue;
+    padding: var(--medium-padding);
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: var(--small-margin);
+    color: white;
+}
+.make-sure-section .form .handling .no {
+    background-color: var(--ashen);
+    color: black;
+    background-color: var(--ashen-semi-transparent);
+}
+.make-sure-section .form .handling .yes {
+    background-color: red;
+}

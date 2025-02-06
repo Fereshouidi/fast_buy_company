@@ -5,12 +5,15 @@ import ProductDisplaySection from "@/app/components/productDisplaySection";
 import SearchBar from "@/app/components/smallComponent/searchBar";
 import { productParams } from "@/app/contexts/productSelectForShowing";
 import { getProductForManagementPage } from "@/app/crud";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import '../style.css';
 import { CategorieParams } from "@/app/contexts/categories";
 import ProductDetail from "@/app/components/productdetail/productDetail";
 import DiscountsSection from "@/app/components/discountsSection";
 import AddProductSection from "@/app/components/productdetail/addProductSection";
+import { AdminContext } from "@/app/contexts/adminData";
+import { BannerContext } from "@/app/contexts/bannerForEverything";
+
 
 const ProductManagmentPage = () => {
 
@@ -20,6 +23,8 @@ const ProductManagmentPage = () => {
     const [productDetails, setProductDetails] = useState<productParams | undefined>(undefined);
     const [discountsSectionExist, setDiscountsSection] = useState<boolean>(false);
     const [isAddProductSectionExist, setIsAddProductSectionExist] = useState<boolean>(false);
+    const adminData = useContext(AdminContext).admin;
+    const setBanner = useContext(BannerContext)?.setBanner;
 
 
     useEffect(() => {
@@ -32,16 +37,27 @@ const ProductManagmentPage = () => {
     }, [searchQuery, activeCategorie]);           
     
 
-    return (
-        <div className="page">
-            <CategorieSelector activeCategorie={activeCategorie} setActiveCategorie={setActiveCategorie}/>
-            <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery}  discountsSectionExist={discountsSectionExist} setDiscountsSection={setDiscountsSection} isAddProductSectionExist={isAddProductSectionExist} setIsAddProductSectionExist={setIsAddProductSectionExist}/>
-            <ProductDisplaySection products={products} setProducts={setProducts} productDetails={productDetails} setProductDetails={setProductDetails}/>
-            <ProductDetail productDetails={productDetails} setProductDetails={setProductDetails} allProducts={products} setAllProducts={setProducts}/>
-            <DiscountsSection exist={discountsSectionExist} setExist={setDiscountsSection} />
-            <AddProductSection exist={isAddProductSectionExist} setExist={setIsAddProductSectionExist} allProducts={products} setAllProducts={setProducts}/>
-        </div>
-    )
+    if (!adminData?.permissions?.includes('productsManagement')) {
+
+        return (
+            <div className="page">
+                'You do not have product management permissions !'
+            </div>
+        )
+
+    } else {
+
+        return (
+            <div className="page">
+                <CategorieSelector activeCategorie={activeCategorie} setActiveCategorie={setActiveCategorie}/>
+                <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery}  discountsSectionExist={discountsSectionExist} setDiscountsSection={setDiscountsSection} isAddProductSectionExist={isAddProductSectionExist} setIsAddProductSectionExist={setIsAddProductSectionExist}/>
+                <ProductDisplaySection products={products} setProducts={setProducts} productDetails={productDetails} setProductDetails={setProductDetails}/>
+                <ProductDetail productDetails={productDetails} setProductDetails={setProductDetails} allProducts={products} setAllProducts={setProducts}/>
+                <DiscountsSection exist={discountsSectionExist} setExist={setDiscountsSection} />
+                <AddProductSection exist={isAddProductSectionExist} setExist={setIsAddProductSectionExist} allProducts={products} setAllProducts={setProducts}/>
+            </div>
+        )
+    }
 }
 export default ProductManagmentPage;
 

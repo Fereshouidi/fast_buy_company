@@ -1,0 +1,99 @@
+.form {
+    width: calc(var(--long-width) * 1.7);
+    padding: var(--large-padding) var(--medium-padding);
+    background-color: var(--white);
+    border-radius: 20px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 5px 15px var(--ashen) ;
+    
+}
+
+/* .signin-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
+} */
+
+.form .form-name {
+    margin: var(--large-margin);
+    color: var(--black);
+}
+
+.form .input:not(.remember-me){
+    width: 90%;
+    height: var(--primary-height);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: var(--small-margin) 0;
+}
+
+.form .input:not(.remember-me) input{
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    background-color: var(--almost-white);
+    outline: none;
+    padding: var(--medium-padding);
+    color: var(--black);
+}
+.form .input:not(.remember-me) input :focus {
+    border: none;
+}
+
+.form .input-date::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+.form .input:not(.remember-me) .icon{
+    color: var(--black);
+}
+
+
+.form .remember-me {
+    color: var(--black);
+    padding: var(--large-padding) var(--medium-padding) var(--medium-padding) var(--large-padding) ;
+}
+
+.form .submate-btn {
+    width: 90%;
+    height: var(--primary-height);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: var(--small-margin);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form .submate-btn:active {
+    background-color: blue;
+    /* width: 15px; */
+}
+
+.form .submate-btn * {
+    margin: var(--small-margin);
+    color: white;
+}
+
+.form .switch-forms {
+    width: 90%;
+    font-size: var(--small-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: var(--medium-margin);
+    color: var(--black);
+}
+.form .switch-forms span {
+    margin: 0 var(--small-margin);
+    color: blue;
+    cursor: pointer;
+}
