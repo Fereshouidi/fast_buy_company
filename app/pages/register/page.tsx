@@ -14,12 +14,12 @@ import { AdminDataParam, AdminParam } from "@/app/contexts/adminData";
 
 
 type switchFormsParams = {
-    logInExist: boolean,
+    logInExist?: boolean,
     setLogInExist?: (value: boolean) => void,
-    signinExist: boolean,
+    signinExist?: boolean,
     setSignInExist?: (value: boolean) => void
-    adminData: AdminDataParam
-    setAdminData: (value: AdminDataParam) => void
+    adminData?: AdminDataParam
+    setAdminData?: (value: AdminDataParam) => void
 }
 
 const Register = ({logInExist, setLogInExist, signinExist, setSignInExist, adminData, setAdminData}: switchFormsParams) => {
