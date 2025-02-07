@@ -4,7 +4,7 @@ import { faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CSSProperties, use, useContext, useEffect, useState } from "react";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
-import { AdminDataParam, permissionsAvailable, PermissionType } from "@/app/contexts/adminData";
+import { AdminDataParam, permissionsAvailable, permissionsTranslations, PermissionType } from "@/app/contexts/adminData";
 import { createAdmin } from "@/app/crud";
 import { LoadingIconContext } from "@/app/contexts/loadingIcon";
 import { BannerContext } from "@/app/contexts/bannerForEverything";
@@ -49,10 +49,17 @@ const AddAdminSection = ({exist, setExist, allAdmins, setAllAdmins}: params) => 
         }
     }
     const handlePermission = (permission: PermissionType) => {
+        if (newAdmin?.permissions?.includes(permission)) {
+            setNewAdmin({
+                ...newAdmin,
+                permissions: (newAdmin?.permissions.filter(p => p != permission) || [])
+            })
+        } else {
             setNewAdmin({
                 ...newAdmin,
                 permissions: [...(newAdmin?.permissions || []), permission]
             })
+        }
     }
     //console.log(typeof permissionsAvailable);
     
@@ -63,18 +70,20 @@ const AddAdminSection = ({exist, setExist, allAdmins, setAllAdmins}: params) => 
 
     const submate = async () => {
         setLoadingIcon(true);
-        if (!newAdmin?.name || !newAdmin?.password) {
-            return;
+        if (!newAdmin?.name || !newAdmin?.password || !newAdmin.retypePassword) {
+            return setLoadingIcon(false);
         }
-        if (!newAdmin.password != !newAdmin.retypePassword) {
-            return setBanner(true, activeLanguage?.passwordsDoNotMatch, 'fail')
+        if (newAdmin.password != newAdmin.retypePassword) {
+            setBanner(true, activeLanguage?.passwordsDoNotMatch, 'fail');
+            setLoadingIcon(false);
+            return;
         }
         const newAdminDone = await createAdmin(newAdmin);
         if (newAdminDone) {
-            setBanner(true, 'New admin has been created successfuly', 'success');
+            setBanner(true, activeLanguage?.createAdminSuccessP, 'success');
 
         } else {
-            setBanner(true, 'Something went wrong !');
+            setBanner(true, activeLanguage?.someErrorHappen);
         }
         setAllAdmins([...allAdmins, newAdminDone]);
         setLoadingIcon(false);
@@ -82,7 +91,7 @@ const AddAdminSection = ({exist, setExist, allAdmins, setAllAdmins}: params) => 
     }
 
     const styleInputs: CSSProperties = {
-        border: `1px solid ${primaryColor}` 
+        // border: `1px solid ${primaryColor}` 
     }
 
     return <div className={exist? 'add-admin-section' : 'invisible'}>
@@ -90,25 +99,30 @@ const AddAdminSection = ({exist, setExist, allAdmins, setAllAdmins}: params) => 
         <div className="form">
             <FontAwesomeIcon className="cancel" icon={faX} onClick={() => setExist(false)}/>
 
-            <h4 className="form-name">new Admin</h4>
-            <input type="text" className="user-name" placeholder="Default name ..." style={styleInputs} onChange={(e) => handleName(e)}/>
-            <input type="text" className="password" placeholder="Default password ..." style={styleInputs} onChange={(e) => handlepassword(e)}/>
-            <input type="text" className="password retype-password" placeholder="Retype password ..." style={styleInputs} onChange={(e) => handleRetypePassword(e)}/>
+            <h4 className="form-name">{activeLanguage?.newAdminW}</h4>
+            <input type="text" className="user-name" placeholder={activeLanguage?.defaultNameW + '...'} style={styleInputs} onChange={(e) => handleName(e)}/>
+            <input type="text" className="password" placeholder={activeLanguage?.defaultPasswordW + '...'} style={styleInputs} onChange={(e) => handlepassword(e)}/>
+            <input type="text" className="password retype-password" placeholder={activeLanguage?.retypePasswordW + '...'} style={styleInputs} onChange={(e) => handleRetypePassword(e)}/>
 
 
-            <h5 style={{marginTop: '10px'}}>Permissions :</h5>
+            <h5 style={{marginTop: '10px'}}>{activeLanguage?.PermissionsW} :</h5>
             <div className="permissions">
-                {
-                permissionsAvailable?.map((permission, index) => {
-                    return <div key={index} className="permission-div">
-                        <input type="checkbox" checked={newAdmin?.permissions?.includes(permission) ? true : false} onChange={() => handlePermission(permission)} />
-                        <span>{permission}</span>
+                {permissionsAvailable?.map((permission, index) => (
+                    <div key={index} className="permission-div">
+                        <input 
+                            type="checkbox" 
+                            checked={newAdmin?.permissions?.includes(permission)} 
+                            onChange={() => handlePermission(permission)} 
+                        />
+                        <span>
+                            {activeLanguage?.language === 'arabic' ? permissionsTranslations[permission] : permission}
+                        </span>
                     </div>
-                })
-            }</div>
+                ))}
+            </div>
 
             <button className="submate-btn" style={{backgroundColor: newAdmin?.name && newAdmin?.password && newAdmin?.retypePassword ? '' : 'var(--ashen)'}} onClick={submate}>Submate</button>
-            <p className="add-admin-explaination"> <strong>Explain :</strong> {activeLanguage?.addAdminExplaination}</p>
+            <p className="add-admin-explaination"> <strong>{activeLanguage?.ExplainW} :</strong> {activeLanguage?.addAdminExplaination}</p>
         </div>
 
     </div>

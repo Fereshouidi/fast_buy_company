@@ -1,6 +1,6 @@
 'use client';
 
-import { AdminDataParam, permissionsAvailable, PermissionType } from "@/app/contexts/adminData";
+import { AdminDataParam, permissionsAvailable, permissionsTranslations, PermissionType } from "@/app/contexts/adminData";
 import { useContext, useState, useRef, useEffect } from "react";
 import { activeLanguageContext } from "@/app/contexts/activeLanguage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -57,14 +57,14 @@ const AdminsSection = ({ allAdmins, setAllAdmins, adminDataHasChanged, setAdminD
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Age</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Password</th>
-                        <th>Permissions</th>
-                        <th>Verification</th>
+                        <th>{activeLanguage?.idW}</th>
+                        <th>{activeLanguage?.nameW}</th>
+                        <th>{activeLanguage?.ageW}</th>
+                        <th>{activeLanguage?.emailW}</th>
+                        <th>{activeLanguage?.PhoneNumberW}</th>
+                        <th>{activeLanguage?.passwordW}</th>
+                        <th>{activeLanguage?.PermissionsW}</th>
+                        <th>{activeLanguage?.activationW}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -73,8 +73,8 @@ const AdminsSection = ({ allAdmins, setAllAdmins, adminDataHasChanged, setAdminD
                             <td className={ adminSelected?.includes(admin) ? 'ids-selected' : ''} onClick={() => setAdminSelected(adminSelected?.includes(admin)? adminSelected.filter(admin_ => admin_._id != admin._id) : [...adminSelected, admin])}>{admin._id}</td>
                             <td>{admin.name}</td>
                             <td>{calcAge(admin.dateOfBirth) || 'N/A'}</td>
-                            <td>{admin.email?? 'null'}</td>
-                            <td>{admin.phone?? 'null'}</td>
+                            <td>{admin.email?? activeLanguage?.undefinedW}</td>
+                            <td>{admin.phone?? activeLanguage?.undefinedW}</td>
                             <td>{'**********'}</td>
                             <td>
                                 <div
@@ -100,17 +100,17 @@ const AdminsSection = ({ allAdmins, setAllAdmins, adminDataHasChanged, setAdminD
                                                             setAdminDataHasChanged([...allAdmins, admin])
                                                         }}
                                                     />
-                                                    <h4>{permission}</h4>
+                                                    <h4>{activeLanguage?.language === 'arabic' ? permissionsTranslations[permission] : permission}</h4>
                                                 </div>
                                             ))
                                         : 
                                         <div className="permission-close">
-                                            Permissions
+                                            {activeLanguage?.PermissionsW}
                                             <FontAwesomeIcon icon={faAngleDown} className="fa-angle-down"/>
                                         </div>  }
                                 </div>
                             </td>
-                            <td className={admin.verification ? 'verif' : ''}>{admin.verification ? 'true' : 'false'}</td>
+                            <td className={admin.verification ? 'verif' : ''}>{admin.verification ? activeLanguage?.yesW : activeLanguage?.noW}</td>
                         </tr>
                     ))}
                 </tbody>

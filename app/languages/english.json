@@ -170,5 +170,23 @@
     "adminsW": "admins",
     "noPermessionP": "you dont have permission to be in this page !",
     "formW": "form",
-    "addAdminExplaination": "Add a new admin with default data, then give it to him so that he can log in. Then he will enter the rest of his real data so that he can begin working according to his permission."
+    "addAdminExplaination": "Add a new admin with default data, then give it to him so that he can log in. Then he will enter the rest of his real data so that he can begin working according to his permission.",
+    "newAdminW": "new Admin",
+    "PermissionsW": "Permissions",
+    "ExplainW": "Explain",
+    "defaultNameW": "Default name",
+    "defaultPasswordW": "Default password",
+    "idW": "Id",
+    "ageW": "age",
+    "activationW": "Activation",
+    "undefinedW": "undefined",
+    "yesW": "yes",
+    "noW": "no",
+    "createAdminSuccessP": "New admin has been created successfuly",
+    "makeSureRemoveAdmin": {
+        "part1": "Are you sure you want to remove",
+        "part2": "from the application ?"
+    },
+    "selectAdminP": "Select the administrators you want to erase by clicking on their IDs !",
+    "adminsDeletedSuccess": "admin(s) have been deleted successfully"
 }

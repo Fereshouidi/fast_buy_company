@@ -49,6 +49,14 @@ const Header = ({activeSection, setActiveSection, allAdmins, setAllAdmins, admin
             setAdminDataHasChanged([]);
         }
     }
+    const handleDelete = async () => {
+        if (adminSelected?.length == 0) {
+            return setBanner(true, activeLanguage?.selectAdminP, 'fail');
+        } else {
+            setMakeSureExist(true)
+        }
+    }
+
     
     useEffect(() => {
         console.log(allAdmins);
@@ -75,7 +83,7 @@ const Header = ({activeSection, setActiveSection, allAdmins, setAllAdmins, admin
                     {activeLanguage?.addW}
                 </div>
 
-                <div className="delete handling"  style={{backgroundColor: adminSelected.length > 0 ? 'red' : '', color: adminSelected.length > 0 ? 'white' : ''}} onClick={() => setMakeSureExist(true)}>
+                <div className="delete handling"  style={{backgroundColor: adminSelected.length > 0 ? 'red' : '', color: adminSelected.length > 0 ? 'white' : ''}} onClick={handleDelete}>
                     <FontAwesomeIcon icon={faTrash}/>
                     {activeLanguage?.deleteW}
                 </div>

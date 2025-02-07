@@ -32,11 +32,12 @@
     border-radius: 20px;
     padding: var(--medium-padding);
     transition: 0.5s ease;
-
+    opacity: 0.99;
 
 }
 .banner-exist .banner *{
     border-radius: 20px;
+    opacity: 0.8;
 }
 
 .banner-exist .header {

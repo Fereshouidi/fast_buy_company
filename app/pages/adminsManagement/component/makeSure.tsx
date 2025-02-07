@@ -27,19 +27,16 @@ const MakeSure = ({exist, setExist, allAdmins, setAllAdmins,  adminSelected, set
     const setLoadingIcon = useContext(LoadingIconContext)?.setExist;
 
     const deleteAdminsSelect = async () => {
-
-        if (adminSelected?.length == 0) {
-            return setBanner(true, 'select admins by clicking on there id first !', 'fail');
-        }
+        
         setLoadingIcon(true);
 
         const done = await deleteManyAdmin(adminSelected);
         if (done) {
             setAllAdmins(allAdmins?.filter(admin => {return !adminSelected?.includes(admin)}));
-            setBanner(true, `${adminSelected.length} admin(s) have been deleted successfully`, 'success');
+            setBanner(true, `${adminSelected.length} ${activeLanguage?.adminsDeletedSuccess}`, 'success');
             setAdminSelected([]);
         } else {
-            setBanner(true, 'Something went wrong !', 'fail');
+            setBanner(true, activeLanguage?.someErrorHappen, 'fail');
         }
         setLoadingIcon(false);
         setExist(false)
@@ -50,10 +47,10 @@ const MakeSure = ({exist, setExist, allAdmins, setAllAdmins,  adminSelected, set
         <div className={exist? 'make-sure-section' : 'invisible'}>
             <div className="form">
                 <FontAwesomeIcon className="cancel" icon={faX} onClick={() => setExist(false)}/>
-                <p>{`Are you sure you want to remove [${adminSelected?.map(admin => {return admin.name})}] from the application ?`}</p>
+                <p>{`${activeLanguage?.makeSureRemoveAdmin.part1} [${adminSelected?.map(admin => {return admin.name})}] ${activeLanguage?.makeSureRemoveAdmin.part2}`}</p>
                 <div className="handling">
-                    <h4 className="no" onClick={() => setExist(false)}>no</h4>
-                    <h4 className="yes" onClick={deleteAdminsSelect}>yes</h4>
+                    <h4 className="no" onClick={() => setExist(false)}>{activeLanguage?.noW}</h4>
+                    <h4 className="yes" onClick={deleteAdminsSelect}>{activeLanguage?.yesW}</h4>
                 </div>
             </div>
         </div>

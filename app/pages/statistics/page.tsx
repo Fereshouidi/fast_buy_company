@@ -26,7 +26,7 @@ const StatisticsPage = () => {
         fetchData()
     }, [])
 
-    if (!adminData?.permissions?.includes('statistics')) {
+    if (!adminData?.permissions?.includes('statistics')) {                
 
         return (
             <div className="page">
