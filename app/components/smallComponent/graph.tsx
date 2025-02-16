@@ -78,7 +78,8 @@ const Graph = ({profits, setProfits, duration}: params) => {
     const styleColumn:CSSProperties = {
         backgroundColor: companyInformation.primaryColor,
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        boxSizing: 'border-box'
     }
 
     return (

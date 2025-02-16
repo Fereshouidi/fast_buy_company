@@ -9,12 +9,13 @@ import SwitchSections from './switchSections';
 import { gtAllOrders } from "@/app/crud";
 import DeleveryBoysSection from "./deleveryBoysSection/deleveryBoysSection";
 import { AdminContext } from "@/app/contexts/adminData";
+import './style.css';
 
 const OrderManagmentPage = () => {
 
 
     const [orders, setOrders] = useState<OrderParams[] | undefined>(undefined);
-    const [activeSection, setActiveSection] = useState<'processingSection' | 'failseSection' | 'successSection'>('successSection');
+    const [activeSection, setActiveSection] = useState<'processingSection' | 'failseSection' | 'successSection'>('processingSection');
     const adminData = useContext(AdminContext)?.admin;
 
     useEffect(() => {
@@ -39,7 +40,7 @@ const OrderManagmentPage = () => {
   }
 
   const style_fs_and_ss: CSSProperties = {
-    width: '50%',
+    width: '55vw',
     height: 'calc(100vh - calc( var(--header-height) *1) )',
     backgroundColor: 'var(--white)' ,
     display: 'flex',
@@ -51,7 +52,7 @@ const OrderManagmentPage = () => {
     boxSizing: 'border-box',
     //justifyContent: screenWidth > 800 ? 'center' : '',
     flexDirection: 'column',
-    boxShadow: '0 5px 15px var(--black-almost-transparnt)',
+    //boxShadow: '0 5px 15px var(--black-almost-transparnt)',
     
   }
 
@@ -62,7 +63,7 @@ const OrderManagmentPage = () => {
   }, [orders])
 
   
-  if (!adminData?.permissions?.includes('ordersManagment')) {
+  if (!adminData?.permissions?.includes('ordersManagement')) {
 
     return (
         <div className="page">
@@ -78,7 +79,7 @@ const OrderManagmentPage = () => {
 
           <DeleveryBoysSection/>
           <div style={style_fs_and_ss} >
-              <SwitchSections activeSection={activeSection} setActiveSection={setActiveSection}/>
+              <SwitchSections activeSection={activeSection} setActiveSection={setActiveSection} allOrders={orders} setAllOrders={setOrders}/>
               {activeSection == 'processingSection' &&  <ProccessiongSection orders={orders} setOrders={setOrders}/>}
               {activeSection == 'failseSection' && <FailSection orders={orders} setOrders={setOrders}/>} 
               {activeSection == 'successSection' && <SuccessSection orders={orders} setOrders={setOrders}/>}

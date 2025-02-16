@@ -61,8 +61,7 @@ const AddAdminSection = ({exist, setExist, allAdmins, setAllAdmins}: params) => 
             })
         }
     }
-    //console.log(typeof permissionsAvailable);
-    
+
     useEffect(() => {
         console.log(newAdmin);
         

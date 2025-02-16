@@ -5,6 +5,8 @@ import { useContext, useState, useRef, useEffect } from "react";
 import { activeLanguageContext } from "@/app/contexts/activeLanguage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown, faUpDown } from "@fortawesome/free-solid-svg-icons";
+import { deleveryBoyData } from "@/app/contexts/deleveryBoy";
+import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 
 type params = {
     allAdmins: AdminDataParam[];
@@ -13,12 +15,16 @@ type params = {
     setAdminDataHasChanged: React.Dispatch<React.SetStateAction<AdminDataParam[]>>;
     adminSelected: AdminDataParam[]
     setAdminSelected: React.Dispatch<React.SetStateAction<AdminDataParam[]>>
+    employeeSelect: AdminDataParam | deleveryBoyData 
+    setEmployeeSelect: (value: AdminDataParam | deleveryBoyData ) => void
 };
 
-const AdminsSection = ({ allAdmins, setAllAdmins, adminDataHasChanged, setAdminDataHasChanged, adminSelected, setAdminSelected }: params) => {
+const AdminsSection = ({ allAdmins, setAllAdmins, adminDataHasChanged, setAdminDataHasChanged, adminSelected, setAdminSelected, employeeSelect, setEmployeeSelect }: params) => {
+    
     const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
     const [permissionListOpen, setPermissionListOpen] = useState<{ [key: string]: boolean }>({});
     const permissionRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+    const primaryColor = useContext(CompanyInformationContext)?.primaryColor;
 
     const handlePermissionsChange = (
         adminId: string, 
@@ -32,7 +38,14 @@ const AdminsSection = ({ allAdmins, setAllAdmins, adminDataHasChanged, setAdminD
             )
         );
     };
+    const handleVerif = (admin: AdminDataParam) => {
 
+        admin.verification = !admin.verification;
+        setAllAdmins(prev => prev.map(del => del._id == admin._id ? admin : del));
+        console.log(admin);
+        setAdminDataHasChanged(prev => [...prev, admin]);
+        
+    }
     const calcAge = (dateOfBirth: Date) => {
         const today = new Date();
         const birthDate = new Date(dateOfBirth);
@@ -47,13 +60,9 @@ const AdminsSection = ({ allAdmins, setAllAdmins, adminDataHasChanged, setAdminD
         return age;
     }
     
-
-    // checked={admin.permissions?.includes(permission) ? true : false}
-
-    // console.log(allAdmins[1]?.permissions);
     
     return (
-        <div>
+        <div className="admins-section">
             <table>
                 <thead>
                     <tr>
@@ -63,6 +72,7 @@ const AdminsSection = ({ allAdmins, setAllAdmins, adminDataHasChanged, setAdminD
                         <th>{activeLanguage?.emailW}</th>
                         <th>{activeLanguage?.PhoneNumberW}</th>
                         <th>{activeLanguage?.passwordW}</th>
+                        <th>{activeLanguage?.timeTableW}</th>
                         <th>{activeLanguage?.PermissionsW}</th>
                         <th>{activeLanguage?.activationW}</th>
                     </tr>
@@ -70,17 +80,21 @@ const AdminsSection = ({ allAdmins, setAllAdmins, adminDataHasChanged, setAdminD
                 <tbody>
                     {allAdmins?.map((admin) => (
                         <tr key={admin._id}>
-                            <td className={ adminSelected?.includes(admin) ? 'ids-selected' : ''} onClick={() => setAdminSelected(adminSelected?.includes(admin)? adminSelected.filter(admin_ => admin_._id != admin._id) : [...adminSelected, admin])}>{admin._id}</td>
+                            <td className={ adminSelected?.includes(admin) ? 'ids-selected pointer' : 'pointer'} onClick={() => setAdminSelected(adminSelected?.includes(admin)? adminSelected.filter(admin_ => admin_._id != admin._id) : [...adminSelected, admin])}>{admin._id}</td>
                             <td>{admin.name}</td>
                             <td>{calcAge(admin.dateOfBirth) || 'N/A'}</td>
                             <td>{admin.email?? activeLanguage?.undefinedW}</td>
                             <td>{admin.phone?? activeLanguage?.undefinedW}</td>
                             <td>{'**********'}</td>
-                            <td>
+                            <td className="pointer" onClick={() => setEmployeeSelect(admin)}>{activeLanguage?.timeTableW}</td>
+                            <td onClick={() => setPermissionListOpen(prev => ({ ...prev, [admin._id]: !permissionListOpen[admin._id] }))}>
                                 <div
                                     id={permissionListOpen[admin._id] ? "permission-list" : "permission-list-close"}
-                                    onMouseEnter={() => setPermissionListOpen(prev => ({ ...prev, [admin._id]: true }))}
-                                    onMouseLeave={() => setPermissionListOpen(prev => ({ ...prev, [admin._id]: false }))}
+                                    style={permissionListOpen[admin._id] ? {border: `0.5px solid ${primaryColor}`} : null}
+                                    // onMouseEnter={() => setPermissionListOpen(prev => ({ ...prev, [admin._id]: true }))}
+                                    // onMouseLeave={() => setPermissionListOpen(prev => ({ ...prev, [admin._id]: false }))}
+                                    // onClick={() => setPermissionListOpen(prev => ({ ...prev, [admin._id]: !permissionListOpen[admin._id] }))}
+                                    onClick={permissionListOpen[admin._id] ? (e) => e.stopPropagation() : null}
                                 >
                                     {permissionListOpen[admin._id] ?
                                         permissionsAvailable.map((permission) => (
@@ -90,6 +104,7 @@ const AdminsSection = ({ allAdmins, setAllAdmins, adminDataHasChanged, setAdminD
                                                     }
                                                 }}>
                                                     <input
+                                                    className="pointer"
                                                         type="checkbox"
                                                         checked={admin.permissions?.includes(permission) ? true : false}
                                                         onChange={(e) => {
@@ -110,7 +125,7 @@ const AdminsSection = ({ allAdmins, setAllAdmins, adminDataHasChanged, setAdminD
                                         </div>  }
                                 </div>
                             </td>
-                            <td className={admin.verification ? 'verif' : ''}>{admin.verification ? activeLanguage?.yesW : activeLanguage?.noW}</td>
+                            <td className={admin.verification ? 'verif' : ''} onClick={() => handleVerif(admin)}>{admin.verification ? activeLanguage?.yesW : activeLanguage?.noW}</td>
                         </tr>
                     ))}
                 </tbody>

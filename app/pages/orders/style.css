@@ -1,0 +1,210 @@
+#delevery-boy-section {
+    width: 40%;
+    /* background-color: red; */
+}
+#delevery-boy-section table {
+    width: 100%;
+    /* background-color: blue; */
+}
+#delevery-boy-section table thead{
+    position: sticky;
+    top: 0;
+    z-index: 980;
+    width: 100%;
+}
+#delevery-boy-section table td{
+    margin: 0;
+    padding: 0;
+    background-color: var(--white);
+    /* height: 20px; */
+    height: 50px;
+    position: relative;
+    user-select: text;
+    width: 'auto';
+    box-sizing: border-box
+
+}
+#delevery-boy-section table td *{
+    border: none;
+    background-color: var(--white);
+    height: 50px;
+    padding: 0;
+    position: relative;
+    height: 50px;
+    width: 100%;
+    user-select: text;
+    width: 'auto';
+    box-sizing: border-box
+
+}
+#delevery-boy-section table .verif{
+    color: green;
+    font-weight: 700;
+}
+#delevery-boy-section table .not-verif{
+    font-weight: 700;
+}
+
+#delevery-boy-section table .ids-selected {
+    background-color: rgba(212, 167, 167, 0.11);
+}
+
+#delevery-boy-section table .permission-close {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15%;
+    /* background-color: red; */
+}
+#delevery-boy-section table .permission-close .fa-angle-down {
+    width: 15px;
+    height: 15px;
+    font-size: 5px;
+    margin: 0 var(--small-margin);
+}
+#delevery-boy-section table #permission-list{
+    /* background-color: red; */
+    z-index: 999;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    /* border: 0.5px solid red; */
+    position: absolute;
+    /* z-index: 501; */
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0 5%;
+    transform: translate(-50%, 5px);
+    transition: 0.1s;
+}
+#delevery-boy-section table #permission-list-close{
+    /* background-color: blue; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 500;
+    border: none;
+    /* transition: 0.5s; */
+
+    /* border: 0.5px solid var(--ashen); */
+    /* position: absolute; */
+    /* top: 0;
+    left: 0; */
+}
+#delevery-boy-section table #permission-list .permission-div{
+    width: 100%;
+    /* padding: 10px 5%; */
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-top: 0.5px solid var(--ashen);
+    /* background-color: red; */
+    /* margin: 2px; */
+}
+#delevery-boy-section table #permission-list .permission-div:hover{
+    background-color: var(--white-almost-transparnt);
+}
+#delevery-boy-section table #permission-list .permission-div *{
+    /* width: 100%; */
+    /* height: 100%; */
+    padding: 0 20%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background-color: transparent;
+    margin: 0;
+}
+
+.tame-table-container {
+    width: 100%;
+    height: calc(100vh - (var(--header-height) ));
+    background-color: var(--black-almost-transparnt);
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    z-index: 998;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow-y: scroll;
+    padding: 10px;
+    background-color: red;
+    /* padding: 200px 0; */
+}
+.tame-table-container::-webkit-scrollbar {
+    width: 0;
+}
+.tame-table-container table {
+    width: auto;
+    min-width: 70%;
+    overflow-y: scroll;
+    /* direction: ltr; */
+    border: 1px solid var(--black);
+    border-collapse: collapse;
+    border-spacing: 0; 
+}
+.tame-table-container table th{
+    direction: rtl;
+}
+.tame-table-container table td{
+    position: relative;
+}
+.tame-table-container table input{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    outline: none;
+    /* background-color: red; */
+
+}
+.pointer {
+    cursor: pointer;
+}
+.tame-table-container .done-btn {
+    background-color: var(--ashen-semi-transparent);
+    margin: var(--small-margin);
+    font-size: calc(var(--primary-size) / 1.5);
+    color: var(--black);
+    border-radius: 50px;
+    padding: var(--small-padding) var(--medium-padding);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.ids {
+    background-color: red;
+}
+
+#delevery-boy-section .orders-section {
+    position: fixed;
+    background-color: var(--black-almost-transparnt);
+    top: var(--header-height);
+    left: 0;
+    z-index: 998;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#delevery-boy-section .orders-section .container {
+    /* margin-top: calc(var(--header-height) *2); */
+    width: 50%;
+    overflow: scroll;
+    /* max-height: calc(100vh - var(--header-height) ); */
+    max-height: 100%;
+}

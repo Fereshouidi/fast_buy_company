@@ -48,7 +48,7 @@ const SigninForm = ({logInExist, setLogInExist, signinExist, setSignInExist, adm
     return (
         <div className={signinExist ? 'form signin-form' : 'invisible'}>
 
-            <h4 className='form-name'>{'confirm your account'}</h4>
+            <h4 className='form-name'>{activeLanguage?.confirmYourAccountW}</h4>
 
             <UserNameInput formData={formData} setFormData={setFormData} adminData={adminData} setAdminData={setAdminData} />
             <EmailInput formData={formData} setFormData={setFormData}/>

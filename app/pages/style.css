@@ -2,9 +2,9 @@
     background-color: var(white);
     position: relative;
 }
-.scroll::-webkit-scrollbar {
+.scroll-without-bar::-webkit-scrollbar {
     width: 0;
-  }
+}
 
 #cancel-order-btn :active{
 background-color: red;
@@ -165,6 +165,7 @@ background-color: red;
     /* margin: var(--medium-margin); */
     opacity: 0.7;
     font-size: calc(var(--primary-size) / 1.5);
+    color: var(--black);
 }
 
 /* .header .add {
@@ -186,6 +187,12 @@ background-color: red;
 
 .admins-management-page table {
     width: 100%;
+
+}
+.admins-management-page table thead{
+    position: sticky;
+    top: 0;
+    z-index: 980;
 }
 .admins-management-page table td{
     margin: 0;
@@ -207,9 +214,10 @@ background-color: red;
 }
 .admins-management-page table .verif{
     color: green;
+    font-weight: 700;
 }
 .admins-management-page table .not-verif{
-    
+    font-weight: 700;
 }
 
 .admins-management-page table .ids-selected {
@@ -233,20 +241,22 @@ background-color: red;
 }
 .admins-management-page table #permission-list{
     /* background-color: red; */
+    z-index: 999;
     width: 100%;
     height: auto;
     display: flex;
     justify-content: start;
     align-items: center;
     flex-direction: column;
-    border: 0.5px solid var(--ashen);
+    /* border: 0.5px solid red; */
     position: absolute;
-    z-index: 501;
+    /* z-index: 501; */
     top: 0;
     left: 0;
     margin: 0;
     padding: 0 5%;
-    /* transition: 0.5s; */
+    transform: translate(-50%, 5px);
+    transition: 0.1s;
 }
 .admins-management-page table #permission-list-close{
     /* background-color: blue; */
@@ -257,6 +267,7 @@ background-color: red;
     align-items: center;
     flex-direction: column;
     z-index: 500;
+    border: none;
     /* transition: 0.5s; */
 
     /* border: 0.5px solid var(--ashen); */
@@ -286,4 +297,16 @@ background-color: red;
     align-items: center;
     background-color: transparent;
     margin: 0;
+}
+.admins-management-page .admins-section {
+    overflow-y: scroll;
+    height: 100vh;
+}.admins-management-page .delevery-boys-section {
+    overflow-y: scroll;
+    height: 100vh;
+}
+.admins-management-page .admins-section::-webkit-scrollbar {
+    width: 0;
+}.admins-management-page .delevery-boys-section::-webkit-scrollbar {
+    width: 0;
 }

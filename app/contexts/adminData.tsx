@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-export const permissionsAvailable = ['statistics', 'productsManagement', 'ordersManagment', 'adminsManagement', 'customersManagement'] as const;
+export const permissionsAvailable = ['statistics', 'productsManagement', 'ordersManagement', 'adminsManagement', 'customersManagement'] as const;
 export const permissionsTranslations = {
     statistics: "الإحصائيات",
     productsManagement: "إدارة المنتجات",
@@ -21,7 +21,38 @@ export interface AdminDataParam {
     token?: number;
     verification?: boolean;
     permissions?: PermissionType[]; 
+    timeTable?: {
+        monday: [{
+            hour: Number,
+            role: String
+        }],
+        tuesday: [{
+            hour: Number,
+            role: String
+        }],
+        wednesday: [{
+            hour: Number,
+            role: String
+        }],
+        thursday: [{
+            hour: Number,
+            role: String
+        }],
+        friday: [{
+            hour: Number,
+            role: String
+        }],
+        saturday: [{
+            hour: Number,
+            role: String
+        }],
+        sunday: [{
+            hour: Number,
+            role: String
+        }],
+    },
 }
+
 
 export interface AdminParam {
     admin?: AdminDataParam;

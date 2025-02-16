@@ -2,9 +2,10 @@
 import Graph from '@/app/components/smallComponent/graph';
 import './style.css';
 import { getProfitLasMonth, getProfitLastWeek } from '@/app/crud';
-import { useContext, useEffect, useState } from 'react';
+import { CSSProperties, useContext, useEffect, useState } from 'react';
 import { profitParams } from '@/app/contexts/types';
 import { AdminContext } from '@/app/contexts/adminData';
+import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 
 const StatisticsPage = () => {
 
@@ -13,7 +14,8 @@ const StatisticsPage = () => {
     const [profitAll, setProfitAll] = useState<profitParams[] | undefined>(undefined);
     // const [activeProfit, setActiveProfit] = useEffect<profitP
     const adminData = useContext(AdminContext)?.admin;
-    const [profitDuration, setProfitDuration] = useState<'lastWeek' | 'lastMounth' | 'all'>('lastWeek');
+    const [activeProfitDuration, setActiveProfitDuration] = useState<'lastWeek' | 'lastMounth' | 'all'>('lastWeek');
+    const primaryColor = useContext(CompanyInformationContext)?.primaryColor;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -25,6 +27,10 @@ const StatisticsPage = () => {
         }
         fetchData()
     }, [])
+
+    const styleActiveProfitDuration: CSSProperties = {
+        backgroundColor: primaryColor
+    }
 
     if (!adminData?.permissions?.includes('statistics')) {                
 
@@ -40,10 +46,30 @@ const StatisticsPage = () => {
             <div className="page Statistics-page">
                 
                 <section className="graph-sec">
-                    <Graph profits={profitDuration == 'lastWeek' ? profitLastWeek :
-                        profitDuration == 'lastMounth' ? profitLastMonth : 
+
+                    <Graph profits={activeProfitDuration == 'lastWeek' ? profitLastWeek :
+                        activeProfitDuration == 'lastMounth' ? profitLastMonth : 
                         null
-                    } setProfits={setProfitLastWeek} duration={profitDuration}/>
+                    } setProfits={setProfitLastWeek} duration={activeProfitDuration}/>
+
+                    <div className='graph-control'>
+                        <h4 
+                            className='graph-control-btn'
+                            onClick={() => setActiveProfitDuration('lastWeek')}
+                            style={activeProfitDuration == 'lastWeek' ? styleActiveProfitDuration : null}
+                        >last Week</h4>
+                        <h4 
+                            className='graph-control-btn'
+                            onClick={() => setActiveProfitDuration('lastMounth')}
+                            style={activeProfitDuration == 'lastMounth' ? styleActiveProfitDuration : null}
+                        >last month</h4>
+                        <h4 
+                            className='graph-control-btn'
+                            onClick={() => setActiveProfitDuration('all')}
+                            style={activeProfitDuration == 'all' ? styleActiveProfitDuration : null}
+                        >all</h4>
+                    </div>
+
                 </section>
 
                 <section className="information-sec">

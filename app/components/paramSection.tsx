@@ -30,6 +30,7 @@ const ParamSection = ({className, id, style}: params) => {
     const styleContainer: CSSProperties = {
         //display: paramSection.containerExist ? '' : 'none',
         position: 'fixed',
+        zIndex: 9999,
         top: 0,
         marginTop: 'var(--header-height)',
         left: 0,
@@ -45,6 +46,7 @@ const ParamSection = ({className, id, style}: params) => {
     }
         const style_: CSSProperties = {
         ...style,
+        zIndex: 100000000,
         direction: activeLanguage?.language == 'arabic' ? 'rtl' : 'ltr',
         margin: 0,
         marginRight: paramSection.exist && activeLanguage?.language != 'arabic' ? '0' : 'calc(-1 * calc(var(--long-width) *1.5))',

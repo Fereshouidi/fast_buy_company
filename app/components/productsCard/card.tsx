@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { LoadingIconContext } from "@/app/contexts/loadingIcon";
 import '@/app/svg/icons/loading/loading.css';
 import { productParams } from "@/app/contexts/productSelectForShowing";
-
+import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 
 
 const Card = ({product}: {product : productParams}) => {
@@ -18,6 +18,7 @@ const Card = ({product}: {product : productParams}) => {
 
 const languageContext = useContext(LanguageSelectorContext)
 const setLoadingIcon = useContext(LoadingIconContext)?.setExist;
+const primaryColor = useContext(CompanyInformationContext)?.primaryColor;
 
 const [cardHover, setCardHover] = useState<boolean>(false);
 
@@ -37,10 +38,15 @@ const unsetHover = () => {
     setCardHover(false)
 }
 
-const goToCardShow = (product: productParams) => {
-    //setLoadingIcon(true);
-    //router.push(`/pages/productDetails/${product._id}`);
-};
+function hexToRGBA(hex, alpha = 0.5) {
+    hex = hex.replace(/^#/, '');
+
+    let r = parseInt(hex.substring(0, 2), 16);
+    let g = parseInt(hex.substring(2, 4), 16);
+    let b = parseInt(hex.substring(4, 6), 16);
+
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
 
     const Style: CSSProperties = {
         width: '250px',
@@ -51,10 +57,11 @@ const goToCardShow = (product: productParams) => {
         cursor: "pointer",
         transition: '0.5s ease',
         zIndex: 5,
+
     }
     const StyleWithHover: CSSProperties = {
         ...Style,
-       backgroundColor: 'var(--white',
+       backgroundColor: hexToRGBA(primaryColor, 0.2),
        transition: '0s'
     }
     const StyleImage: CSSProperties = {
@@ -85,7 +92,7 @@ const goToCardShow = (product: productParams) => {
         direction: languageContext.activeLanguage == 'arabic'? 'rtl' : 'ltr'
     }
     return(
-        <div id="card" style={cardHover? StyleWithHover : Style} onMouseEnter={setHover} onMouseLeave={unsetHover} onClick={() => goToCardShow(product)}>
+        <div id="card" style={cardHover? StyleWithHover : Style} onMouseEnter={setHover} onMouseLeave={unsetHover}>
             <img src={product.imagePrincipal} alt="" style={StyleImage} />
             <div style={StyleCartInformation}>
             <h4 style={styleH4}>{

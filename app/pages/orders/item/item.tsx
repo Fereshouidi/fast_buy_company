@@ -12,13 +12,15 @@ import OrderDetailsTable from "./component/orderDetailsTable";
 import { activeLanguageContext } from "@/app/contexts/activeLanguage";
 import { updateOrderStatus } from "@/app/crud";
 import { LoadingIconContext } from "@/app/contexts/loadingIcon";
+import DeliveryBoyTable from "./component/deliveryBoyTable";
 
 
 type parmas = {
     order: OrderParams
+    orders: OrderParams[] | undefined
     setOrders?: (value: OrderParams[] | ((prev: OrderParams[]) => OrderParams[])) => void
 }
-const Item = ({order, setOrders}: parmas) => {
+const Item = ({order, orders, setOrders}: parmas) => {
 
     const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
     const [mostProductExpensive, setMostProductExpensive] = useState<productParams[] | undefined>(undefined);
@@ -28,9 +30,7 @@ const Item = ({order, setOrders}: parmas) => {
 
     useEffect(() => {
         if (order.products) {   
-            const most3ProductExpensive = [...order.products];
-            most3ProductExpensive.sort((a, b) => b.price - a.price)
-            .slice(0, 3)
+            const most3ProductExpensive = [...order.products].sort((a, b) => b.price - a.price).slice(0, 3);
             setMostProductExpensive(most3ProductExpensive);  
         }
     }, [])
@@ -149,7 +149,7 @@ const Item = ({order, setOrders}: parmas) => {
     
     return (
 
-        <div style={style} onClick={() => setDetailsDisplayed(!detailsDisplayed)}>
+        <div style={style} onClick={(e) => {e.stopPropagation(); setDetailsDisplayed(!detailsDisplayed)}}>
 
             <div style={styleCloseItem}>
 
@@ -183,6 +183,7 @@ const Item = ({order, setOrders}: parmas) => {
                 {order.note &&  <p style={styleNote}> <strong style={{margin: '0 var(--small-margin)'}}>{activeLanguage?.noteW + ' : '}</strong> {order.note} </p>}
                 <TableDetails order={order}/>
                 <OrderDetailsTable order={order}/>
+                <DeliveryBoyTable order={order} allOrders={orders} setAllOrders={setOrders}/>
             </div>
             
             

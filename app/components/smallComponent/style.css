@@ -158,9 +158,28 @@
 }
 #handling-section :hover{ 
     background-color: var(--black);  
-    color: var(--white);   
+    color: var(--white);
 }
-#handling-section :active{ 
-    background-color: var(--ashen);  
-    color: var(--white);   
+#handling-section :active{
+    background-color: var(--ashen);
+    color: var(--white);
+}
+
+.handling-status-div {
+    background-color: var(--white);
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+}
+.handling-status-div .handling{
+    background-color: var(--ashen-semi-transparent);
+    color: white;
+    padding: var(--medium-padding);
+    margin: var(--small-margin);
+    border-radius: 0 20px 0 20px;
+    font-size: var(--small-size);
+    min-width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -141,7 +141,8 @@
         "canceledW": "تم الالغاء",
         "failedW": "فشل ",
         "BeingReturnedW": "بصدد الارجاع",
-        "returnedW": "تم الارجاع"
+        "returnedW": "تم الارجاع",
+        "unassignedW": "غير موكل"
     },
     "deliveryStagesW": "مراحل التوصيل ",
     "OrderIdW": "معرف الطلب",
@@ -187,8 +188,37 @@
         "part1": "هل انت متأكد من انك تريد محو",
         "part2": "من ادارة التطبيق ؟"
     },
+    "makeSureRemoveDeliveryBoyP": {
+        "part1": "هل انت متأكد من انك تريد محو",
+        "part2": "من التطبيق ؟"
+    },
+    "makeSureRemoveCustomerP": {
+        "part1": "هل انت متأكد من انك تريد محو",
+        "part2": "من التطبيق ؟"
+    },
     "selectAdminP": "حدد المسؤولين الذين تريد محوهم من خلال النقر على معرفاتهم  !",
-    "adminsDeletedSuccess": "مسؤول تم حذفهم بنجحاح"
+    "selectDeliveryBoyP": "حدد عمال التوصيل الذين تريد محوهم من خلال النقر على معرفاتهم  !",
+    "selectCustomerP": "حدد العملاء الذين تريد محوهم من خلال النقر على معرفاتهم  !",
+    "adminsDeletedSuccess": "مسؤول تم حذفهم بنجحاح",
+    "deliveryBoyDeletedSuccess": "عامل توصيل تم حذفهم بنجحاح",
+    "customersDeletedSuccess": "عميل تم حذفهم بنجحاح",
+    "confirmYourAccountW": "تأكيد حسابك",
+    "adminUpdatedSuccessP": "تم تحديث المشرف(ين) بنجاح",
+    "deliveryBoyUpdatedSuccessP": "تم تحديث (عامل/عمال) التوصيل بنجاح",
+    "customerUpdatedSuccessP": "تم تحديث (العميل/العملاء) التوصيل بنجاح",
+    "timeTableW": "جدول اوقات",
+    "typeW": "النوع",
+    "discountw": "الخصم",
+    "historiqueW": "سجل المشتريات",
+    "ordersDeliveredW": "الطلبات الموصلة",
+    "ordersProccessing": "الطلبات قيد المعالجة",
+    "searchBy": {
+        "orders": "ابحث بواسطة (رقم الطلب أو رقم العميل أو رقم عامل التوصيل) ..."
+    },
+    "allW": "الكل",
+    "assignedAt": "تاريخ الاستلام",
+    "deliveryBoyW": "عامل التوصيل",
+    "orderReceived": "تم استلام الطلب بنجاح من قبل عامل التوصيل."
 
 }
 

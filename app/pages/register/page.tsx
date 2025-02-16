@@ -1,6 +1,6 @@
 'use client';
 
-import { CSSProperties, useEffect, useState } from "react";
+import { CSSProperties, useContext, useEffect, useState } from "react";
 import LoginForm from "./component/login/loginForm";
 import SigninForm from "./component/signin/signinForm";
 import HeaderForComputer from "@/app/pages/register/component/header/ForComputer/header";
@@ -26,7 +26,8 @@ const Register = ({logInExist, setLogInExist, signinExist, setSignInExist, admin
 
     const router = useRouter();
 
-    const [conpanyInformations, setConpanyInformations] = useState<companyInformationsParams | undefined>();
+    // const [conpanyInformations, setConpanyInformations] = useState<companyInformationsParams | undefined>();
+    const conpanyInformations = useContext(CompanyInformationContext);
 
 console.log(logInExist, signinExist);
 
@@ -43,15 +44,15 @@ console.log(logInExist, signinExist);
         position: 'fixed',
         top: 'var(--header-height)',
         left: '0',
-        zIndex: '1000',
+        zIndex: '990',
         width: '100vw',
         minHeight: '100vh',
-        //backgroundColor: 'var(--almost-white)',
+        // backgroundColor: 'red',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column',
-        // backgroundImage: `url(${conpanyInformations?.backgroundOfRegisterPage})`,
+        backgroundImage: `url(${conpanyInformations?.backgroundOfRegisterPage})`,
         backdropFilter: 'blur(15px)',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover'

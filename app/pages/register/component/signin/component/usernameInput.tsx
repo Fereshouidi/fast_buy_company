@@ -59,6 +59,7 @@ const UserNameInput = ({adminData, setAdminData, setFormData}: Params) => {
                 defaultValue={adminData?.name?? null}
                 style={styleInput}
                 onChange={(event) =>  handleUserName(event)}
+                maxLength={15}
             />
 
             <div className='icon-div' style={styleIconDiv}>

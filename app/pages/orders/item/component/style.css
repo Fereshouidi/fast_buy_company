@@ -43,3 +43,37 @@ table * {
     /* #cancel-order-btn {
         background-color: red;
     } */
+.delivery-boy-table {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: var(--medium-padding);
+    /* background-color: red; */
+}
+.delivery-boy-table h4{
+    width: 95%;
+    text-align: start;
+    font-size: var(--small-size);
+    padding: var(--small-padding);
+    opacity: 0.7;
+    font-weight: 700;
+}
+.delivery-boy-table table {
+    width: 90%;
+    border-collapse: collapse;
+    border-spacing: 0; 
+}
+.delivery-boy-table table td {
+    padding: 0;
+    width: 25%;
+}
+
+.delivery-boy-table table input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+}
+

@@ -17,7 +17,7 @@ export interface companyInformationsParams {
     activateAccountWhileSignin?: boolean,
     companyInformations?: string,
     currencyType?: string
-    
+    shippingCost: string
 }
 
 export type nameParams = {

@@ -15,7 +15,7 @@
   --almost-white: rgb(247, 247, 247);
   --white: #ffffff;
   --black: #000000;
-  --almost-black: rgb(23, 23, 23);
+  --almost-black: rgb(44, 44, 44);
   --black-almost-transparnt: rgba(0, 0, 0, 0.148);
   --ashen: rgb(123, 123, 123);
   --ashen-almost-white: rgb(220, 220, 220);
@@ -126,12 +126,21 @@
   border-radius: 0;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   user-select: none;
-  user-select: none;
   /* color: var(--black); */
 }
 
 .invisible {
   display: none;
+}
+.scroll {
+  overflow: scroll;
+}
+.scroll::-webkit-scrollbar {
+  width: 0;
+}
+.id {
+
+  user-select: text;
 }
 
 @media (max-width: 800px) {

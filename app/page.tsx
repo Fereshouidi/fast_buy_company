@@ -28,6 +28,7 @@ import { AdminContext, AdminDataParam } from './contexts/adminData';
 import AdminsManagement from './pages/adminsManagement/page';
 import AdminsManagementPage from './pages/adminsManagement/page';
 import SigninForm from './pages/register/component/signin/signinForm';
+import CustomerManagementPage from './pages/customerManagement/page';
 
 
 
@@ -243,7 +244,7 @@ useEffect(() => {
   //  alert(activeLanguage_?.language);
   
   return (
-    <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin, currencyType: conpanyInformations.currencyType}} >
+    <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin, currencyType: conpanyInformations.currencyType, shippingCost: conpanyInformations.shippingCost}} >
         <LanguageSelectorContext.Provider value={{ activeLanguage, setactiveLanguage }}>
           <activeLanguageContext.Provider value={{activeLanguage: activeLanguage_, setAtiveLanguage: setactiveLanguage_}}>
             <ThemeContext.Provider value={{ theme, setTheme }}>
@@ -264,6 +265,8 @@ useEffect(() => {
                             {activePage == 'productsManagement' && <ProductManagmentPage/>}
                             {activePage == 'ordersManagement' && <OrderManagmentPage/> }
                             {activePage == 'adminsManagement' && <AdminsManagementPage/>}
+                            {activePage == 'customersManagement' && <CustomerManagementPage/>}
+                            
                             {/* {activePage == 'register' && <Register logInExist={logInExist} signinExist={signinExist} adminData={adminData} setAdminData={setAdminData}/>} */}
                             {!adminData && <Register logInExist={true} signinExist={false} adminData={adminData} setAdminData={setAdminData}/>}
                             {adminData && !adminData?.verification && <Register logInExist={false} signinExist={true} adminData={adminData} setAdminData={setAdminData}/>}

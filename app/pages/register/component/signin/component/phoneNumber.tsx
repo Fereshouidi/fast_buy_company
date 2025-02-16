@@ -57,6 +57,7 @@ const PhoneNumberInput = ({formData, setFormData}: Params) => {
                 defaultValue={formData.phone?? null}
                 style={styleInput}
                 onChange={(event) => handlePhone(event)}
+                maxLength={15}
             />
 
             <div className='icon-div' style={styleIconDiv}>

@@ -2,11 +2,30 @@
 import { CSSProperties, useContext } from "react";
 import Logo from "./components/logo/logo";
 import { activeLanguageContext } from "@/app/contexts/activeLanguage";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ThemeToggleIcon from "@/app/svg/icons/themeToggle";
+import { faGear } from "@fortawesome/free-solid-svg-icons";
+import ParamSection from "@/app/components/paramSection";
+import { CompanyInformationContext } from "@/app/contexts/companyInformation";
+import { ActivePageContext } from "@/app/contexts/activePage";
+import { paramSectionContext } from "@/app/contexts/paramSection";
 
 const Header = () => {
+    const companyInformation = useContext(CompanyInformationContext);
+    const activePage = useContext(ActivePageContext);
+    const paramSection = useContext(paramSectionContext);
     const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
 
+    const handleParamSection = () => {
+        paramSection.setContainerExist(!paramSection.containerExist);
+        paramSection.setExist(!paramSection.exist);
+    }
 
+    const styleFaGear: CSSProperties = {
+        fontSize: 'calc(var(--big-size) /1.2)',
+        margin: 'var(--medium-margin)',
+        color: 'var(--almost-black)',
+    }
     const headerStyle :CSSProperties = {
         position: 'fixed',
         top: '0',
@@ -27,6 +46,13 @@ const Header = () => {
             <header style={headerStyle} className="header">
                 <Logo/>
                 <div style={{width: '50%'}}></div>
+
+                <div className='setting-container'>
+                <ThemeToggleIcon className='theme-toggle'/>
+                <FontAwesomeIcon icon={faGear} style={styleFaGear} onClick={handleParamSection}/>
+                <ParamSection id='param-section'/>
+            </div>
+            
             </header>
         </>
     )

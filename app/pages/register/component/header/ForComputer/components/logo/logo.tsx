@@ -2,9 +2,11 @@
 import { CSSProperties, useContext } from 'react';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 import { useRouter } from 'next/navigation';
+import { activeLanguageContext, activeLanguageParams } from '@/app/contexts/activeLanguage';
 
 const Logo = () => {
 
+    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
     const companyInformations = useContext(CompanyInformationContext);
     const router = useRouter();
 
@@ -24,7 +26,7 @@ const Logo = () => {
                 src={companyInformations?.logo}
                 alt="Logo"   
             />
-            <h1>{companyInformations && companyInformations.name?.english}</h1>
+            <h1>{companyInformations ? activeLanguage?.language == 'arabic' ? companyInformations.name?.arabic : companyInformations.name?.english : null}</h1>
         </div>
     )
 }

@@ -116,6 +116,8 @@ export const getCategoriesSection = async() => {
 export const getConpanyInformations = async() => {
     try{
         const conpanyInformations = (await axios.get(url + '/get/conpanyInformations')).data;        
+        console.log(conpanyInformations);
+        
         
         return conpanyInformations;
     }catch(err){
@@ -732,8 +734,21 @@ export const getAllAdmin = async() => {
     }
 }
 
+export const getAllDeleveryBoys = async() => {
+    try{
+        const response = await axios.get(url + '/get/all/deleveryBoys');
+        console.log(response.data[0].ordersProcessing);
+        
+        const data = response.data;
+        
+        return data;
+    }catch(err){
+        throw err;
+    }
+}
+
+
 export const updateAdminById = async(updatedAdmin) => {
-    // console.log(updatedAdmin);
     
     try{
         const response = await axios.put(url + '/update/admin/by/id', {
@@ -741,7 +756,6 @@ export const updateAdminById = async(updatedAdmin) => {
             updatedAdmin
         });
         const data = response.data;
-        console.log(data);
         
         return data;
     }catch(err){
@@ -751,18 +765,46 @@ export const updateAdminById = async(updatedAdmin) => {
 
 export const updateManyAdmins = async(updatedAdmins) => {
 
-    console.log(updatedAdmins);
+    const copyList = updatedAdmins.map(admin => ({...admin}));
 
-    updatedAdmins.forEach(admin => {
-        delete admin.password;
+    copyList.forEach(admin => {
+        for (let key in admin) {
+            if (!["verification", "_id", 'permissions', 'timeTable'].includes(key) ) {
+                delete admin[key];
+            }
+        }
     });
+    
 
     try{
-        const response = await axios.put(url + '/update/manyAdmins', {updatedAdmins});
+        const response = await axios.patch(url + '/update/manyAdmins', {updatedAdmins: copyList});
+        const data = response.data;
+        
+        return updatedAdmins;
+    }catch(err){
+        throw err;
+    }
+}
+
+export const updateManyDeliveryBoys = async(updatedDeliveryBoys) => {
+
+    const copyList = updatedDeliveryBoys.map(deliveryBoy => ({ ...deliveryBoy }));
+
+    copyList.forEach(deliveryBoy => {
+        for (let key in deliveryBoy) {
+            if (!["verification", "_id", 'type', 'timeTable'].includes(key) ) {
+                delete deliveryBoy[key];
+            }
+        }
+    });
+    
+
+    try{
+        const response = await axios.patch(url + '/update/manyDeliveryBoys', {updatedDeliveryBoys: copyList});
         const data = response.data;
         console.log(data);
         
-        return data;
+        return updatedDeliveryBoys;
     }catch(err){
         throw err;
     }
@@ -787,5 +829,164 @@ export const deleteManyAdmin = async(admins) => {
         return data;
     }catch(err){
         throw err;
+    }
+}
+
+export const deleteManyDeliveryBoys = async(deliveryBoys) => {
+
+    const deliveryBoysIds = [];
+    deliveryBoys.map(deliveryBoy => {
+        deliveryBoysIds.push(deliveryBoy._id);
+    })
+    console.log(deliveryBoysIds);
+
+    try{
+        const response = await axios.delete(url + '/delete/manyDeliveryBoys', {
+            params: {deliveryBoysIds}
+        });
+        const data = response.data;
+        console.log(data);
+        
+        return data;
+    }catch(err){
+        throw err;
+    }
+}
+
+export const updateAdminTimeTable = async(id, newTimeTable) => {    
+    
+    try{
+        const response = await axios.put(url + '/update/admin/timeTable', {id, newTimeTable});
+        const data = response.data;  
+        return data;
+
+    }catch(err){
+        console.log(err);
+        return null;
+    }
+}
+
+export const updateDeleveryBoyTimeTable = async(id, newTimeTable) => {
+    
+    try{
+        const response = await axios.put(url + '/update/deleveryBoy/timeTable', {id, newTimeTable});
+        const data = response.data;  
+        return data;
+
+    }catch(err){
+        console.log(err);
+        return null;
+    }
+}
+
+export const getDeliveryBoyById = async(id) => {
+    try{
+        const response = await axios.get(url + '/get/deliveryBoy/by/id/' + id);
+        const data = response.data;
+        
+        return data;
+    }catch(err){
+        throw err;
+    }
+}
+
+export const updateOrderDeliveryBoy = async(orderId, deliveryBoyId) => {    
+    
+    try{
+        const response = await axios.put(url + '/update/order/deliveryBoy', {orderId, deliveryBoyId});
+        const data = response.data;  
+        return data;
+
+    }catch(err){
+        console.log(err);
+        return null;
+    }
+}
+
+export const searchOrders = async(search, filter) => {
+    try{
+        const response = await axios.get(url + '/search/orders', {
+            params: { search, filter }
+        });
+        const data = response.data;
+        console.log(data);
+        
+        return data;
+
+    }catch(err){
+        console.log(err);
+        return null;
+    }
+}
+
+export const getOrdersByFilter = async(filter) => {
+    try{
+        const response = await axios.get(url + '/get/orders/by/filter', {
+            params: { filter }
+        });
+        const data = response.data;
+        console.log(data);
+        
+        return data;
+
+    }catch(err){
+        console.log(err);
+        return null;
+    }
+}
+
+export const getAllCustomers = async() => {
+    try{
+        const response = await axios.get(url + '/get/allCustomers')
+        const data = response.data;
+        return data;
+    }catch(err){
+        throw err;
+    }
+}
+
+export const deleteManyCustomer = async(customers) => {
+
+    const customersId = [];
+    customers.map(customer => {
+        customersId.push(customer._id);
+    })
+    console.log(customersId);
+
+
+    try{
+        const response = await axios.delete(url + '/delete/manyCustomer', {
+            params: {customersId}
+        });
+        const data = response.data;
+        console.log(data);
+        
+        return data;
+    }catch(err){
+        throw err;
+    }
+}
+
+export const updateManyCustomers = async(updatedCustomers) => {
+
+    const copyList = updatedCustomers.map(customer => ({...customer}));
+
+    copyList.forEach(customer => {
+        for (let key in customer) {
+            if (!["verification", "_id"].includes(key) ) {
+                delete customer[key];
+            }
+        }
+    });
+    
+
+    try{
+        const response = await axios.patch(url + '/update/manyCustomers', {updatedCustomers: copyList});
+        const data = response.data;
+        
+        return updatedCustomers;
+    }catch(err){
+        console.error(err);
+        return null;
     }
 }

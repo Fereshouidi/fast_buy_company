@@ -51,7 +51,7 @@ const LoginForm = ({logInExist, setLogInExist, signinExist, setSignInExist}: swi
 
             <UserNameInput form={form} setForm={setForm} />
             <PasswordInput passwordType={passwordType} setPasswordType={setPasswordType} form={form} setForm={setForm}/>
-            <RememberMe/>
+            {/* <RememberMe/> */}
             <SubmateBTN form={form}/>
             {/* <SwitchToSignin logInExist={logInExist} setLogInExist={setLogInExist} signinExist={signinExist} setSignInExist={setSignInExist} /> */}
 

@@ -4,7 +4,7 @@ import arabic from '@/app/languages/arabic.json';
 import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightToBracket } from '@fortawesome/free-solid-svg-icons';
-import { CSSProperties, use, useContext, useRef } from 'react';
+import { CSSProperties, use, useContext, useEffect, useRef, useState } from 'react';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 import { formDataParams } from '@/app/contexts/signinFormData';
 import { BannersContext } from '@/app/contexts/banners';
@@ -30,22 +30,29 @@ const SubmateBTN = ({formData, adminData, setAdminData}: Params) => {
 
     const router = useRouter();
     
-    //const activeLanguage = useContext(LanguageSelectorContext)?.activeLanguage;
     const companyInformationContext = useContext(CompanyInformationContext);
-    const setPasswordsNotMatchExist = useContext(BannersContext)?.setPasswordsNotMatch;
-    const setEmailNotValidBanner = useContext(BannersContext)?.setemailNotValide;
-    const setVerificationBanner = useContext(BannersContext)?.setVerificatinEmailBanner;
     const loadingIconContext = useContext(LoadingIconContext);
     const setBanner = useContext(BannerContext)?.setBanner;
     const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
+    const [isSubmateWork, setIsSubmateWork] = useState<boolean>(false);
 
     const btnRef = useRef<HTMLDivElement | null>(null);
 
-
+    useEffect(() => {
+        if (formData && formData.name && formData.email && formData.password && formData.retypePassword && formData.phone && formData.dateOfBirth) {
+            setIsSubmateWork(true);
+        } else {
+            setIsSubmateWork(false);
+        }
+    }, [formData])
 
     const randomActivationCode = Math.round(Math.random() * 10000);
 
     const handleClick = async() => {
+
+        if (!isSubmateWork) {
+            return;
+        }
 
         if(btnRef.current){
             btnRef.current.style.backgroundColor = darken(0.1,  companyInformationContext?.primaryColor || '');
@@ -96,7 +103,7 @@ const SubmateBTN = ({formData, adminData, setAdminData}: Params) => {
     }
 
     const style: CSSProperties = {
-        backgroundColor: companyInformationContext?.primaryColor,
+        backgroundColor: isSubmateWork ? companyInformationContext?.primaryColor : 'var(--ashen-semi-transparent)',
         margin: '10px'
     }
     
@@ -105,7 +112,7 @@ const SubmateBTN = ({formData, adminData, setAdminData}: Params) => {
 
             <FontAwesomeIcon icon={faRightToBracket}/>
 
-            <span>{english.confirmW}</span>
+            <span>{activeLanguage?.confirmW}</span>
 
         </div>
     )

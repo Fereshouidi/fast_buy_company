@@ -1,5 +1,7 @@
 import { createContext } from "react"
 import { productParams } from "./productSelectForShowing"
+import { purchaseParams } from "./purchaseData"
+import { OrderParams } from "./order"
 
 export interface CustomerDataParams {
     _id: string,
@@ -16,13 +18,14 @@ export interface CustomerDataParams {
     verification: boolean,
     ShoppingCart: shoppingCart
     favorite: productParams[] | undefined
+    historique: OrderParams[]
 }
 
 export interface shoppingCart {
     _id: string,
-    customer: string,
-    products: string[],
-    purchases: string[]
+    customer: CustomerDataParams,
+    products: productParams[],
+    purchases: purchaseParams[]
 }
 
 

@@ -141,7 +141,8 @@
         "canceledW": "canceled",
         "failedW": "failed",
         "BeingReturnedW": "Being returned",
-        "returnedW": "returned"
+        "returnedW": "returned",
+        "unassignedW": "UnassignedW"
     },
     "deliveryStagesW": "Delivery stages ",
     "OrderIdW": "Order ID",
@@ -187,6 +188,35 @@
         "part1": "Are you sure you want to remove",
         "part2": "from the application ?"
     },
+    "makeSureRemoveDeliveryBoyP": {
+        "part1": "Are you sure you want to remove",
+        "part2": "from the application ?"
+    },
+    "makeSureRemoveCustomerP": {
+        "part1": "Are you sure you want to remove",
+        "part2": "from the application ?"
+    },
     "selectAdminP": "Select the administrators you want to erase by clicking on their IDs !",
-    "adminsDeletedSuccess": "admin(s) have been deleted successfully"
+    "selectDeliveryBoyP": "Select the delivery boys you want to erase by clicking on their IDs !",
+    "selectCustomerP": "Select the customers you want to erase by clicking on their IDs !",
+    "adminsDeletedSuccess": "admin(s) have been deleted successfully",
+    "deliveryBoyDeletedSuccess": "deliveryBoy(s) have been deleted successfully",
+    "customersDeletedSuccess": "customer(s) have been deleted successfully",
+    "confirmYourAccountW": "confirm your account",
+    "adminUpdatedSuccessP": "admin(s) has been updated successfully",
+    "deliveryBoyUpdatedSuccessP": "deliveryBoy(s) has been updated successfully",
+    "customerUpdatedSuccessP": "customer(s) has been updated successfully",
+    "timeTableW": "tame table",
+    "typeW": "type",
+    "discountw": "discount",
+    "historiqueW": "historique",
+    "ordersDeliveredW": "delivered Orders",
+    "ordersProccessing": "Processing Orders",
+    "searchBy": {
+        "orders": "search by ( order id or customer id or deliveryBoy id ) ..."
+    },
+    "allW": "all",
+    "assignedAt": "assignedAt",
+    "deliveryBoyW": "delivery boy",
+    "orderReceived": "The order has been successfully received by the delivery boy."
 }

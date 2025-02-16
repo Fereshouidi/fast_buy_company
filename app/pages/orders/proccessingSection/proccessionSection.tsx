@@ -38,7 +38,7 @@ const ProccessiongSection = ({orders, setOrders}: params) => {
         borderRadius: '20px',
         padding: '0 var(--large-padding)',
         overflowY: 'scroll',
-        // boxShadow: '0 5px 15px var(--black-almost-transparnt)',
+        //boxShadow: '0 5px 15px var(--black-almost-transparnt)',
 
     }
     const styleH4: CSSProperties = {
@@ -79,7 +79,7 @@ const ProccessiongSection = ({orders, setOrders}: params) => {
 
                 <div className="item" style={styleItemsContainer}>{
                     proccessingOrders?.map((order, index) => {
-                        return <Item key={index} order={order} setOrders={setOrders}/>
+                        return <Item key={index} order={order} orders={orders} setOrders={setOrders}/>
                     })
                 }</div>
 
