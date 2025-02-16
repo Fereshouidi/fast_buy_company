@@ -17,7 +17,7 @@ import DeliveryBoyTable from "./component/deliveryBoyTable";
 
 type parmas = {
     order: OrderParams
-    orders: OrderParams[] | undefined
+    orders?: OrderParams[] | undefined
     setOrders?: (value: OrderParams[] | ((prev: OrderParams[]) => OrderParams[])) => void
 }
 const Item = ({order, orders, setOrders}: parmas) => {

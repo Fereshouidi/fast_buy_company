@@ -79,7 +79,7 @@ const SuccessSection = ({orders, setOrders}: params) => {
 
                 <div className="item" style={styleItemsContainer}>{
                     successOrders?.map((order) => {
-                        return <Item key={order._id} order={order} setOrders={setOrders} orders={[]}/>
+                        return <Item key={order._id} order={order} setOrders={setOrders}/>
                     })
                 }</div>
 
