@@ -1,14 +1,14 @@
-// next.config.js
-module.exports = {
-    reactStrictMode: true,
-    swcMinify: true, // استخدام SWC للتقليص
-};
+const nextConfig = {
+    webpack(config, { isServer }) {
+      // إضافة أو تعديل أي إعدادات هنا
+      config.module.rules.push({
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
+      });
   
-  // postcss.config.js
-module.exports = {
-    plugins: {
-      autoprefixer: {},
-      // إذا كنت تستخدم خاصية CSS أخرى مثل Tailwind CSS
+      return config;
     },
-  };
+  }
+  
+  module.exports = nextConfig;
   
