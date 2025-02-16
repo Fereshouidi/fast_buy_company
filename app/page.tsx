@@ -261,11 +261,11 @@ useEffect(() => {
                             <Banner/>
 
                             {adminData && <Header/>}
-                            {/* {activePage == 'statistics' && <StatisticsPage/>}
+                            {activePage == 'statistics' && <StatisticsPage/>}
                             {activePage == 'productsManagement' && <ProductManagmentPage/>}
                             {activePage == 'ordersManagement' && <OrderManagmentPage/> }
                             {activePage == 'adminsManagement' && <AdminsManagementPage/>}
-                            {activePage == 'customersManagement' && <CustomerManagementPage/>} */}
+                            {activePage == 'customersManagement' && <CustomerManagementPage/>}
                             
                             {/* {activePage == 'register' && <Register logInExist={logInExist} signinExist={signinExist} adminData={adminData} setAdminData={setAdminData}/>} */}
                             {!adminData && <Register logInExist={true} signinExist={false} adminData={adminData} setAdminData={setAdminData}/>}
