@@ -1,17 +1,14 @@
-
-//   // next.config.js
+// // next.config.js
 // module.exports = {
-//     webpack(config) {
-//       config.module.rules.push({
-//         test: /\.css$/,
-//         use: [
-//           'style-loader',
-//           'css-loader',
-//           'postcss-loader',
-//         ],
-//       });
+//     reactStrictMode: true,
+//     swcMinify: true, // استخدام SWC للتقليص
+// };
   
-//       return config;
+//   // postcss.config.js
+// module.exports = {
+//     plugins: {
+//       autoprefixer: {},
+//       // إذا كنت تستخدم خاصية CSS أخرى مثل Tailwind CSS
 //     },
 //   };
   
