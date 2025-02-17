@@ -50,9 +50,9 @@ console.log(logInExist, signinExist);
     return (
 
         <div> hhh
-            {/* <HeaderForComputer />
+            <HeaderForComputer />
             <LoadingIcon_theHolePage/>
-            <div id="regester-page" style={styleRegesterPage}>
+            {/* <div id="regester-page" style={styleRegesterPage}>
                 <LoginForm logInExist={logInExist} setLogInExist={setLogInExist} signinExist={signinExist} setSignInExist={setSignInExist}/>
                 <SigninForm logInExist={logInExist} setLogInExist={setLogInExist} signinExist={signinExist} setSignInExist={setSignInExist} adminData={adminData} setAdminData={setAdminData} />
             </div> */}
