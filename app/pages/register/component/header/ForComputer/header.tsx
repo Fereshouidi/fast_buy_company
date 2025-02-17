@@ -18,7 +18,7 @@ const Header = () => {
 
     const handleParamSection = () => {
         paramSection.setContainerExist(!paramSection.containerExist);
-        paramSection.setExist(!paramSection.exist);
+        paramSection.setExist(!paramSection?.exist);
     }
 
     const styleFaGear: CSSProperties = {

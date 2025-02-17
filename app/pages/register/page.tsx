@@ -49,7 +49,7 @@ console.log(logInExist, signinExist);
     
     return (
 
-        <div> hhh
+        <div> 
             <HeaderForComputer />
             <LoadingIcon_theHolePage/>
             <div id="regester-page" style={styleRegesterPage}>
