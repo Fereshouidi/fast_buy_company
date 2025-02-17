@@ -4,7 +4,7 @@ export const permissionsAvailable = ['statistics', 'productsManagement', 'orders
 export const permissionsTranslations = {
     statistics: "الإحصائيات",
     productsManagement: "إدارة المنتجات",
-    ordersManagment: "إدارة الطلبات",
+    ordersManagement: "إدارة الطلبات",
     adminsManagement: "إدارة المسؤولين",
     customersManagement: "إدارة العملاء"
 };
