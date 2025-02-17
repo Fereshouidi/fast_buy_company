@@ -17,8 +17,8 @@ const Header = () => {
     const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
 
     const handleParamSection = () => {
-        paramSection.setContainerExist(!paramSection.containerExist);
-        paramSection.setExist(!paramSection?.exist);
+        paramSection?.setContainerExist(!paramSection?.containerExist);
+        paramSection?.setExist(!paramSection?.exist);
     }
 
     const styleFaGear: CSSProperties = {
@@ -49,8 +49,8 @@ const Header = () => {
 
                 <div className='setting-container'>
                 {/* <ThemeToggleIcon className='theme-toggle'/> */}
-                {/* <FontAwesomeIcon icon={faGear} style={styleFaGear} onClick={handleParamSection}/> */}
-                <ParamSection id='param-section'/>
+                <FontAwesomeIcon icon={faGear} style={styleFaGear} onClick={handleParamSection}/>
+                {/* <ParamSection id='param-section'/> */}
             </div>
             
             </header>
