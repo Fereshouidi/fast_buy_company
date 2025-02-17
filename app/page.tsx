@@ -268,8 +268,8 @@ useEffect(() => {
                             {activePage == 'customersManagement' && <CustomerManagementPage/>}
                             
                             {/* {activePage == 'register' && <Register logInExist={logInExist} signinExist={signinExist} adminData={adminData} setAdminData={setAdminData}/>} */}
-                            {/* {!adminData && <Register logInExist={true} signinExist={false} adminData={adminData} setAdminData={setAdminData}/>}
-                            {adminData && !adminData?.verification && <Register logInExist={false} signinExist={true} adminData={adminData} setAdminData={setAdminData}/>} */}
+                            {!adminData && <Register logInExist={true} signinExist={false} adminData={adminData} setAdminData={setAdminData}/>}
+                            {adminData && !adminData?.verification && <Register logInExist={false} signinExist={true} adminData={adminData} setAdminData={setAdminData}/>}
 
                           </div> :
                           
