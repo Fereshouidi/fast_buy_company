@@ -118,7 +118,7 @@ background-color: red;
     width: 33%;
     /* background-color: blue; */
     display: flex;
-    justify-content: flex-endt;
+    justify-content: flex-end;
     align-items: center;
     padding: 0 50px;
 
@@ -156,8 +156,8 @@ background-color: red;
     height: 100%;
     /* color: blue; */
     display: flex;
-    justify-content: flex-endt;
-    align-items: flex-endt;
+    justify-content: flex-end;
+    align-items: flex-end;
     padding: 5px;
 }
 .header .statistics .item {

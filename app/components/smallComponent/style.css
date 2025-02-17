@@ -62,7 +62,7 @@
     position: relative;
     box-sizing: border-box;
     display: flex;
-    /* justify-content: flex-endt; */
+    /* justify-content: flex-end; */
     /* align-items: center; */
     position: relative;
     flex-wrap: wrap;
@@ -73,7 +73,7 @@
     height: 95%;
     display: flex;
     justify-content: space-between;
-    align-items: flex-endt;
+    align-items: flex-end;
     flex-direction: column;
     opacity: 0.5;
     font-size: var(--small-size);
@@ -103,7 +103,7 @@
     /* background-color: var(--white); */
     display: flex;
     justify-content: space-around;
-    align-items: flex-endt;
+    align-items: flex-end;
     border: 0.05px solid var(--black);
     border-radius: 10px 10px 10px 0;
     position: relative;
