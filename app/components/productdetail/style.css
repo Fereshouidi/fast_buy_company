@@ -88,7 +88,7 @@
     border-radius: 20px;
     padding: var(--medium-padding);
     display: flex;
-    /* align-items: start;
+    /* align-items: flex-start;
     justify-content: flex-start; */
     flex-wrap: wrap;
     color: var(--black);

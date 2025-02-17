@@ -3,7 +3,7 @@
     /* min-height: var(--header-height); */
     display: flex;
     justify-content: space-around;
-    align-items: start;
+    align-items: flex-start;
     flex-wrap: wrap;
     background-color: var(--white);
     /* background-color: red; */
