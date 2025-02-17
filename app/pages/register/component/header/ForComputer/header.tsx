@@ -50,7 +50,7 @@ const Header = () => {
                 <div className='setting-container'>
                 {/* <ThemeToggleIcon className='theme-toggle'/> */}
                 <FontAwesomeIcon icon={faGear} style={styleFaGear} onClick={handleParamSection}/>
-                {/* <ParamSection id='param-section'/> */}
+                <ParamSection id='param-section'/>
             </div>
             
             </header>
