@@ -16,12 +16,12 @@ const ThemeToggleIcon = ({className}: params) => {
     // const sideBarContext = useContext(SideBarContext);
     const [iconPlace, setIconPlace] = useState('');
 
-    if(!themeContext){
-        throw 'error themeContext !'
-    }
-    if(!languageContext){
-        throw 'error languageContext !'
-    }
+    // if(!themeContext){
+    //     throw 'error themeContext !'
+    // }
+    // if(!languageContext){
+    //     throw 'error languageContext !'
+    // }
     // if(!sideBarContext){
     //     throw 'error sideBarContext !'
     // }
