@@ -13,7 +13,7 @@ type params = {
 }
 const ParamSection = ({className, id, style}: params) => {
 
-    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage || english;
+    const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
     const paramSection = useContext(paramSectionContext);
     // const [paramSectionExist, setParamSectionExist] = useState<boolean>(paramSectionContainer.exist);
 
@@ -39,9 +39,9 @@ const ParamSection = ({className, id, style}: params) => {
         height: "100vh",
         backgroundColor: 'var(--black-almost-transparnt)',
         padding: 0,
-        opacity: paramSection.exist ? 1 : 0,
+        opacity: paramSection?.exist ? 1 : 0,
         transition: '0.3s ease',
-        visibility: paramSection.containerExist ? 'visible' : 'hidden',
+        visibility: paramSection?.containerExist ? 'visible' : 'hidden',
 
     }
         const style_: CSSProperties = {
@@ -49,8 +49,8 @@ const ParamSection = ({className, id, style}: params) => {
         zIndex: 100000000,
         direction: activeLanguage?.language == 'arabic' ? 'rtl' : 'ltr',
         margin: 0,
-        marginRight: paramSection.exist && activeLanguage?.language != 'arabic' ? '0' : 'calc(-1 * calc(var(--long-width) *1.5))',
-        marginLeft: paramSection.exist && activeLanguage?.language == 'arabic' ? '0' : 'calc(-1 * calc(var(--long-width) *1.5))',
+        marginRight: paramSection?.exist && activeLanguage?.language != 'arabic' ? '0' : 'calc(-1 * calc(var(--long-width) *1.5))',
+        marginLeft: paramSection?.exist && activeLanguage?.language == 'arabic' ? '0' : 'calc(-1 * calc(var(--long-width) *1.5))',
         backgroundColor: 'var(--white)',
         height: 'calc(100vh - var(--header-height))',
         width: 'calc(var(--long-width) *1.5)',
