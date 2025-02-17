@@ -26,7 +26,7 @@ const Register = ({logInExist, setLogInExist, signinExist, setSignInExist, admin
 
     const conpanyInformations = useContext(CompanyInformationContext);
 
-console.log(logInExist, signinExist);
+    console.log(logInExist, signinExist);
  
 
     const styleRegesterPage: CSSProperties = {
