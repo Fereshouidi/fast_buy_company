@@ -70,7 +70,7 @@
     width: 100%;
     height: auto;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     /* border: 0.5px solid red; */
@@ -104,7 +104,7 @@
     width: 100%;
     /* padding: 10px 5%; */
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     border-top: 0.5px solid var(--ashen);
     /* background-color: red; */
@@ -118,7 +118,7 @@
     /* height: 100%; */
     padding: 0 20%;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     background-color: transparent;
     margin: 0;

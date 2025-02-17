@@ -89,7 +89,7 @@
     padding: var(--medium-padding);
     display: flex;
     /* align-items: start;
-    justify-content: start; */
+    justify-content: flex-start; */
     flex-wrap: wrap;
     color: var(--black);
 

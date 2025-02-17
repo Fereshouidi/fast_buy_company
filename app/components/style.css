@@ -201,7 +201,7 @@ header .navigation *{
 #Discounts-Section  .display-section .cart .item {
     width: 100%;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     margin: var(--small-margin);
     border-radius: 20px;
