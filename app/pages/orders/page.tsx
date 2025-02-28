@@ -37,10 +37,11 @@ const OrderManagmentPage = () => {
     flexDirection: 'row' ,
     // padding: 'var(--large-padding)',
     overflow: 'hidden',
+    padding: 0,
   }
 
   const style_fs_and_ss: CSSProperties = {
-    width: '55vw',
+    width: '50vw',
     height: 'calc(100vh - calc( var(--header-height) *1) )',
     backgroundColor: 'var(--white)' ,
     display: 'flex',

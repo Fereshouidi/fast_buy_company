@@ -17,7 +17,7 @@ const LoadingIcon = ({className}: params) => {
         borderRight: `2px solid ${companyInformation?.primaryColor}`,
     }
     return (
-        <div id='container' className={className} >
+        <div  className={className} >
             <div id='loadingIcon' style={styleLoadingIcon}></div>
         </div>
     )

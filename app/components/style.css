@@ -67,11 +67,11 @@ header .navigation *{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    flex-direction: row;
     background-color: var(--almost-white);
     border-radius: 20px;
 
 }
-
 
 #Discounts-Section {
     position: absolute;

@@ -187,9 +187,26 @@
     cursor: pointer;
     position: relative;
 }
-  #categories-param-sectin .input-div-for-delete #confirm-btn-for-delete:active{
-    background-color: red;
-  }
+#categories-param-sectin .input-div-for-delete #confirm-btn-for-delete:active{
+  background-color: red;
+}
+
+#categories-param-sectin .input-div-for-discount-code #confirm-btn-for-delete{
+  width: 100%;
+  background-color: var(--black);
+  color: var(--white);
+  padding: var(--medium-padding);
+  margin-top: var(--small-margin);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  cursor: pointer;
+  position: relative;
+}
+#categories-param-sectin .input-div-for-discount-code #confirm-btn-for-delete:active{
+background-color: red;
+}
 
 .parent{
     width: 100%;
@@ -245,3 +262,30 @@
   }
 
 
+.input-discount-code .handling-div{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: green; */
+}
+.input-discount-code .handling-div .handle-btn-while-discount-code-exist{
+  background-color: var(--ashen);
+  margin: var(--small-margin);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  padding: 5px;
+  color: var(--white);
+  cursor: pointer;
+}
+.input-discount-code .handling-div .cancel-btn{
+  background-color: red;
+  border-radius: 50px;
+}
+.input-discount-code .handling-div .confirm-update-btn{
+  background-color: var(--black);
+  border-radius: 50px;
+}

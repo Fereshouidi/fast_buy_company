@@ -12,7 +12,7 @@ const OrdersSection = ({orders, setOrders}: params) => {
     return (
         <div className={orders.length > 0 ? 'orders-section scroll' : 'invisible'} onClick={() => setOrders([])}>
 
-            <div className="container">{orders?.map((order, index) => {
+            <div className="container scroll">{orders?.map((order, index) => {
                 return <Item key={index} order={order} orders={orders} setOrders={setOrders}/>
             })}</div>
 

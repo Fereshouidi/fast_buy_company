@@ -29,7 +29,7 @@ const ImagesDiv = ({most3ProductExpensive, style}: parmas) => {
     return (
         <div style={style}>{
             most3ProductExpensive?.map((product, index) => {
-                return <img key={index} src={product?.imagePrincipal} onClick={(event) => goToProductDetailsPage(event, product._id)} style={styleImage} />
+                return <img key={index} src={product?.imagePrincipal} style={styleImage} />
             })
         }</div>
     )

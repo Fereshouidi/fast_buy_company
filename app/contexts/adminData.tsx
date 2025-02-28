@@ -1,12 +1,13 @@
 import { createContext } from "react";
 
-export const permissionsAvailable = ['statistics', 'productsManagement', 'ordersManagement', 'adminsManagement', 'customersManagement'] as const;
+export const permissionsAvailable = ['statistics', 'productsManagement', 'ordersManagement', 'adminsManagement', 'customersManagement', 'companyManagement'] as const;
 export const permissionsTranslations = {
     statistics: "الإحصائيات",
     productsManagement: "إدارة المنتجات",
     ordersManagement: "إدارة الطلبات",
     adminsManagement: "إدارة المسؤولين",
-    customersManagement: "إدارة العملاء"
+    customersManagement: "إدارة العملاء",
+    companyManagement: "ادارة بيانات الشركة"
 };
 export type PermissionType = (typeof permissionsAvailable)[number];
 

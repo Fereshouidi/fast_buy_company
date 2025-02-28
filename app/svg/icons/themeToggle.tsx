@@ -3,7 +3,6 @@ import LightModeIcon from "./lightMode";
 import DarkModeIcon from "./darkMode";
 import { ThemeContext } from "@/app/contexts/ThemeContext";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
-// import { SideBarContext } from "@/app/contexts/SideBarContext";
 import { CSSProperties, useContext, useEffect, useState } from "react";
 
 type params = {
@@ -13,10 +12,7 @@ const ThemeToggleIcon = ({className}: params) => {
 
     const themeContext = useContext(ThemeContext);
     const languageContext = useContext(LanguageSelectorContext);
-    // const sideBarContext = useContext(SideBarContext);
     const [iconPlace, setIconPlace] = useState('');
-
-    console.log(themeContext);
     
     if(!themeContext){
         throw 'error themeContext !'
@@ -24,9 +20,7 @@ const ThemeToggleIcon = ({className}: params) => {
     if(!languageContext){
         throw 'error languageContext !'
     }
-    // if(!sideBarContext){
-    //     throw 'error sideBarContext !'
-    // }
+
 
     const {theme, setTheme} = themeContext;
 

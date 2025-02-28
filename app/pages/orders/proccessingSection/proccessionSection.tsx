@@ -79,7 +79,7 @@ const ProccessiongSection = ({orders, setOrders}: params) => {
 
                 <div className="item" style={styleItemsContainer}>{
                     proccessingOrders?.map((order, index) => {
-                        return <Item key={index} order={order} orders={orders} setOrders={setOrders}/>
+                        return <Item key={order._id} order={order} orders={orders} setOrders={setOrders}/>
                     })
                 }</div>
 

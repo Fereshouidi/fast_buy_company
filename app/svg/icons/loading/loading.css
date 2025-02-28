@@ -31,11 +31,11 @@
 }
 
 .container-of-loading-icon-hole-page #loadingIcon {
-    width: 30px;
+    /* width: 30px;
     height: 30px;
     border: 5px solid var(--white-almost-transparnt);
     border-radius: 50%;
-    animation: simple-spin 1s linear infinite;
+    animation: simple-spin 1s linear infinite; */
 }
 
 

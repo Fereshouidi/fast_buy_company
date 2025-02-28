@@ -1,0 +1,1217 @@
+.companyManagement-page .edit-section {
+    width: 100%;
+    height: 100vh;
+    /* height: calc(100vh - var(--header-height) *2); */
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 100px 70px 70px 70px;
+    border-radius: 20px;
+    overflow-y: scroll;
+    /* margin: 50px; */
+    box-shadow: 0 5px 15px var(--black-almost-transparnt);
+}
+.companyManagement-page .edit {
+    background-color: red;
+    width: 30%;
+    margin: 5px;
+    border: 1px solid var(--ashen-semi-transparent);
+    border-radius: 20px;
+    background-color: var(--white);
+    min-height: 200px;
+    position: relative;
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+/* .companyManagement-page .edit {
+    flex: 1 1 30%;
+    background-color: var(--white);
+    border-radius: 20px;
+    border: 0.02px solid var(--ashen-semi-transparent);
+    font-weight: 100;
+    color: var(--black);
+} */
+
+.companyManagement-page .edit h4 {
+    width: 100%;
+    border-bottom: 0.02px solid var(--ashen-semi-transparent);
+    opacity: 0.7;
+    font-size: 'var(--primary-size)' ;
+    padding: var(--large-padding);
+    z-index: 980;
+}
+
+.companyManagement-page .edit input:not(.input-color) {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+.companyManagement-page .container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: var(--large-padding);
+    min-height: 150px;
+    position: relative;
+    /* background-color: red; */
+}
+
+.companyManagement-page .p-text {
+    font-size: var(--small-size);
+    padding: var(--medium-padding);
+    opacity: 0.7;
+}
+
+.companyManagement-page .container input:not(.input-color) {
+    padding: var(--medium-padding);
+    outline: none;
+    border: none;
+    border-bottom: 0.02px solid var(--ashen-semi-transparent);
+    min-width: 80%;
+    border-radius: 0 0 10px 0;
+    opacity: 0.9;
+}
+
+.companyManagement-page .input-multy-language-div {
+    display: flex;
+    align-items: center;
+    /* background-color: blue; */
+    width: 100%;
+    padding: 7px;
+    height: 50px;
+}
+.companyManagement-page .input-multy-language-div h4{
+    width: 70px;
+    height: 100%;
+    border: 0;
+    font-size: small;
+    padding: 0;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.companyManagement-page .input-multy-language-div input:not(.input-color){
+    min-width: 70%;
+    border: 0;
+    font-size: small;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--ashen-semi-transparent);
+}
+.companyManagement-page .input-arabic-div {
+    direction: rtl;
+}
+.input-arabic-div input:not(.input-color) {
+    border-radius: 0 0 0 10px;
+    direction: rtl;
+}
+
+.companyManagement-page .edit #logo {
+    width: 70px;
+    height: 70px;
+    border-radius: 20px;
+    border: 1px solid var(--ashen);
+    padding: 2px;
+    margin: 5px;
+}
+
+.companyManagement-page .edit .inp-and-btn-div {
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: var(--medium-padding);
+}
+.companyManagement-page .edit .verif-email-btn {
+    padding: var(--medium-padding);
+    outline: none;
+    border: none;
+    border-bottom: 0.02px solid var(--ashen-semi-transparent);
+    background-color: var(--black);
+    color: var(--white);
+    border-radius: 10px 0 10px 0;
+    cursor: pointer;
+}
+.companyManagement-page .edit .explanation-w {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    /* padding: 10px; */
+    border-radius: 500px;
+    background-color: transparent;
+    cursor: pointer;
+}
+.companyManagement-page .edit .explanation-w:hover {
+    box-shadow: 0 5px 15px rgba(255, 255, 0, 0.637);
+}
+.companyManagement-page .password-explan-sec {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 998;
+    background-color: var(--black-almost-transparnt);
+    padding-top: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.companyManagement-page .password-explan-sec section{
+    /* width: 1000px; */
+    /* min-height: 50%; */
+    background-color: var(--white);
+    padding: 25px;
+    font-size: medium;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.companyManagement-page .app-password-note {
+    border-left: 5px solid #007bff;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+}
+.companyManagement-page .app-password-note *{
+    margin: 5px;
+}
+.companyManagement-page .app-password-note h3 {
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.companyManagement-page .app-password-note h4 {
+    color: var(--almost-black);
+    margin-top: 15px;
+}
+
+.companyManagement-page .app-password-note p {
+    color: var(--ashen);
+    line-height: 1.6;
+}
+
+.companyManagement-page .app-password-note ol {
+    padding-left: 20px;
+}
+
+.companyManagement-page .app-password-note ol li {
+    margin-bottom: 8px;
+    color: var(--ashen);
+}
+
+.companyManagement-page .app-password-note a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.companyManagement-page .app-password-note a:hover {
+    text-decoration: underline;
+}
+
+.companyManagement-page .app-password-note strong {
+    color: var(--almost-black);
+}
+
+.companyManagement-page .edit-discount-code-btn, .companyManagement-page .edit-sign-in-btn {
+    background-color: var(--black);
+    padding: 15px 30px;
+    border-radius: 50px;
+    color: var(--white);
+    /* box-shadow: 0 5px 15px var(--ashen-semi-transparent); */
+    opacity: 1;
+    cursor: pointer;
+    margin: 10px;
+}
+.companyManagement-page .edit-discount-code-btn:hover, .companyManagement-page .edit-sign-in-btn:hover {
+    background-color: var(--almost-black);
+    color: var(--almost-white);
+}
+.companyManagement-page .edit-discount-code-btn:active, .companyManagement-page .edit-sign-in-btn:active {
+    background-color: var(--ashen);
+    color: var(--white);
+}
+
+.companyManagement-page .input-color[type= 'color'] {
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    border: 2px solid var(--ashen-semi-transparent);
+    padding: 2px;
+    margin: 5px;
+}
+
+.companyManagement-page input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+    border-radius: 50%;
+}
+
+.companyManagement-page input[type="color"]::-webkit-color-swatch {
+    border: none;
+    border-radius: 50%;
+}
+
+.companyManagement-page .images-container {
+    /* width: 100%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.companyManagement-page .images-container .backgrounds {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    background-color: var(--ashen);
+    margin: 2px;
+}
+.companyManagement-page .Loading-icon- {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 0px;
+    transform: translate(-50%, -50%);
+    background-color: var(--white);
+    border-radius: 50px;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+}
+.companyManagement-page .Loading-icon- #loadingIcon {
+    background-color: var(--white);
+    width: 20px;
+    height: 20px;
+    border: 5px solid var(--white-almost-transparnt);
+    padding: var(--small-padding);
+    border-radius: 50%;
+    animation: simple-spin 1s linear infinite;
+    margin: 0;
+    /* padding: 0; */
+    /* background-color: red; */
+}
+
+
+
+.companyManagement-page .commit-btn {
+    width: 90%;
+    background-color: var(--black);
+    padding: var(--medium-padding);
+    background-color: var(--black);
+    color: var(--white);
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px 0 0 0;
+}
+.companyManagement-page .commit-btn:hover {
+    background-color: var(--almost-black);
+    color: var(--almost-white);
+}
+.companyManagement-page .commit-btn:active {
+    background-color: var(--ashen);
+    color: var(--white);
+}
+.discount-code-container-section {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: calc(100vh - var(--header-height));
+    background-color: var(--black-almost-transparnt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--black);
+}
+.discount-code-container-section * {
+    color: var(--black);
+}
+
+.discount-code-container-section #discount-code-section {
+    width: 1100px;
+    height: 90%;
+    background-color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    border-radius: 20px;
+    position: relative;
+    position: relative;
+}
+.discount-code-container-section #discount-code-section .header {
+    height: 70px;
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: var(--white);
+    opacity: 1;
+    z-index: 999;
+    border-bottom: 1px solid var(--ashen-semi-transparent);
+    border-radius: 20px;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cancel_ {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 999;
+    width: 55px;
+    height: 55px;
+    margin: 0;
+    cursor: pointer;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cancel_ *{
+    pointer-events: none;
+}
+#discount-code-section .header .handling {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+}
+#discount-code-section .header .handling-item {
+    background-color: var(--ashen-semi-transparent);
+    margin: var(--small-margin);
+    font-size: calc(var(--primary-size) / 1.5);
+    color: var(--black);
+    border-radius: 50px;
+    padding: var(--small-padding) var(--medium-padding);
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+#discount-code-section .header .handling-item:hover {
+    color: var(--white);
+    background-color: var(--black);
+}
+#discount-code-section .header .handling-item:active {
+    /* color: var(--black); */
+    background-color: var(--ashen);
+}
+#discount-code-section .header .handling-item:hover * {
+    color: var(--white);
+    background-color: var(--black);
+}
+#discount-code-section .header .handling-item:active *{
+    /* color: var(--black); */
+    background-color: var(--ashen);
+}
+
+
+#discounts-management-section {
+    background-color: var(--almost-white);
+    width: 100%;
+    height: calc(100vh - 70px);
+    border-radius: 0 0 20px 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+#discounts-management-section .card {
+    width: 30%;
+    height: 270px;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 20px;
+    background-color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    /* box-shadow: 0 5px 15px var(--black-almost-transparnt); */
+    /* background-color: red; */
+    /* font-size: 5px; */
+    border: 1px solid var(--ashen-semi-transparent);
+}
+#discounts-management-section .card .item {
+    /* padding: 10px; */
+    opacity: 0.7;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 7px;
+    font-size: small;
+    /* background-color: red; */
+}
+#discounts-management-section .card .id {
+    /* background-color: red; */
+    padding: 5px;
+    border: 1px solid var(--ashen-semi-transparent);
+    box-shadow: 0 5px 15px var(--black-almost-transparnt);
+    border-radius: 50px;
+    padding: 10px;
+    background-color: var(--almost-white);
+
+}
+#discounts-management-section .card .item p{
+    border-radius: 50px;
+    padding: 10px;
+    margin: 0 var(--small-margin);
+    margin-left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: small;
+    border: none;
+    box-shadow: none;
+}
+#discounts-management-section .card .item input,
+#discounts-management-section .card .item select
+{
+    background-color: var(--almost-white);
+    border-radius: 50px;
+    padding: 5px;
+    margin: 0 var(--small-margin);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: small;
+    outline: none;
+    border: 1px solid var(--ashen-semi-transparent);
+    text-align: center;
+}
+
+.new-discount-code-whole-section {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: calc(100vh - var(--header-height));
+    backdrop-filter: blur(1.5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.new-discount-code-whole-section .card {
+    width: 30%;
+    min-height: 270px;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 20px;
+    background-color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    /* box-shadow: 0 5px 15px var(--black-almost-transparnt); */
+    /* background-color: red; */
+    /* font-size: 5px; */
+    border: 1px solid var(--ashen-semi-transparent);
+}
+.new-discount-code-whole-section .card .item {
+    /* padding: 10px; */
+    opacity: 0.7;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 7px;
+    font-size: small;
+    /* background-color: red; */
+}
+#new-discount-code-whole-section .card .id {
+    /* background-color: red; */
+    padding: 5px;
+    border: 1px solid var(--ashen-semi-transparent);
+    box-shadow: 0 5px 15px var(--black-almost-transparnt);
+    border-radius: 50px;
+    padding: 10px;
+    background-color: var(--almost-white);
+
+}
+.new-discount-code-whole-section .card .item p{
+    border-radius: 50px;
+    padding: 10px;
+    margin: 0 var(--small-margin);
+    margin-left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: small;
+    border: none;
+    box-shadow: none;
+}
+.new-discount-code-whole-section .card .item input,
+.new-discount-code-whole-section .card .item select
+{
+    background-color: var(--almost-white);
+    border-radius: 50px;
+    padding: 5px;
+    margin: 0 var(--small-margin);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: small;
+    outline: none;
+    border: 1px solid var(--ashen-semi-transparent);
+    text-align: center;
+}
+.new-discount-code-whole-section .commit-btn {
+    width: 90%;
+    background-color: var(--black);
+    padding: var(--medium-padding);
+    background-color: var(--black);
+    color: var(--white);
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0 10px 0;
+}
+.new-discount-code-whole-section .commit-btn:hover {
+    background-color: var(--almost-black);
+    color: var(--almost-white);
+}
+.new-discount-code-whole-section .commit-btn:active {
+    background-color: var(--ashen);
+    color: var(--white);
+}
+
+.backgrouns-container-section {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: calc(100vh - var(--header-height));
+    background-color: var(--black-almost-transparnt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.backgrouns-container-section #backgrouns-section {
+    width: 1100px;
+    height: 90%;
+    background-color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    border-radius: 20px;
+    position: relative;
+    position: relative;
+}
+.backgrouns-container-section #backgrouns-section .header {
+    height: 70px;
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: var(--white);
+    opacity: 1;
+    z-index: 999;
+    border-bottom: 1px solid var(--ashen-semi-transparent);
+    border-radius: 20px;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--medium-padding);
+}
+
+
+#backgrounds-management-section, #bullentin-board-management-section {
+    background-color: var(--almost-white);
+    width: 100%;
+    height: calc(100vh - 70px);
+    border-radius: 0 0 20px 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 20px;
+    /* background-color: #007bff; */
+}
+#backgrounds-management-section .backgrounds-div, #bullentin-board-section .backgrounds-div {
+    width: 300px;
+    height: 220px;
+    position: relative;
+    background-color: var(--ashen);
+    margin: var(--small-margin);
+    border: 1px solid var(--ashen);
+    box-shadow: 0 5px 15px var(--white-almost-transparnt);
+    border-radius: 20px;
+    cursor: pointer;
+}
+#backgrounds-management-section .backgrounds-div:hover .sub-tittle {
+    background-color: rgb(0, 0, 0);
+}
+
+#backgrounds-management-section .backgrounds-div *, #bullentin-board-section .backgrounds-div * {
+    border-radius: 20px;
+}
+#backgrounds-management-section .backgrounds-div img, #bullentin-board-section .backgrounds-div img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#backgrounds-management-section .backgrounds-div .sub-tittle, #bullentin-board-section .backgrounds-div .sub-tittle {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.33);
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 0 0 20px 20px;
+}
+.x {
+    padding: var(--small-padding) var(--medium-padding);
+    top: 0;
+    right: 0;
+    z-index: 999;
+    width: 55px;
+    height: 55px;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.x *{
+    pointer-events: none;
+}
+#backgrouns-section .header .handling {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    /* background-color: #007bff; */
+}
+#backgrouns-section .header .handling-item {
+    background-color: var(--ashen-semi-transparent);
+    margin: var(--small-margin);
+    font-size: calc(var(--primary-size) / 1.5);
+    color: var(--black);
+    border-radius: 50px;
+    padding: var(--small-padding) var(--medium-padding);
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+#backgrouns-section .header .handling-item:hover {
+    color: var(--white);
+    background-color: var(--black);
+}
+#backgrouns-section .header .handling-item:active {
+    background-color: var(--ashen);
+}
+
+.input-file {
+    display: none;
+}
+#backgrounds-management-section .backgrounds-div .sub-tittle .Loading-icon- {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 0px;
+    transform: translate(-50%, -50%);
+    background-color: var(--white);
+    border-radius: 50px;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+#backgrounds-management-section .backgrounds-div .sub-tittle .Loading-icon- #loadingIcon{
+    background-color: var(--white);
+    width: 20px;
+    height: 20px;
+    border: 5px solid var(--white-almost-transparnt);
+    padding: var(--small-padding);
+    border-radius: 50%;
+    /* animation: simple-spin 1s linear infinite; */
+    margin: 0;
+}
+
+.bullentin-board-section-container {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: calc(100vh - var(--header-height));
+    background-color: var(--black-almost-transparnt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--black);
+}
+.bullentin-board-section-container #bullentin-board-section {
+    width: 1100px;
+    height: 90%;
+    background-color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    border-radius: 20px;
+    position: relative;
+    position: relative;
+}
+.bullentin-board-section-container #bullentin-board-section .header {
+    height: 70px;
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: var(--white);
+    opacity: 1;
+    z-index: 999;
+    border-bottom: 1px solid var(--ashen-semi-transparent);
+    border-radius: 20px;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--medium-padding);
+}
+.bullentin-board-section-container #bullentin-board-section .header .handling {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    /* background-color: #007bff; */
+}
+.bullentin-board-section-container #bullentin-board-section .header .handling-item {
+    background-color: var(--ashen-semi-transparent);
+    margin: var(--small-margin);
+    font-size: calc(var(--primary-size) / 1.5);
+    color: var(--black);
+    border-radius: 50px;
+    padding: var(--small-padding) var(--medium-padding);
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.bullentin-board-section-container #bullentin-board-section .header .handling-item:hover {
+    color: var(--white);
+    background-color: var(--black);
+}
+.bullentin-board-section-container #bullentin-board-section .header .handling-item:active {
+    background-color: var(--ashen);
+}
+
+.bullentin-board-section-container #bullentin-board-section .tittle {
+    width: 100%;
+    margin: 10px;
+}
+.bullentin-board-section-container #bullentin-board-section .params {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin: 5px; */
+    width: 100%;
+    /* height: 10px; */
+    position: relative;
+    /* background-color: red; */
+    padding: 20px;
+}
+.bullentin-board-section-container #bullentin-board-section .params .container_ {
+    display: flex;
+    /* width: 100%; */
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    /* margin: 10px 0; */
+    padding: 0;
+    opacity: 0.7;
+    /* background-color: rgb(43, 255, 0); */
+    border-radius: 50px;
+    font-size: small;
+}
+.bullentin-board-section-container #bullentin-board-section .params .container1 {
+    justify-content: flex-end;
+}
+.bullentin-board-section-container #bullentin-board-section .params .container2 {
+    justify-content: flex-start;
+}
+.bullentin-board-section-container #bullentin-board-section .params .container h4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    /* background-color: blue; */
+    /* width: 20px; */
+    font-size: small;
+    white-space: nowrap;
+}
+.bullentin-board-section-container #bullentin-board-section .note {
+    width: 80%;
+    display: flex;
+    margin-bottom: 30px;
+    font-size: small;
+    /* background-color: red; */
+    opacity: 0.8;
+}
+.bullentin-board-section-container #bullentin-board-section .note strong{
+    /* background-color: rgb(0, 94, 255); */
+    margin: 0 10px;
+    opacity: 1;
+}
+.bullentin-board-section-container #bullentin-board-section .params .input-link {
+    width: 400px;
+    margin: 0 10px;
+    padding: 10px;
+    border-radius: 20px;
+    outline: none;
+    border: 1px solid var(--ashen-semi-transparent);
+    background-color: transparent;
+}
+
+.bullentin-board-section-container #bullentin-board-section .params .input-seconds-num {
+    min-width: 5px;
+    margin: 0 10px;
+    padding: 10px;
+    border-radius: 20px;
+    outline: none;
+    border: 1px solid var(--ashen-semi-transparent);
+    background-color: transparent;
+
+}
+
+.bullentin-board-section-container #bullentin-board-section .header .add-btn {
+    background-color: var(--ashen-semi-transparent);
+    margin: var(--small-margin);
+    font-size: calc(var(--primary-size) / 1.5);
+    color: var(--black);
+    border-radius: 50px;
+    padding: var(--small-padding) var(--medium-padding);
+    opacity: 0.8;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    cursor: pointer;
+    /* width: 100px; */
+    /* background-color: red; */
+}
+.bullentin-board-section-container #bullentin-board-section .header .add-btn *{
+    margin: 0;
+    padding: 0;
+}
+.companyManagement-page .handling-item .Loading-icon- {
+    /* position: absolute; */
+    position: relative;
+    top: none;
+    left: 0;
+    right: none;
+    padding: 0px;
+    transform: none;
+    background-color: var(--white);
+    border-radius: 50px;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    margin: 0;
+    padding: 0;
+    /* background-color: red; */
+}
+.companyManagement-page .handling-item .Loading-icon- #loadingIcon{
+    background-color: var(--red);
+    width: 10px;
+    height: 10px;
+    border: 1px solid var(--white-almost-transparnt);
+    padding: var(--small-padding);
+    border-radius: 50%;
+    /* animation: simple-spin 1s linear infinite; */
+    margin: 0;
+    padding: 0;
+}
+
+
+.sing-in-condition-section-container {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: calc(100vh - var(--header-height));
+    background-color: var(--black-almost-transparnt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--black);
+}
+.sing-in-condition-section-container #sing-in-condition-section {
+    width: 1100px;
+    max-height: 90%;
+    background-color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    border-radius: 20px;
+    position: relative;
+    position: relative;
+}
+.sing-in-condition-section-container #sing-in-condition-section .header,
+.social-media-section-container #social-media-section .header
+{
+    height: 70px;
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: var(--white);
+    opacity: 1;
+    z-index: 999;
+    border-bottom: 1px solid var(--ashen-semi-transparent);
+    border-radius: 20px;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--medium-padding);
+}
+.sing-in-condition-section-container #sing-in-condition-section .header .handling,
+.social-media-section-container #social-media-section .header .handling
+{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    /* background-color: #007bff; */
+}
+.sing-in-condition-section-container #sing-in-condition-section .header .handling-item,
+.social-media-section-container #social-media-section .header .handling .handling-item
+{
+    background-color: var(--ashen-semi-transparent);
+    margin: var(--small-margin);
+    font-size: calc(var(--primary-size) / 1.5);
+    color: var(--black);
+    border-radius: 50px;
+    padding: var(--small-padding) var(--medium-padding);
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.sing-in-condition-section-container #sing-in-condition-section .header .handling-item:hover,
+.social-media-section-container #social-media-section .header .handling .handling-item:hover
+{
+    color: var(--white);
+    background-color: var(--black);
+}
+.sing-in-condition-section-container #sing-in-condition-section .header .handling-item:active,
+.social-media-section-container #social-media-section .header .handling .handling-item:active
+{
+    background-color: var(--ashen);
+}
+
+.sing-in-condition-section-container #bullentin-board-section .header .add-btn {
+    background-color: var(--ashen-semi-transparent);
+    margin: var(--small-margin);
+    font-size: calc(var(--primary-size) / 1.5);
+    color: var(--black);
+    border-radius: 50px;
+    padding: var(--small-padding) var(--medium-padding);
+    opacity: 0.8;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    cursor: pointer;
+    /* width: 100px; */
+    /* background-color: red; */
+}
+.sing-in-condition-section-container #bullentin-board-section .header .add-btn *{
+    margin: 0;
+    padding: 0;
+}
+
+.sing-in-condition-section-container #sing-in-condition-management-section {
+    background-color: var(--almost-white);
+    width: 100%;
+    max-height: calc(100vh - 70px);
+    border-radius: 0 0 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    flex-wrap: wrap;
+}
+.sing-in-condition-section-container #sing-in-condition-management-section .item-div {
+    width: 300px;
+    height: 150px;
+    margin: 5px;
+    border: 1px solid var(--ashen-semi-transparent);
+    border-radius: 20px;
+    background-color: var(--white);
+    position: relative;
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.edit-social-media .images-container .backgrounds {
+    width: 25px;
+    height: 25px;
+    font-size: 25px;
+    size: 25px;
+    transition: color 0.3s ease-in-out;
+    background-color: transparent;
+    margin: 15px 2px;
+}
+
+.edit-social-media .facebook-icon {
+    color: #1877F2;
+}
+
+.edit-social-media .instagram-icon {
+    color: #E4405F;
+}
+
+.edit-social-media .messanger-icon {
+    color: #00B2FF;
+}
+
+.edit-social-media .whatsapp-icon {
+    color: #25D366;
+}
+
+.edit-social-media .youtube-icon {
+    color: #FF0000;
+}
+.edit-social-media .x-icon {
+    color: var(--almost-black);
+}
+
+.social-media-section-container {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: calc(100vh - var(--header-height));
+    background-color: var(--black-almost-transparnt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--black);
+}
+.social-media-section-container #social-media-section{
+    width: 1100px;
+    max-height: 90%;
+    background-color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    border-radius: 20px;
+    position: relative;
+    position: relative;
+}
+.social-media-section-container #social-media-management-section {
+    background-color: var(--almost-white);
+    width: 100%;
+    max-height: calc(100vh - 70px);
+    border-radius: 0 0 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    flex-wrap: wrap;
+}
+.social-media-section-container #social-media-management-section .item-div {
+    width: 300px;
+    height: 150px;
+    margin: 5px;
+    border: 1px solid var(--ashen-semi-transparent);
+    border-radius: 20px;
+    background-color: var(--white);
+    position: relative;
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-position: top;
+    background-repeat: no-repeat;
+    /* background-size: contain; */
+    position: relative;
+    backdrop-filter: blur(1px);
+}
+.social-media-section-container #social-media-management-section .icon {
+    size: 50px;
+    width: 30px;
+    height: 30px;
+}
+
+.social-media-section-container #social-media-management-section .item-div .input-link {
+    width: 80%;
+    margin: 0 10px;
+    padding: 10px;
+    border-radius: 20px;
+    outline: none;
+    border: 1px solid var(--ashen-semi-transparent);
+    background-color: transparent;
+    opacity: 0.7;
+    cursor: text;
+    color: var(--black);
+    font-size: small;
+}
+.Snackbar {
+    color: red;
+}

@@ -1,4 +1,4 @@
-const url = 'https://fast-buy-back-end.vercel.app/api';
+const url = 'http://localhost:3002/api';
 import axios from "axios";
 
 //https://fast-buy-back-end.vercel.app/api
@@ -990,3 +990,124 @@ export const updateManyCustomers = async(updatedCustomers) => {
         return null;
     }
 }
+
+export const getAllDiscountCodes = async() => {
+    try{
+        const response = await axios.get(url + '/get/all/discountCodes');
+        const data = response.data;
+        return data;
+    }catch(err){
+        throw err;
+    }
+}
+
+export const updateAllDiscountCodes = async(discountsCode) => {
+    try{
+        const response = await axios.patch(url + '/update/all/discountCodes', {discountsCode});
+        const data = response.data;
+        
+        return data;
+    }catch(err){
+        throw err;
+    }
+}
+
+export const getDiscountCodesForPageOfProductManagement = async() => {
+    try{
+        const response = await axios.get(url + '/get/discountCodes/for/page/of/productManagement');
+        const data = response.data;
+        return data;
+    }catch(err){
+        throw err;
+    }
+}
+
+export const addDiscountCode = async(discountCodeData) => {
+    try{
+        const response = await axios.post(url + '/add/discountCode', {discountCodeData});
+        const data = response.data;
+        console.log(response.data);
+        
+        return data;
+    }catch(err){
+        console.log(err);
+        throw err;
+    }
+}
+
+export const deleteDiscountCodeById = async(id) => {
+    try{
+        const response = await axios.delete(`${url}/delete/discountCode/by/id/${id}`);
+        const data = response.data;
+        console.log(response.data);
+        
+        return data;
+    }catch(err){
+        console.log(err);
+        throw err;
+    }
+}
+
+export const aplyDiscountCodeOnCategories = async(categoriesId, discountCodeId) => {
+    
+    try{
+        const response = await axios.put(url + '/aply/discountCode/on/categories', {categoriesId, discountCodeId});
+        const data = response.data;
+        console.log(response.data);
+        
+        return data;
+
+    }catch(err){
+        console.error(err);
+        return null;
+    }
+}
+
+export const getAllBullentinBoard = async() => {
+    try{
+        const response = await axios.get(url + '/get/all/bullentinBoard');
+        const data = response.data;
+        return data
+    }catch(err){
+        throw err;
+    }
+}
+
+export const undoDiscountCodeOnCategories = async(categoriesId, discountCodeId) => {
+    
+    try{
+        const response = await axios.put(url + '/undo/discountCode/on/categories', {categoriesId, discountCodeId});
+        const data = response.data;
+        console.log(response.data);
+        
+        return data;
+
+    }catch(err){
+        console.error(err);
+        return null;
+    }
+}
+
+export const updateBullentinBoardById = async(updatedBullentinBoardData) => {
+
+    console.log(updatedBullentinBoardData);
+
+    if (!updatedBullentinBoardData?.changingTime) {
+        console.log(updatedBullentinBoardData);
+        
+        updatedBullentinBoardData.changingTime = 0;
+    }
+    
+    try{
+        const response = await axios.put(url + '/update/bullentinBoard/by/id', {updatedBullentinBoardData});
+        const data = response.data;
+        console.log(response.data);
+        
+        return data;
+
+    }catch(err){
+        console.error(err);
+        return null;
+    }
+}
+

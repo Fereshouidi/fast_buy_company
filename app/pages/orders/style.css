@@ -1,10 +1,57 @@
 #delevery-boy-section {
-    width: 40%;
-    /* background-color: red; */
+    width: 50vh;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    background-color: var(--white);
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border-radius: 20px;
 }
 #delevery-boy-section table {
     width: 100%;
+
+    /* width: 120%; */
     /* background-color: blue; */
+}
+.loading-icon-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.loading-icon {
+    /* position: absolute; */
+    position: relative;
+    top: none;
+    left: 0;
+    right: none;
+    padding: 0px;
+    transform: none;
+    background-color: var(--white);
+    border-radius: 50px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    margin: 0;
+    padding: 0;
+    /* background-color: red; */
+}
+.loading-icon #loadingIcon{
+    background-color: var(--red);
+    width: 30px;
+    height: 30px;
+    border: 5px solid var(--white-almost-transparnt);
+    padding: var(--small-padding);
+    border-radius: 50%;
+    animation: simple-spin 1s linear infinite;
+    margin: 0;
+    padding: 0;
 }
 #delevery-boy-section table thead{
     position: sticky;

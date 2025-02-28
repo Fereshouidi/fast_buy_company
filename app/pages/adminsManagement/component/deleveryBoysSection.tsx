@@ -74,8 +74,8 @@ const DeleveryBoySection = ({ allDeleveryBoys, setAllDeleveryBoys, deleveryBoyHa
                             <td>{deleveryBoy.phone?? activeLanguage?.undefinedW}</td>
                             <td>{'**********'}</td>
                             <td>{activeLanguage?.language === 'arabic' ? typesTranslations[deleveryBoy.type] : deleveryBoy.type}</td>
-                            <td>{deleveryBoy.ordersProcessing?.length}</td>
                             <td>{deleveryBoy.ordersDelivered?.length}</td>
+                            <td>{deleveryBoy.ordersProcessing?.length}</td>
                             <td onClick={() => setEmployeeSelect(deleveryBoy)} className="pointer">{activeLanguage?.timeTableW}</td>
                             <td className={deleveryBoy.verification ? 'verif' : ''} onClick={() => handleVerif(deleveryBoy)}>{deleveryBoy.verification ? activeLanguage?.yesW : activeLanguage?.noW}</td>
                         </tr>

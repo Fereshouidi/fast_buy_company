@@ -1,12 +1,8 @@
 "use client";
 import SearchIcon from "@/app/svg/icons/search";
 import React, { CSSProperties, useState, useContext, useRef } from 'react';
-// import english from '@/app/languages/english.json';
-// import arabic from '@/app/languages/arabic.json';
-// import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import { getProductsByName } from "@/app/crud";
 import { productParams } from "@/app/contexts/productSelectForShowing";
-import { useRouter } from "next/navigation";
 import { LoadingIconContext } from "@/app/contexts/loadingIcon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTag } from "@fortawesome/free-solid-svg-icons";
@@ -20,30 +16,18 @@ type params = {
     setDiscountsSection: (value: boolean) => void
     isAddProductSectionExist: boolean,
     setIsAddProductSectionExist: (value: boolean) => void
+    setDiscountCodeSectionExist: (value: boolean) => void
 }
 
-const SearchBar = ({ searchQuery, setSearchQuery, discountsSectionExist, setDiscountsSection, isAddProductSectionExist, setIsAddProductSectionExist}: params) => {
+const SearchBar = ({ searchQuery, setSearchQuery, discountsSectionExist, setDiscountsSection, isAddProductSectionExist, setIsAddProductSectionExist, setDiscountCodeSectionExist}: params) => {
     
     const activeLanguage = useContext(activeLanguageContext)?.activeLanguage || english;
     const setLoadingIcon = useContext(LoadingIconContext)?.setExist;
     const [focus, setFocus] = useState(false);
     const [itemFocus, setItemFocus] = useState<string | null>(null);
-    // const [activeLanguage, setactiveLanguage] = useState(english);
     const inputRef = useRef<HTMLInputElement | null>(null);
     const [searchReasult, setSearchResult] = useState<productParams[] | undefined>(undefined)
 
-    // const context = useContext(LanguageSelectorContext);
-
-    
-    // if (!context || !context.activeLanguage) {
-    //     throw new Error("LanguageSelector must be used within a LanguageSelectorContext.Provider");
-    // }
-
-
-    // if (!context || !context.activeLanguage || !setLoadingIcon) {
-    //     console.error("error context !");
-    //     return null;
-    // }
     
 
     const handleChange = async(event: React.ChangeEvent<HTMLInputElement>) => {
@@ -86,28 +70,6 @@ const SearchBar = ({ searchQuery, setSearchQuery, discountsSectionExist, setDisc
         ...inputStyle,
         outline: 'none',
     }
-    const styleResultSection:CSSProperties = {
-        maxHeight: 'var(--extra-long-height)',
-        display: searchReasult ? 'flex': 'none',
-        flexDirection: 'column',
-        backgroundColor: 'var(--white)',
-        borderRadius: '20px',
-        padding: 'var(--small-padding)',
-        boxShadow: `0 5px 15px var(--black-almost-transparnt)`,
-        position: 'relative',
-        zIndex: 999,
-
-    }
-    const styleItem:CSSProperties = {
-        width: '100%',
-        backgroundColor: itemFocus ? 'red' : '',
-        padding: 'calc(var(--small-padding) * 1.5)',
-        borderRadius: '20px',
-        margin: 0,
-        opacity: 0.9,
-        color: 'var(--black)',
-        pointerEvents: 'auto',
-    }    
 
     return(
 
@@ -150,6 +112,12 @@ const SearchBar = ({ searchQuery, setSearchQuery, discountsSectionExist, setDisc
                 </div>
 
             </div>
+
+            <div id="open-discoutsCode-section-btn" className="handling" onClick={() => setDiscountCodeSectionExist(true)}>
+                <FontAwesomeIcon icon={faTag}/>
+                <h4>{activeLanguage?.discountCodeW}</h4>
+            </div>
+
         </div>
     )
 

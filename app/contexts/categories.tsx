@@ -8,7 +8,7 @@ export type CategorieParams = {
     childrenCategories?: CategorieParams[],
     childOpen?: boolean,
     margin?: number
-
+    discountCode?: discountCodeParams
 };
 
 type LanguageParams = {

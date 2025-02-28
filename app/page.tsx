@@ -29,6 +29,7 @@ import AdminsManagement from './pages/adminsManagement/page';
 import AdminsManagementPage from './pages/adminsManagement/page';
 import SigninForm from './pages/register/component/signin/signinForm';
 import CustomerManagementPage from './pages/customerManagement/page';
+import CompanyManagement from './pages/companyManagement/page';
 
 
 
@@ -62,7 +63,7 @@ const App = () => {
     setBannerText(text);
   }
 
-const [conpanyInformations, setConpanyInformations] = useState<companyInformationsParams | undefined>();
+const [conpanyInformations, setConpanyInformations] = useState<companyInformationsParams | undefined>(undefined);
 
 useEffect(() => {
   if (typeof window !== "undefined") {
@@ -82,6 +83,7 @@ useEffect(() => {
 
   }, [typeof window !== "undefined" ? localStorage.getItem('activeLanguage_') : null]) 
 
+  
 
   //localStorage.setItem('adminData', '679fef2bbcfc0235ddf86b86');
   //localStorage.removeItem('adminData');
@@ -98,22 +100,11 @@ useEffect(() => {
 
           const admin = await getAdminById(admintData_id);
 
-          // if (!admin.verification) {
-          //   //setBanner(true, 'you have to verificate your account firt !');
-          //   setSignInExist(true)
-          //   setActivePage('register')
-          //   console.log(admin);
-          //   //return;
-          //   //setActivePage('register')
-          // }
           if (admin) {
             setAdminData(admin);
             setActivePage(admin?.permissions[0]?? 'statistics')
           }
           
-        } else {
-          //setActivePage('register')
-          //return router.push('pages/register')
         }
       }
 
@@ -123,9 +114,9 @@ useEffect(() => {
 
 
 useEffect(() => {
-  
+
     const fetchData = async() => {
-        const conpanyInformationsData = await getConpanyInformations();        
+        const conpanyInformationsData = await getConpanyInformations();     
         setConpanyInformations(conpanyInformationsData);
     }
     fetchData();
@@ -238,16 +229,11 @@ useEffect(() => {
   }
 
 
-  if (screenWidth && screenWidth < 1200) {
-    alert(activeLanguage_?.noSmallDisplayP);
-  }
-  //  alert(activeLanguage_?.language);
-
-  console.log({ theme, setTheme });
-  
-  
+  // if (screenWidth && screenWidth < 1200) {
+  //   alert(activeLanguage_?.noSmallDisplayP);
+  // }
   return (
-    <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin, currencyType: conpanyInformations.currencyType, shippingCost: conpanyInformations.shippingCost}} >
+    <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin, currencyType: conpanyInformations.currencyType, shippingCost: conpanyInformations.shippingCost, backgroundsPages: conpanyInformations.backgroundsPages, socialMediaLinks: conpanyInformations.socialMediaLinks}} >
         <LanguageSelectorContext.Provider value={{ activeLanguage, setactiveLanguage }}>
           <activeLanguageContext.Provider value={{activeLanguage: activeLanguage_, setAtiveLanguage: setactiveLanguage_}}>
             <ThemeContext.Provider value={{ theme, setTheme }}>
@@ -269,11 +255,12 @@ useEffect(() => {
                             {activePage == 'ordersManagement' && <OrderManagmentPage/> }
                             {activePage == 'adminsManagement' && <AdminsManagementPage/>}
                             {activePage == 'customersManagement' && <CustomerManagementPage/>}
+                            {activePage == 'companyManagement' && <CompanyManagement/>}
                             
-                            {/* {activePage == 'register' && <Register logInExist={logInExist} signinExist={signinExist} adminData={adminData} setAdminData={setAdminData}/>} */}
                             {!adminData && <Register logInExist={true} signinExist={false} adminData={adminData} setAdminData={setAdminData}/>}
                             {adminData && !adminData?.verification && <Register logInExist={false} signinExist={true} adminData={adminData} setAdminData={setAdminData}/>}
 
+                            <h6 onClick={() => localStorage.removeItem('adminData')}>.</h6>
                           </div> :
                           
                           <div style={styleSmallDisplay}>{activeLanguage_?.noSmallDisplayP}</div>
@@ -296,3 +283,6 @@ useEffect(() => {
 };
 
 export default App;
+
+
+// {facebook: conpanyInformations?.socialMedia?.facebook, instagram: conpanyInformations?.socialMedia?.instagram, whatsApp: conpanyInformations?.socialMedia?.whatsApp, messanger: conpanyInformations?.socialMedia?.messanger, youtube: conpanyInformations?.socialMedia?.youtube}

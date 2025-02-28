@@ -98,6 +98,8 @@ const DeliveryBoyTable = ({order, allOrders, setAllOrders}: params) => {
         color: 'white'
     }
 
+    console.log(order.assignedAt);
+    
     return (
         <div className="delivery-boy-table">
             <div style={StyleUpOfTable}>
@@ -126,7 +128,7 @@ const DeliveryBoyTable = ({order, allOrders, setAllOrders}: params) => {
 
                         <td>{order?.deliveryBoy?.userName}</td>
                         <td>{order?.deliveryBoy?.phone}</td>
-                        <td>{order.assignedAt ? timeFormat(order.assignedAt) : timeFormat(new Date())}</td>
+                        <td>{order.assignedAt ? timeFormat(order.assignedAt) : order?.deliveryBoy ? timeFormat(new Date()) : null }</td>
 
                     </tr>
                 </tbody>

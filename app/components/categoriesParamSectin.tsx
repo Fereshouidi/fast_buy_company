@@ -1,14 +1,15 @@
 'use client';
 
-import { faExchangeAlt, faPen, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faExchangeAlt, faPen, faPlus, faTag, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { addCategorie, deleteCategorieById, renameCategorieById } from "../crud";
-import { CSSProperties, useContext, useEffect, useState } from "react";
+import { addCategorie, deleteCategorieById, renameCategorieById, aplyDiscountCodeOnCategories, undoDiscountCodeOnCategories } from "../crud";
+import { act, CSSProperties, useContext, useEffect, useRef, useState } from "react";
 import { activeLanguageContext } from "../contexts/activeLanguage";
 import { CategorieParams } from "../contexts/categories";
 import { BannerContext } from "../contexts/bannerForEverything";
 import { nameParams } from "../contexts/companyInformation";
 import english from '@/app/languages/english.json';
+import { LoadingIconContext } from "../contexts/loadingIcon";
 
 type params = {
     activeCategorie: CategorieParams ;
@@ -24,16 +25,26 @@ const CategoriesParapsSection = ({activeCategorie, setActiveCategorie, allCatego
     const [isInputForAddActive, setIsInputForAddActive] = useState<boolean>(false);
     const [isInputForRenameActive, setIsInputForRenameActive] = useState<boolean>(false);
     const [rename, setRename] = useState<nameParams>({english: '', arabic: ''});
+    const [discountCode, setDiscountCode] = useState<string>('');
     const [newCategorie, setNewCategorie] = useState<CategorieParams |undefined>(undefined);
+    // const [discountCode, setDiscountCode] = useState<CategorieParams |undefined>(undefined);
     const [isInputsForMoveActive, setIsInputsForMoveActive] = useState<boolean>(false);
     const [isInputsForDeleteActive, setIsInputsForDeleteActive] = useState<boolean>(false);
+    const [isInputsForDiscoutCodeActive, setIsInputsForDiscoutCodeActivee] = useState<boolean>(false);
     const setBannerexist = useContext(BannerContext)?.setBanner;
+    const SetLoadingIcon = useContext(LoadingIconContext)?.setExist;
+    // const discountCodeInputRef = useRef(null);
+
+    useEffect(() => {
+        setDiscountCode(activeCategorie?.discountCode?._id?? '');
+    }, [activeCategorie])
 
     const handlerenameClick = () => {
         if (activeCategorie) {
             setIsInputForAddActive(false);
             setIsInputsForMoveActive(false);
             setIsInputsForDeleteActive(false);
+            setIsInputsForDiscoutCodeActivee(false);
             setIsInputForRenameActive(!isInputForRenameActive);
         } else {
             setBannerexist(true, 'choise categorie first !')
@@ -44,6 +55,7 @@ const CategoriesParapsSection = ({activeCategorie, setActiveCategorie, allCatego
             setIsInputForRenameActive(false);
             setIsInputsForMoveActive(false);
             setIsInputsForDeleteActive(false);
+            setIsInputsForDiscoutCodeActivee(false);
             setIsInputForAddActive(!isInputForAddActive);
         } else {
             setBannerexist(true, 'choise categorie first !')
@@ -55,6 +67,18 @@ const CategoriesParapsSection = ({activeCategorie, setActiveCategorie, allCatego
             setIsInputForAddActive(false);
             setIsInputsForMoveActive(false);
             setIsInputsForDeleteActive(!isInputsForDeleteActive);
+            setIsInputsForDiscoutCodeActivee(false);
+        } else {
+            setBannerexist(true, 'choise categorie first !')
+        }        
+    }
+    const handleDiscountClickClick = () => {
+        if (activeCategorie) {
+            setIsInputForRenameActive(false);
+            setIsInputForAddActive(false);
+            setIsInputsForMoveActive(false);
+            setIsInputsForDeleteActive(false);
+            setIsInputsForDiscoutCodeActivee(!isInputsForDiscoutCodeActive);
         } else {
             setBannerexist(true, 'choise categorie first !')
         }        
@@ -80,6 +104,47 @@ const CategoriesParapsSection = ({activeCategorie, setActiveCategorie, allCatego
                 name: {...newCategorie.name, arabic: event.target.value}
             })
         }        
+    }
+
+    const handleDiscountCodeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target) {
+            setDiscountCode(event.target?.value);
+        }
+    }
+
+    const handleAplyDicoutCodeClicked = async () => {     
+        SetLoadingIcon(true);
+        const done = await aplyDiscountCodeOnCategories(activeCategorie?._id, discountCode);
+        if (done) {
+            setBannerexist(true, activeLanguage?.discountCodeAppliedSuccessfully, 'success');
+            setActiveCategorie({...activeCategorie, discountCode: { _id: discountCode }});
+            setAllCategories(allCategories?.map(categorie_ => 
+                categorie_._id == activeCategorie?._id ? 
+                    {...activeCategorie, discountCode: { _id: discountCode }} 
+                    : categorie_
+            ));
+
+            } else {
+            setBannerexist(true, activeLanguage?.someErrorHappen, 'fail');
+        }
+        SetLoadingIcon(false);
+    }
+    const handleUndoDicoutCodeClicked = async () => {     
+        SetLoadingIcon(true);
+        const done = await undoDiscountCodeOnCategories(activeCategorie?._id, discountCode);
+        if (done) {
+            setBannerexist(true, 'done', 'success');
+            setActiveCategorie({...activeCategorie, discountCode: undefined});
+            setAllCategories(allCategories?.map(categorie_ => 
+                categorie_._id == activeCategorie?._id ? 
+                {...activeCategorie, discountCode: { _id: discountCode }}
+                : categorie_
+            ));
+            
+        } else {
+            setBannerexist(true, activeLanguage?.someErrorHappen, 'fail');
+        }
+        SetLoadingIcon(false);
     }
 
     const handleDelete = async() => {
@@ -147,7 +212,7 @@ const CategoriesParapsSection = ({activeCategorie, setActiveCategorie, allCatego
             setBannerexist(true, activeLanguage?.someErrorHappen, 'fail');
         }
     }
-
+    
     const styleConfirmBTN: CSSProperties = {
         right: activeLanguage?.language == 'arabic' ? '' : '0',
         left: activeLanguage?.language == 'arabic' ? '0' : '',
@@ -176,9 +241,9 @@ const CategoriesParapsSection = ({activeCategorie, setActiveCategorie, allCatego
                     <FontAwesomeIcon className="icon" icon={faPen}/>
                     <h6>{activeLanguage?.renameW}</h6>
                 </div>
-                <div id="move" className="item">
-                    <FontAwesomeIcon className="icon" icon={faExchangeAlt}/>
-                    <h6>{activeLanguage?.moveW}</h6>
+                <div id="discount-code" className="item" onClick={handleDiscountClickClick}>
+                    <FontAwesomeIcon className="icon" icon={faTag}/>
+                    <h6>{activeLanguage?.discountCodeW}</h6>
                 </div>
                 <div id="remove" className="item" onClick={handleRemoveClick}>
                     <FontAwesomeIcon className="icon" icon={faTrash}/>
@@ -211,6 +276,15 @@ const CategoriesParapsSection = ({activeCategorie, setActiveCategorie, allCatego
 
             {isInputsForDeleteActive && <div className="input-div-for-delete">
                 <h4 id="confirm-btn-for-delete" onClick={handleDelete}>{activeLanguage?.confirmW}</h4>
+            </div>}
+
+            {isInputsForDiscoutCodeActive && <div className="input-div input-discount-code">
+                <input type="text" value={activeCategorie?.discountCode? activeCategorie.discountCode._id : ''} onChange={(e) => handleDiscountCodeChange(e)} placeholder={activeLanguage?.discountCodeId + ' ... '} /> 
+                <h4 className={activeCategorie?.discountCode ? "invisible" : "confirm-btn"} onClick={handleAplyDicoutCodeClicked} style={styleConfirmBTN}>{activeLanguage?.confirmW}</h4>
+                <div className="handling-div">
+                    <h5 className={activeCategorie?.discountCode ? "handle-btn-while-discount-code-exist cancel-btn" : "invisible"} onClick={handleUndoDicoutCodeClicked}>{activeLanguage?.cancelW}</h5>
+                    <h5 className={activeCategorie?.discountCode ? "handle-btn-while-discount-code-exist confirm-update-btn" : "invisible"} onClick={handleAplyDicoutCodeClicked}>{activeLanguage?.confirmW}</h5>
+                </div>
             </div>}
 
         </div>

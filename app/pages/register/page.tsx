@@ -41,7 +41,7 @@ const Register = ({logInExist, setLogInExist, signinExist, setSignInExist, admin
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column',
-        backgroundImage: `url(${conpanyInformations?.backgroundOfRegisterPage})`,
+        backgroundImage: `url(${conpanyInformations?.backgroundsPages?.registerPage})`,
         backdropFilter: 'blur(15px)',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover'

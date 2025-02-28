@@ -22,6 +22,8 @@ type params = {
 }
 const EditSection = ({productDetails, setProductDetails, allProducts, setAllProducts, imagesEditSectionExist, setImagesEditSectionExist}: params) => {
 
+    console.log(productDetails);
+    
     const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
     const [imagePrincipal, setImagePrincipal] = useState<string | undefined>(productDetails?.imagePrincipal);
     const [isCategorieInputExist, setIsCategorieInputExist] = useState<boolean>(true);
@@ -139,7 +141,7 @@ const EditSection = ({productDetails, setProductDetails, allProducts, setAllProd
     const handleImages = () => {
         setImagesEditSectionExist(true);
     }
-    const handleCategorie = async(e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleCategorie = async(e: React.ChangeEvent<HTMLInputElement>) => { 
         if (e.target) {
             console.log(e.target.value);
             
@@ -203,9 +205,6 @@ const EditSection = ({productDetails, setProductDetails, allProducts, setAllProd
         setLoadingICommit(false);
     }
 
-    useEffect(() => {
-        console.log(productDetails);
-    }, [productDetails])
 
     return (
         
