@@ -63,7 +63,7 @@ const DeleveryBoysSection = () => {
         backgroundColor: 'var(--white)',
         display: 'flex',
         alignItems: 'end',
-        color: 'var(--almost-transparent)'
+        color: 'var(--almost-black)'
     }
 
     return (
