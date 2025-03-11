@@ -29,8 +29,6 @@ type params = {
 const CustomerSection = ({allCustomer, setAllCustomer, customerDataHasChanged, setCustomerDataHasChanged, customersSelected, setCustomersSelected, makeSureExist, setMakeSureExist}: params) => {
     
     const activeLanguage = useContext(activeLanguageContext)?.activeLanguage;
-    const permissionRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
-    const primaryColor = useContext(CompanyInformationContext)?.primaryColor;
     const [customerHistorique, setCustomerHistorique] = useState<OrderParams[]>([]);
     const [customerCart, setCustomerCart] = useState<shoppingCart | undefined>(undefined);
     const [customerFavorite, setCustomerFavorite] = useState<productParams[]>([]);
@@ -68,6 +66,7 @@ const CustomerSection = ({allCustomer, setAllCustomer, customerDataHasChanged, s
                         <th>{activeLanguage?.ageW}</th>
                         <th>{activeLanguage?.emailW}</th>
                         <th>{activeLanguage?.PhoneNumberW}</th>
+                        <th>{activeLanguage?.areaOfInterest}</th>
                         <th>{activeLanguage?.passwordW}</th>
                         <th>{activeLanguage?.favoriteW}</th>
                         <th>{activeLanguage?.shoppingCart}</th>
@@ -83,6 +82,10 @@ const CustomerSection = ({allCustomer, setAllCustomer, customerDataHasChanged, s
                             <td>{calcAge(customer.dateOfBirth) || 'N/A'}</td>
                             <td>{customer.email?? activeLanguage?.undefinedW}</td>
                             <td>{customer.phone?? activeLanguage?.undefinedW}</td>
+                            {/* <td className="areOfInterrest">{customer.interrestedAbout?? activeLanguage?.undefinedW}</td> */}
+                            <td className="areOfInterrest"><pre style={{
+                                justifyContent: customer.interrestedAbout?.length > 25 ? '' : 'center'
+                            }}>{customer.interrestedAbout?.length > 0 ? customer.interrestedAbout : activeLanguage?.undefinedW}</pre></td>
                             <td>{'**********'}</td>
                             <td onClick={() => setCustomerFavorite(customer.favorite)}>{customer.favorite?.length ?? 0}</td>
                             <td onClick={() => setCustomerCart(customer.ShoppingCart)}>{customer.ShoppingCart?.purchases?.length?? 0}</td>

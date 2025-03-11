@@ -11,8 +11,13 @@ import '@/app/svg/icons/loading/loading.css';
 import { productParams } from "@/app/contexts/productSelectForShowing";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 
-
-const Card = ({product}: {product : productParams}) => {
+type params = {
+    product : productParams
+    style?: CSSProperties
+    cardHover?: boolean
+    setCardHover?: (value: boolean) => void
+}
+const Card = ({product, style, cardHover, setCardHover}: params) => {
 
     const router = useRouter();
 
@@ -20,7 +25,7 @@ const languageContext = useContext(LanguageSelectorContext)
 const setLoadingIcon = useContext(LoadingIconContext)?.setExist;
 const primaryColor = useContext(CompanyInformationContext)?.primaryColor;
 
-const [cardHover, setCardHover] = useState<boolean>(false);
+// const [cardHover, setCardHover] = useState<boolean>(false);
 
 
 if(!languageContext){
@@ -49,13 +54,14 @@ function hexToRGBA(hex, alpha = 0.5) {
 }
 
     const Style: CSSProperties = {
+        ...style,
         width: '250px',
         height: '350px',
         borderRadius: '20px',
         margin: 'var(--medium-margin)',
         padding: 'var(--small-padding)',
         cursor: "pointer",
-        transition: '0.5s ease',
+        transition: '0.2s ease',
         zIndex: 5,
 
     }
@@ -92,7 +98,7 @@ function hexToRGBA(hex, alpha = 0.5) {
         direction: languageContext.activeLanguage == 'arabic'? 'rtl' : 'ltr'
     }
     return(
-        <div id="card" style={cardHover? StyleWithHover : Style} onMouseEnter={setHover} onMouseLeave={unsetHover}>
+        <div id="card" style={cardHover? StyleWithHover : Style}>
             <img src={product.imagePrincipal} alt="" style={StyleImage} />
             <div style={StyleCartInformation}>
             <h4 style={styleH4}>{

@@ -7,7 +7,7 @@ import { companyInformationsParams } from "@/app/contexts/companyInformation";
 import { LoadingIconContext } from "@/app/contexts/loadingIcon";
 import { getAllBullentinBoard, updateBullentinBoardById, uploadImage } from "@/app/crud";
 import LoadingIcon from "@/app/svg/icons/loading/loading";
-import { faCheck, faPlus, faTrash, faX } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faPen, faPlus, faTrash, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useEffect, useRef, useState } from "react";
 
@@ -31,16 +31,11 @@ const BullentinBoardSection = ({activeBullentinBoard, setActiveBullentinBoard, c
     const [loadingAddImage, setLoadingAddImage] = useState<boolean>(false);
 
 
-    // useEffect(() => {
-    //     const loadingList_ = activeBullentinBoard?.images?.map(() => false) ?? [];        
-    //     setLoadingImage(loadingList_);
+    useEffect(() => {
+        const loadingList_ = activeBullentinBoard?.images?.map(() => false) ?? [];        
+        setLoadingImage(loadingList_);
         
-    // }, [activeBullentinBoard?._id, activeBullentinBoard?.images?.length])
-
-    // useEffect(() => {
-    //     console.log(loadingImage);
-        
-    // }, [loadingImage])
+    }, [activeBullentinBoard?._id, activeBullentinBoard?.images?.length])
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
         
@@ -56,7 +51,8 @@ const BullentinBoardSection = ({activeBullentinBoard, setActiveBullentinBoard, c
         reader.onload = async (event) => {
             try {
                 const result = event.target?.result;
-                if (typeof result === "string") {
+                if (typeof result === "string") { 
+                
                     setLoadingImage(loadingImage.map((value, i) => i === index ? true : value));
                     const uploadedImageUrl = await uploadImage(result);
                     if (uploadedImageUrl && activeBullentinBoard?.images[index]) {
@@ -196,7 +192,7 @@ const BullentinBoardSection = ({activeBullentinBoard, setActiveBullentinBoard, c
                         >
                             {activeLanguage?.editW}
                                 <FontAwesomeIcon 
-                                icon={faPlus} 
+                                icon={faPen} 
                                 className="add-icon"
                             />
                         </div>

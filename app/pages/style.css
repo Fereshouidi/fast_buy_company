@@ -1,7 +1,12 @@
 .page {
     background-color: var(white);
     position: relative;
+    color: var(--almost-black);
+
 }
+/* .page *{
+    color: var(--almost-black);
+} */
 .scroll-without-bar::-webkit-scrollbar {
     width: 0;
 }

@@ -54,6 +54,7 @@ const ThemeToggleIcon = ({className}: params) => {
         borderRadius: '50px',
         opacity: true ? '1' : '0',
         transition: '0.3s',
+        cursor: 'pointer'
     }
 
     useEffect(() => {

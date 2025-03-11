@@ -77,8 +77,9 @@ const LanguageSelector = () => {
 
     const styleHover: CSSProperties = {
         ...styleLi,
-        backgroundColor: companyInformation?.primaryColor,
-        color: 'var(--white)',
+        // backgroundColor: companyInformation?.primaryColor,
+        // color: 'var(--white)',
+        borderRadius: '50px'
 
     }
     return(

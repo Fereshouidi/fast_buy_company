@@ -1,4 +1,4 @@
-const url = 'http://localhost:3002/api';
+const url = 'https://fast-buy-back-end.vercel.app/api';
 import axios from "axios";
 
 //https://fast-buy-back-end.vercel.app/api
@@ -107,6 +107,15 @@ export const getCategorieById = async(categorieId) => {
 export const getCategoriesSection = async() => {
     try{
         const categoriesSection = (await axios.get(url + '/get/categoriesSection')).data;
+        return categoriesSection;
+    }catch(err){
+        throw err;
+    }
+}
+
+export const getCategoriesSection_ = async() => {
+    try{
+        const categoriesSection = (await axios.get(url + '/get/categoriesSection_')).data;
         return categoriesSection;
     }catch(err){
         throw err;
@@ -454,6 +463,8 @@ export const getProfitLasMonth = async () => {
 }
 
 export const renameCategorieById = async (categorieId, newName) => {
+    
+    console.log(categorieId, newName);
     
     try {
         const response = await axios.put(url + '/rename/categorie/by/id', {categorieId, newName});  
@@ -1078,7 +1089,6 @@ export const undoDiscountCodeOnCategories = async(categoriesId, discountCodeId) 
     try{
         const response = await axios.put(url + '/undo/discountCode/on/categories', {categoriesId, discountCodeId});
         const data = response.data;
-        console.log(response.data);
         
         return data;
 
@@ -1090,11 +1100,8 @@ export const undoDiscountCodeOnCategories = async(categoriesId, discountCodeId) 
 
 export const updateBullentinBoardById = async(updatedBullentinBoardData) => {
 
-    console.log(updatedBullentinBoardData);
 
     if (!updatedBullentinBoardData?.changingTime) {
-        console.log(updatedBullentinBoardData);
-        
         updatedBullentinBoardData.changingTime = 0;
     }
     
@@ -1107,6 +1114,127 @@ export const updateBullentinBoardById = async(updatedBullentinBoardData) => {
 
     }catch(err){
         console.error(err);
+        return null;
+    }
+}
+
+export const getAllProducts = async() => {
+    
+    try{
+        const response = await axios.get(url + '/get/allProducts');
+        const data = response.data;
+        
+        return data;
+
+    }catch(err){
+        console.error(err);
+        return null;
+    }
+}
+
+export const updateCategoriesSection = async(updatedCategoriesSection) => {
+    
+    try{
+        const response = await axios.put(url + '/update/categoriesSection', updatedCategoriesSection);
+        const data = response.data;
+        
+        return response;
+
+    }catch(err){
+        console.error(err);
+        return null;
+    }
+}
+
+export const updateConpanyInformations = async(updatedConpanyInformations) => {
+    
+    try{
+        const response = await axios.patch(url + '/update/conpanyInformations', updatedConpanyInformations);
+        const data = response.data;
+        //console.log(response);
+        
+        return response;
+
+    }catch(err){
+        console.error(err);
+        return null;
+    }
+}
+
+export const updateSlider = async(updatedSlider) => {
+    
+    try{
+        const response = await axios.patch(url + '/update/slider', updatedSlider);
+        const data = response.data;
+        //console.log(response);
+        
+        return response;
+
+    }catch(err){
+        console.error(err);
+        return null;
+    }
+}
+
+export const getProfitAll = async() => {
+
+    
+    try{
+        const response = await axios.get(url + '/get/Profit/all');
+        const data = response.data;
+
+        return data;
+
+    }catch(err){
+        console.error(err);
+        return null;
+    }
+}
+
+export const getTop10BestSellingProducts = async() => {
+    
+    try{
+        const response = await axios.get(url + '/get/top5BestSellingProducts');
+        const data = response.data;  
+        return data;
+
+    }catch(err){
+        return null;
+    }
+}
+
+export const getLeast5SellingProducts = async() => {
+    
+    try{
+        const response = await axios.get(url + '/get/least5SellingProducts');
+        const data = response.data;  
+        return data;
+
+    }catch(err){
+        return null;
+    }
+}
+
+export const getTop5LowestStock = async() => {
+    
+    try{
+        const response = await axios.get(url + '/get/top5LowestStock');
+        const data = response.data;  
+        return data;
+
+    }catch(err){
+        return null;
+    }
+}
+
+export const getDiscountCodeById = async(id) => {
+    
+    try{
+        const response = await axios.get(url + `/get/discountCode/byId/${id}`);
+        const data = response.data;  
+        return data;
+
+    }catch(err){
         return null;
     }
 }

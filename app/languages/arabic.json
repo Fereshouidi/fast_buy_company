@@ -253,7 +253,7 @@
     "updateSocialMedia": "تعديل وسائل التواصل الاجتماعي",
     "activationConditionsW": "شروط التفعيل",
     "activateCustomerAccountW": "تفعيل حساب العميل",
-    "activateCustomerAccountConditionW": "شروط تفعيل حساب العميل",
+    "activateCustomerAccountConditionW": "تعديل شروط تسجيل الدخول ",
     "signInConditionW": "شروط تسجيل الدخول",
     "adressW": "العنوان",
     "passwordIsNecessary": "كلمة السر ضرورية",
@@ -275,7 +275,27 @@
     "amountW": "الكمية",
     "numOfUseW": "عدد الاستخدلمات",
     "shoppingCartsW": "سلال مشتريات",
-    "categoriesW": "تصنيفات"
+    "categoriesW": "تصنيفات",
+    "sliderW": "المنزلق",
+    "updateSlider": "تعديل المنزلق الذي في الصفحة الرئيسية",
+    "tittleW": "العنوان",
+    "scrollsEvery": "يتم التمرير كل",
+    "theCategoriesW": "التصنيفات",
+    "editCategoriesForHomePage": "اختيار التصنيفات للعرض في الصفحة الرئيسية",
+    "categoriesSectionUpdatedSuccessfully": "تم تعديل قسم التصنيفات بنجاح",
+    "choiseCategorieFirst": "اختر تصنيفا اولا",
+    "socialMediaNoteP": "اذا كنت لا تستخدم احد المنصات فقط لا تضع لها رابط و سوف تختفي من موقع العميل.",
+    "moreW": "المزيد",
+    "moreInformationAboutTheCompany": "مزيد من المعلومات عن الشركة",
+    "updateinformationAboutTheCompany": "تعديل مزيد من المعلومات عن الشركة",
+    "exceptionalServices": "خدمات استثنائية",
+    "qualityAssurance": "ضمان الجودة",
+    "exclusiveOffers": "عروض حصرية",
+    "modificationsSavedSuccessfully": "تم حفظ التعديلات بنجاح",
+    "lastWeekW": "اخر اسبوع",
+    "lastMonthW": "اخر شهر",
+    "discountNotExist": "التخفيض غير موجود !",
+    "discountCodeNotExist": "الخصم غير موجود !"
 }
 
 

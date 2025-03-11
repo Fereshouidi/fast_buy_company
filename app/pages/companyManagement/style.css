@@ -443,7 +443,7 @@
 }
 #discounts-management-section .card {
     width: 30%;
-    height: 270px;
+    height: 310px;
     margin: 10px;
     padding: 15px;
     border-radius: 20px;
@@ -650,7 +650,10 @@
     justify-content: space-between;
     padding: 0 var(--medium-padding);
 }
-
+.backgrouns-container-section #backgrouns-section .header h4{
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
 
 #backgrounds-management-section, #bullentin-board-management-section {
     background-color: var(--almost-white);
@@ -912,6 +915,7 @@
     outline: none;
     border: 1px solid var(--ashen-semi-transparent);
     background-color: transparent;
+    color: var(--black);
 }
 
 .bullentin-board-section-container #bullentin-board-section .params .input-seconds-num {
@@ -922,6 +926,7 @@
     outline: none;
     border: 1px solid var(--ashen-semi-transparent);
     background-color: transparent;
+    color: var(--black);
 
 }
 
@@ -1214,4 +1219,548 @@
 }
 .Snackbar {
     color: red;
+}
+
+
+
+
+
+.slider-container-section {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: calc(100vh - var(--header-height));
+    background-color: var(--black-almost-transparnt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--black);
+}
+.slider-container-section #slider-section {
+    width: 1100px;
+    height: 90%;
+    background-color: var(--almost-white);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    border-radius: 20px;
+    position: relative;
+    position: relative;
+}
+.slider-container-section #slider-section .header {
+    /* height: 70px; */
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: var(--white);
+    opacity: 1;
+    z-index: 999;
+    border-bottom: 1px solid var(--ashen-semi-transparent);
+    border-radius: 20px;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px var(--medium-padding);
+}
+.slider-container-section #slider-section .header .handling {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    /* background-color: #007bff; */
+}
+.slider-container-section #slider-section .header .handling-item {
+    background-color: var(--ashen-semi-transparent);
+    margin: var(--small-margin);
+    font-size: calc(var(--primary-size) / 1.5);
+    color: var(--black);
+    border-radius: 50px;
+    padding: var(--small-padding) var(--medium-padding);
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.slider-container-section #slider-section .header .handling-item:hover {
+    color: var(--white);
+    background-color: var(--black);
+}
+.slider-container-section #slider-section .header .handling-item:active {
+    background-color: var(--ashen);
+}
+.slider-container-section #slider-management-section, .section-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: var(--almost-white);
+    width: 100%;
+    height: 100%;
+    max-height: calc(100vh - 70px);
+    border-radius: 0 0 20px 20px;
+    padding: 20px;
+    /* background-color: rgb(8, 0, 255); */
+
+}
+.slider-container-section #slider-management-section .tittle {
+    width: 100%;
+    /* margin: 10px; */
+}
+.slider-container-section #slider-management-section .params {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin: 5px; */
+    width: 100%;
+    height: 120px;
+    position: relative;
+    /* background-color: red; */
+    padding: 0;
+}
+.slider-container-section #slider-management-section .params .container_ {
+    display: flex;
+    /* width: 100%; */
+    /* height: 100%; */
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    /* margin: 10px 0; */
+    padding: 0;
+    opacity: 0.7;
+    /* background-color: rgb(43, 255, 0); */
+    border-radius: 50px;
+    font-size: small;
+}
+.slider-container-section #slider-management-section .params .tittle-div {
+    justify-content: flex-end;
+}
+.slider-container-section #slider-management-section .params .change-time-div {
+    justify-content: flex-start;
+}
+.slider-container-section #slider-management-section .params .container_ h4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    /* width: 20px; */
+    font-size: small;
+    white-space: nowrap;
+    margin: 0 7px;
+}
+.slider-container-section #slider-management-section .params .note {
+    width: 80%;
+    display: flex;
+    margin-bottom: 30px;
+    font-size: small;
+    /* background-color: red; */
+    opacity: 0.8;
+}
+.slider-container-section #slider-management-section .params .note strong{
+    /* background-color: rgb(0, 94, 255); */
+    margin: 0 1px;
+    opacity: 1;
+}
+.slider-container-section #slider-management-section .params .input-tittle {
+    width: 150px;
+    margin: 0 1px;
+    padding: 10px;
+    border-radius: 20px;
+    outline: none;
+    border: 1px solid var(--ashen-semi-transparent);
+    background-color: transparent;
+    color: var(--black);
+}
+
+.slider-container-section #slider-management-section .params .input-seconds-num {
+    min-width: 5px;
+    margin: 0 10px;
+    padding: 10px;
+    border-radius: 20px;
+    outline: none;
+    border: 1px solid var(--ashen-semi-transparent);
+    background-color: transparent;
+    color: var(--black);
+
+}
+
+.bullentin-board-section-container #bullentin-board-section .header .add-btn {
+    background-color: var(--ashen-semi-transparent);
+    margin: var(--small-margin);
+    font-size: calc(var(--primary-size) / 1.5);
+    color: var(--black);
+    border-radius: 50px;
+    padding: var(--small-padding) var(--medium-padding);
+    opacity: 0.8;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    cursor: pointer;
+    /* width: 100px; */
+    /* background-color: red; */
+}
+.bullentin-board-section-container #bullentin-board-section .header .add-btn *{
+    margin: 0;
+    padding: 0;
+}
+/* 
+.slider-container-section #slider-management-section .product-card {
+    margin: 5px;
+    border-radius: 20px;
+} */
+.slider-container-section .add-product-to-slider-section-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+    transform: translate(-50%, -50%);
+    background-color: var(--white);
+    min-width: 1000px;
+    height: 500px;
+    border-radius: 20px;
+    background-color: var(--almost-white);
+    box-shadow: 0 5px 150px var(--black-almost-transparnt);
+}
+.slider-container-section .add-product-to-slider-section-container .header {
+    position: relative;
+    border-bottom: 1px solid var(--ashen-semi-transparent);
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+.slider-container-section .add-product-to-slider-section-container .header .search-bar-container {
+    width: 50%;
+    padding: 0;
+}
+.slider-container-section .add-product-to-slider-section-container .header .search-bar {
+    background-color: rgb(93, 0, 255);
+    width: 100%;
+    background-color: transparent;
+    height: var(--primary-height);
+    position: relative;
+    padding: 0;
+    transition: 0.2s ease;
+    z-index: 999;
+    margin: 0;
+}
+
+.slider-container-section .add-product-to-slider-section-container .header .handling-item {
+    background-color: var(--ashen-semi-transparent);
+    margin: var(--small-margin);
+    font-size: calc(var(--primary-size) / 1.5);
+    color: var(--black);
+    border-radius: 50px;
+    padding: var(--small-padding) var(--medium-padding);
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.slider-container-section .add-product-to-slider-section-container .header .handling-item:hover
+{
+    color: var(--white);
+    background-color: var(--black);
+}
+.slider-container-section .add-product-to-slider-section-container .header .handling-item:active {
+    background-color: var(--ashen);
+}
+.slider-container-section .add-product-to-slider-section-container .products-management {
+    background-color: var(--almost-white);
+    height: 100%;
+    border-radius: 20px;
+    width: 100%;
+    /* height: calc(100vh - var(--header-height) *2); */
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* padding: 100px 70px 70px 70px; */
+    border-radius: 20px;
+    overflow-y: scroll;
+    /* margin: 50px; */
+    box-shadow: 0 5px 15px var(--black-almost-transparnt);
+}
+
+.categories-container-section {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: calc(100vh - var(--header-height));
+    background-color: var(--black-almost-transparnt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--black);
+}
+.categories-container-section #categories-section {
+    width: 1100px;
+    height: 90%;
+    background-color: var(--almost-white);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    border-radius: 20px;
+    position: relative;
+    position: relative;
+}
+.categories-container-section #categories-section .header {
+    height: 80px;
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: var(--white);
+    opacity: 1;
+    z-index: 999;
+    border-bottom: 1px solid var(--ashen-semi-transparent);
+    border-radius: 20px;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 20px var(--medium-padding); */
+}
+.categories-container-section #categories-section .header .handling {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    /* background-color: #007bff; */
+}
+.categories-container-section #categories-section .header .handling-item {
+    background-color: var(--ashen-semi-transparent);
+    margin: var(--small-margin);
+    font-size: calc(var(--primary-size) / 1.5);
+    color: var(--black);
+    border-radius: 50px;
+    padding: var(--small-padding) var(--medium-padding);
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.categories-container-section #categories-section .header .handling-item:hover {
+    color: var(--white);
+    background-color: var(--black);
+}
+.categories-container-section #categories-section .header .handling-item:active {
+    background-color: var(--ashen);
+}
+
+#categories-management-section {
+    background-color: var(--almost-white);
+    /* background-color: red; */
+    width: 100%;
+    height: calc(100vh - 70px);
+    border-radius: 0 0 20px 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    padding: 0;
+    margin: 0;
+    /* padding: 20px; */
+}
+
+.categories-params-section-container {
+    width: 400px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.companyManagement-page .params {
+    /* margin: 5px; */
+    width: 100%;
+    /* height: 120px; */
+    position: relative;
+    /* background-color: red; */
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.companyManagement-page .params .note {
+    width: 80%;
+    display: flex;
+    padding: 10px;
+    /* margin-bottom: 30px; */
+    font-size: small;
+    /* background-color: rgb(0, 30, 255); */
+    opacity: 0.8;
+}
+.companyManagement-page .params .note strong{
+    /* background-color: rgb(0, 94, 255); */
+    margin: 0 1px;
+    opacity: 1;
+}
+
+
+.moreInformation-section-container {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: calc(100vh - var(--header-height));
+    background-color: var(--black-almost-transparnt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--black);
+}
+.moreInformation-section-container #more-information-section {
+    width: 1100px;
+    max-height: 90%;
+    background-color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    border-radius: 20px;
+    position: relative;
+    position: relative;
+}
+.moreInformation-section-container #more-information-section .header {
+    min-height: 60px;
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: var(--white);
+    opacity: 1;
+    z-index: 999;
+    border-bottom: 1px solid var(--ashen-semi-transparent);
+    border-radius: 20px;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--medium-padding);
+}
+.moreInformation-section-container #more-information-section .header .handling {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    /* background-color: #007bff; */
+}
+.moreInformation-section-container #more-information-section .header .handling .handling-item {
+    background-color: var(--ashen-semi-transparent);
+    margin: var(--small-margin);
+    font-size: calc(var(--primary-size) / 1.5);
+    color: var(--black);
+    border-radius: 50px;
+    padding: var(--small-padding) var(--medium-padding);
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.moreInformation-section-container #more-information-section .header .handling .handling-item:hover {
+    color: var(--white);
+    background-color: var(--black);
+}
+.moreInformation-section-container #more-information-section .header .handling .handling-item:active{
+    background-color: var(--ashen);
+}
+
+.moreInformation-section-container #more-information-section .header .add-btn {
+    background-color: var(--ashen-semi-transparent);
+    margin: var(--small-margin);
+    font-size: calc(var(--primary-size) / 1.5);
+    color: var(--black);
+    border-radius: 50px;
+    padding: var(--small-padding) var(--medium-padding);
+    opacity: 0.8;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    cursor: pointer;
+    /* width: 100px; */
+    /* background-color: red; */
+}
+.moreInformation-section-container #more-information-section .header .add-btn *{
+    margin: 0;
+    padding: 0;
+}
+
+.moreInformation-section-container  #moreInformation-management-section {
+    max-height: 200px;
+    background-color: var(--almost-white);
+    width: 100%;
+    max-height: calc(100vh - 70px);
+    border-radius: 0 0 20px 20px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+}
+.moreInformation-section-container  #moreInformation-management-section .input-div {
+    width: 90%;
+    /* min-height: 150px; */
+    margin: 5px;
+    /* border: 1px solid var(--ashen-semi-transparent); */
+    border-radius: 20px;
+    /* background-color: var(--white); */
+    position: relative;
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* background-color: red; */
+}
+.moreInformation-section-container  #moreInformation-management-section .input-div h4 {
+    margin: 15px;
+}
+.moreInformation-section-container  #moreInformation-management-section .text-area-div {
+    width: 100%;
+    min-height: 150px;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+
+}
+.moreInformation-section-container  #moreInformation-management-section .input-div .textarea {
+    width: 100%;
+    min-height: 150px;
+    height: 150px;
+    border: 1px solid var(--ashen-semi-transparent);
+    border-radius: 20px;
+    background-color: var(--white);
+    position: relative;
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    margin: 5px;
+}
+.moreInformation-section-container  #moreInformation-management-section .input-div .textArea-arabic {
+    direction: rtl;
 }

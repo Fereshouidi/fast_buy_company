@@ -8,9 +8,12 @@
     padding: 0;
 }
 
+table {
+    border-collapse: collapse;
+}
 .Statistics-page .graph-sec {
     /* background-color: red; */
-    width: 50%;
+    width: 40%;
     display: flex;
     /* justify-content: center; */
     flex-direction: column;
@@ -47,8 +50,44 @@
 
 
 .Statistics-page .information-sec {
-    background-color: blue;
-    width: 50%;
+    /* background-color: blue; */
+    width: 60%;
     height: 100%;
+    padding: 2%;
+    color: var(--almost-black);
 }
 
+
+
+.Statistics-page .information-sec .section {
+    width: 100%;
+    /* background-color: red; */
+}
+.Statistics-page .information-sec table{
+    width: 100%;
+    margin: 15px;    
+}
+
+.loading-icon-container {
+    width: 100%;
+    height: auto;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+}
+.loading-icon-container .loading-icon {
+    background-color: var(--white);
+}
+.loading-icon-container .loading-icon #loadingIcon{
+    border-top: 3px solid ;
+    border-right: 3px solid ;
+}
+
+.section {
+    border-radius: 10px;
+    width: 100%;
+}
+
+.rank {
+    width: 100px;
+}

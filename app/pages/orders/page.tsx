@@ -29,7 +29,7 @@ const OrderManagmentPage = () => {
 
   
   const style: CSSProperties = {
-    // width: '100vw',
+    width: '100vw',
     minHeight: 'calc(100vh - var(--header-height) )',
     backgroundColor: 'var(--almost-white)',
     display: 'flex',
@@ -57,11 +57,6 @@ const OrderManagmentPage = () => {
     
   }
 
-
-  useEffect(() => {
-    console.log(orders);
-    
-  }, [orders])
 
   
   if (!adminData?.permissions?.includes('ordersManagement')) {

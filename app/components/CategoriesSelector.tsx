@@ -31,16 +31,6 @@ const CategorieSelector = ({activeCategorie, setActiveCategorie}: params) => {
     const [refresh, setRefresh] = useState<boolean>(false);
 
 
-    
-    // const sideBarContext = useContext(SideBarContext);
-    // if (!sideBarContext) {
-    //     throw new Error("SideBarContext must be used within a SideBarContext.Provider");
-    // }
-
-    // if(!allCategories || !sideBarContext || !languageSelectorContext || !setLoadingIcon){
-    //     throw 'context error !'
-    // }
-    
     useEffect(() => {
         if (activeCategorie && refresh) {
             setActiveCategorie({...activeCategorie, childOpen: false})
@@ -207,7 +197,7 @@ const styleChildrenHover: CSSProperties = {
 return(
     <div style={styleContainerAll}>
 
-        <CategoriesParapsSection activeCategorie={activeCategorie} setActiveCategorie={setActiveCategorie} allCategories={allCategories} setAllCategories={setAllCategories} refresh={refresh} setRefresh={setRefresh} />
+        <CategoriesParapsSection activeCategorie={activeCategorie} setActiveCategorie={setActiveCategorie} allCategories={allCategories} setAllCategories={setAllCategories} refresh={refresh} setRefresh={setRefresh} importFom="productManagementPage" />
 
         <li className="scrollDiv" style={isHover? styleHover : style}
         onMouseEnter={() => setIsHover(true)}

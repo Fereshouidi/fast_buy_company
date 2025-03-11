@@ -24,7 +24,10 @@ const ProccessiongSection = ({orders, setOrders}: params) => {
                     ordersList.push(orders[index])
                 }
             }
-            setProccessingOrders(ordersList)
+            const arrangedList = ordersList.sort(
+                (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+              );
+            setProccessingOrders(arrangedList);
         }
     }, [orders])
 

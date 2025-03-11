@@ -29,13 +29,6 @@ const DiscountCodeSection = ({exist, setExist, importFrom, allDiscountCodes, set
     const setBanner = useContext(BannerContext)?.setBanner;
 
 
-    //     const fetchData = async () => {
-    //         const discountCodes = await getAllDiscountCodes();
-    //         setAllDiscountCodes(discountCodes);
-    //     }
-    //     fetchData();
-    // }, []);
-
     const handleTarget = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setAllDiscountCodes((prev) => {
             return prev?.map(discountCode => {
@@ -58,6 +51,21 @@ const DiscountCodeSection = ({exist, setExist, importFrom, allDiscountCodes, set
                     return {
                         ...discountCode,
                         code: e.target.value 
+                    }
+                } else {
+                    return discountCode;
+                }
+            })
+        })
+        setChangeHappen(true);
+    }
+    const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setAllDiscountCodes((prev) => {
+            return prev?.map(discountCode => {
+                if (discountCode._id == discountSelected?._id) {
+                    return {
+                        ...discountCode,
+                        name: e.target?.value 
                     }
                 } else {
                     return discountCode;
@@ -233,6 +241,15 @@ const DiscountCodeSection = ({exist, setExist, importFrom, allDiscountCodes, set
                             <div className="item id">
                                 <strong>{activeLanguage?.idW} : </strong>
                                 <p className="id">{discountCode._id}</p>
+                            </div>
+
+                            <div className="item">
+                                <strong>{activeLanguage?.nameW} : </strong>
+                                <input 
+                                    className=""
+                                    value={discountCode.name?? null}
+                                    onChange={(e) => handleName(e)}
+                                />
                             </div>
 
                             <div className="item">

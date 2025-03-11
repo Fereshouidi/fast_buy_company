@@ -109,7 +109,6 @@ const ProductDetail = ({productDetails, setProductDetails, allProducts, setAllPr
             }
 
             const resul = handleBuyerData()
-            console.log(resul);
             
         }
     }, [allProductBuyers])

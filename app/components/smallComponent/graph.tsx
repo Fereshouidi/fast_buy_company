@@ -5,6 +5,7 @@ import { CSSProperties, useContext } from 'react';
 import { profitParams } from '@/app/contexts/types';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 import english from '@/app/languages/english.json';
+import LoadingIcon from '@/app/svg/icons/loading/loading';
 
 type params = {
     profits: profitParams[], 
@@ -17,17 +18,22 @@ const Graph = ({profits, setProfits, duration}: params) => {
     const activeLanguage = useContext(activeLanguageContext)?.activeLanguage || english;
      
     if (!profits) {
-        return 'Loading...'    
+        return (
+            <div className='loading-icon-container graph-container' style={{height: '80%'}}>
+                <LoadingIcon className='loading-icon'/>
+            </div>   
+        )
     }
     const maximumValue = Math.max(...profits?.map(item => item.totalEarning)) *1.2 ;
 
     
     const farmatDate = (date: Date) => {
        const date_ = new Date(date);
+       const year = date_.getFullYear();
        const month = date_.getMonth() +1;
        const day = date_.getDate();
 
-       const dateFormated = `${day}/${month}`;
+       const dateFormated = `${day}/${month}${duration == 'all' ? `/${year}` : ''}`;
        return dateFormated;
        
     }
@@ -53,9 +59,6 @@ const Graph = ({profits, setProfits, duration}: params) => {
     
     function removeOneDecimal(number: number) {
         let numStr = number.toString();
-
-        //console.log(new Date().);
-        
     
         if (numStr.includes('.')) {
             let [integerPart, decimalPart] = numStr.split('.');
@@ -93,7 +96,7 @@ const Graph = ({profits, setProfits, duration}: params) => {
                 
                 <div className='horizontal-numbering'>
                     {
-                        profits?.map((_, index) => {
+                        new Array(7).fill(0).map((_, index) => {
                             return <span key={index}>{formatNum(Math.floor((maximumValue/profits.length) *(profits.length - index)))}</span>
                         })
                     }
@@ -107,8 +110,6 @@ const Graph = ({profits, setProfits, duration}: params) => {
                         </div>
                     })}
                 </div>
-
-                {/* getHeightColumn(profit) > 20 ? Math.floor(getHeightColumn(profit))+'%' : null */}
                 
                 <div className='vertical-numbering' style={styleVerticalNumbering}>
                     {
@@ -116,7 +117,6 @@ const Graph = ({profits, setProfits, duration}: params) => {
                             return <span key={index}>{farmatDate(profits[index].day)}</span>
                         })
                     }
-                    {/* <span>12/10</span> <span>13/10</span> <span>14/10</span> <span>15/10</span> <span>16/10</span> <span>17/10</span> <span>18/10</span>  */}
                 </div>
 
             </div>

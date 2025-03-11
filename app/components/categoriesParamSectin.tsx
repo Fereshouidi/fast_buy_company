@@ -1,6 +1,6 @@
 'use client';
 
-import { faExchangeAlt, faPen, faPlus, faTag, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faExchangeAlt, faPen, faPlus, faSquarePlus, faTag, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { addCategorie, deleteCategorieById, renameCategorieById, aplyDiscountCodeOnCategories, undoDiscountCodeOnCategories } from "../crud";
 import { act, CSSProperties, useContext, useEffect, useRef, useState } from "react";
@@ -12,14 +12,19 @@ import english from '@/app/languages/english.json';
 import { LoadingIconContext } from "../contexts/loadingIcon";
 
 type params = {
-    activeCategorie: CategorieParams ;
-    setActiveCategorie: (value: CategorieParams) => void;
-    allCategories: CategorieParams[] | undefined
-    setAllCategories: (value: CategorieParams[]) => void;
-    refresh: boolean
-    setRefresh: (value: boolean) => void
+    activeCategorie?: CategorieParams ;
+    setActiveCategorie?: (value: CategorieParams) => void;
+    allCategories?: CategorieParams[] | undefined
+    setAllCategories?: (value: CategorieParams[]) => void;
+    refresh?: boolean
+    setRefresh?: (value: boolean) => void
+    importFom: 'companyManagementPage' | 'productManagementPage'
+    categoriesInHomePage?: CategorieParams[]
+    setCategoriesInHomePage?: (value: CategorieParams[]) => void
+    changeHappen?: boolean 
+    setChangeHappen?: (value: boolean) => void
 }
-const CategoriesParapsSection = ({activeCategorie, setActiveCategorie, allCategories, setAllCategories, refresh, setRefresh}: params) => {
+const CategoriesParapsSection = ({activeCategorie, setActiveCategorie, allCategories, setAllCategories, refresh, setRefresh, importFom, categoriesInHomePage, setCategoriesInHomePage, changeHappen, setChangeHappen}: params) => {
 
     const activeLanguage = useContext(activeLanguageContext)?.activeLanguage || english;
     const [isInputForAddActive, setIsInputForAddActive] = useState<boolean>(false);
@@ -72,7 +77,31 @@ const CategoriesParapsSection = ({activeCategorie, setActiveCategorie, allCatego
             setBannerexist(true, 'choise categorie first !')
         }        
     }
-    const handleDiscountClickClick = () => {
+    const handleAddToHomePageClick = () => {
+        SetLoadingIcon(true);
+        if (activeCategorie && categoriesInHomePage) {
+            
+            const isAlreadyExist = categoriesInHomePage.some(categorieSelect => categorieSelect._id == activeCategorie._id);
+            if (isAlreadyExist || !activeCategorie.parentCategorie) {
+                setCategoriesInHomePage(categoriesInHomePage.filter(categorie_ => categorie_._id !== activeCategorie._id));
+            } else {
+                setCategoriesInHomePage([...categoriesInHomePage, activeCategorie]);
+            }
+
+            setChangeHappen(true);
+            setActiveCategorie(undefined);
+            setIsInputForRenameActive(false);
+            setIsInputForAddActive(false);
+            setIsInputsForMoveActive(false);
+            setIsInputsForDeleteActive(false);
+            setIsInputsForDiscoutCodeActivee(false);
+            
+        } else {
+            setBannerexist(true, activeLanguage?.choiseCategorieFirst)
+        }        
+        SetLoadingIcon(false);
+    }
+    const handleDiscountClick = () => {
         if (activeCategorie) {
             setIsInputForRenameActive(false);
             setIsInputForAddActive(false);
@@ -241,14 +270,19 @@ const CategoriesParapsSection = ({activeCategorie, setActiveCategorie, allCatego
                     <FontAwesomeIcon className="icon" icon={faPen}/>
                     <h6>{activeLanguage?.renameW}</h6>
                 </div>
-                <div id="discount-code" className="item" onClick={handleDiscountClickClick}>
-                    <FontAwesomeIcon className="icon" icon={faTag}/>
-                    <h6>{activeLanguage?.discountCodeW}</h6>
-                </div>
                 <div id="remove" className="item" onClick={handleRemoveClick}>
                     <FontAwesomeIcon className="icon" icon={faTrash}/>
                     <h6>{activeLanguage?.removeW}</h6>
                 </div>
+                <div id="discount-code" className="item" onClick={handleDiscountClick}>
+                    <FontAwesomeIcon className="icon" icon={faTag}/>
+                    <h6>{activeLanguage?.discountCodeW}</h6>
+                </div>
+                {importFom == 'companyManagementPage' && <div id="addToHomePage" className="item" onClick={handleAddToHomePageClick}>
+                    <FontAwesomeIcon className="icon" icon={faSquarePlus}/>
+                    <h6>home page</h6>
+                </div>}
+                
             </div>
 
 
@@ -291,3 +325,4 @@ const CategoriesParapsSection = ({activeCategorie, setActiveCategorie, allCatego
     )
 }
 export default CategoriesParapsSection;
+

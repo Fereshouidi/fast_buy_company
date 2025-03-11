@@ -43,7 +43,8 @@
     /* background-color: red; */
     height: 80%;
     cursor: pointer;
-    width: 80%;
+    width: 90%;
+    margin: 0;
 }
 .graph-container .tittle{  
     width: 100%;

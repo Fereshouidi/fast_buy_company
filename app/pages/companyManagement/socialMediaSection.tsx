@@ -85,6 +85,10 @@ const SocialMediaSection = ({exist, setExist, companyInformation, setCompanyInfo
                 </header>
                 
                 <section id="social-media-management-section" className="scroll edit-social-media">
+
+                    <div className="params">
+                        <p className="note"> <strong>{activeLanguage?.noteW} : </strong> {activeLanguage?.socialMediaNoteP} </p>
+                    </div>
                     
                     <div className="item-div facebook-div">
                         <FontAwesomeIcon icon={faFacebook} className="facebook-icon icon"/>
@@ -152,7 +156,7 @@ const SocialMediaSection = ({exist, setExist, companyInformation, setCompanyInfo
                             value={xLink} 
                             className='input-link pointer'
                             placeholder="link ..."
-                            onChange={(e) => {setYoutubeLink(e.target?.value), setChangeHappen(true)}}
+                            onChange={(e) => {setXLink(e.target?.value), setChangeHappen(true)}}
                         />
 
                     </div>

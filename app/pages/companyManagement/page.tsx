@@ -6,7 +6,7 @@ import { activeLanguageContext } from '@/app/contexts/activeLanguage';
 import { CompanyInformationContext, companyInformationsParams } from '@/app/contexts/companyInformation';
 import PasswordExplanSec from './passwordExplanSec';
 import LoadingIcon from '@/app/svg/icons/loading/loading';
-import { getAllBullentinBoard, getAllDiscountCodes, sendActivationToken, uploadImage } from '@/app/crud';
+import { getAllBullentinBoard, getAllDiscountCodes, getSliderData, sendActivationToken, updateConpanyInformations, updateSlider, uploadImage } from '@/app/crud';
 import { LoadingIconContext } from '@/app/contexts/loadingIcon';
 import { BannerContext } from '@/app/contexts/bannerForEverything';
 import DiscountCodeSection from './discountCodeSection';
@@ -18,6 +18,11 @@ import SignInConditionSection from './signInConditionSection';
 import SocialMediaSection from './socialMediaSection';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faFacebookMessenger, faInstagram, faTwitter, faWhatsapp, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { sliderDataParams } from '@/app/contexts/slider';
+import SliderSection from './sliderSection';
+import CategoriesSection from './categoriesSection';
+import MoreInformationSection from './moreInformationSection';
+import defaultImage from '@/app/images/خلفية-رمادي-فاتح-سادة.jpg';
 
 const CompanyManagement = () => {
 
@@ -33,22 +38,43 @@ const CompanyManagement = () => {
     const [discountCodeSectionExist, setDiscountCodeSectionExist] = useState<boolean>(false);
     const [backgroundsSectionExist, setBckgroundsSectionExist] = useState<boolean>(false);
     const [signInConditionSectionExist, setSignInConditionSectionExist] = useState<boolean>(false);
+    const [moreInformationSectionExist, setMoreInformationSectionExist] = useState<boolean>(false);
     const [socialMediaSectionExist, setSocialMediaSectionExist] = useState<boolean>(false);
     const [bullentinBoardSectionExist, setBullentinBoardSectionExist] = useState<BullentinBoard | undefined>(undefined);
+    const [sliderSectionExist, setSliderSectionExist] = useState<boolean>(false);
+    const [categoriesSectionExist, setCategoriesSectionExist] = useState<boolean>(false);
     const [allDiscountCodes, setAllDiscountCodes] = useState<discountCodeParams[]>();
     const [allBullentinBoard, setAllBullentinBoard] = useState<BullentinBoard[]>();
+    const [slider, setSlider] = useState<sliderDataParams | undefined>(undefined);
+    const [updatedSlider, setUpdatedSlider] = useState<sliderDataParams | undefined>(undefined);
+    const [changeHappen, setChangeHappen] = useState<boolean>(false);
 
 
     useEffect(() => {
         const fetchData = async () => {
             const discountCodes = await getAllDiscountCodes();
             const bullentinBoard = await getAllBullentinBoard();
+            const slider = await getSliderData();
+            
             setAllDiscountCodes(discountCodes);
             setAllBullentinBoard(bullentinBoard);
+            setSlider(slider);
+            setUpdatedSlider(slider);
         }
         fetchData();
     }, []);
     
+    
+    useEffect(() => {
+        if (JSON.stringify(updatedCompanyInformation) !== JSON.stringify(companyInformation) || JSON.stringify(slider) !== JSON.stringify(updatedSlider)) {
+            setChangeHappen(true);
+        } else {
+            setChangeHappen(false);
+        }
+    }, [updatedCompanyInformation, updatedSlider]);
+    
+    
+
     if (!admin?.permissions?.includes('companyManagement')) {
         return <div>you dont heve permission to be at this page !</div>
     }
@@ -171,8 +197,28 @@ const CompanyManagement = () => {
         })
     }
 
+    const handleCommitChange = async () => { 
+
+        if (changeHappen) {
+            setLoadingIcon(true);
+            const updatedConpanyInformations_ = await updateConpanyInformations(updatedCompanyInformation);
+            const updatedSlider_ = await updateSlider(updatedSlider);
+
+            if (updatedConpanyInformations_.status == 200 && updatedSlider_.status == 200) {
+                setBanner(true, activeLanguage?.modificationsSavedSuccessfully);
+            } else {
+                setBanner(true, activeLanguage?.someErrorHappen);
+            }
+            setLoadingIcon(false);
+            setChangeHappen(false);
+        }
+    }
+
+    
     useEffect(() => {
         console.log(updatedCompanyInformation);
+        // console.log(slider);
+        
     }, [updatedCompanyInformation])
 
     return(
@@ -304,11 +350,11 @@ const CompanyManagement = () => {
                     <div className='container'>
                         <p className='p-text'>{activeLanguage?.updateBackgrounds +' : '}</p>
                         <div className='images-container pointer'>
-                            <img className='backgrounds' src={updatedCompanyInformation?.backgroundsPages?.homePage} alt="" />
-                            <img className='backgrounds' src={updatedCompanyInformation?.backgroundsPages?.accountPage} alt="" />
-                            <img className='backgrounds' src={updatedCompanyInformation?.backgroundsPages?.registerPage} alt="" />
-                            <img className='backgrounds' src={updatedCompanyInformation?.backgroundsPages?.shoppingCartPage} alt="" />
-                            <img className='backgrounds' src={updatedCompanyInformation?.backgroundsPages?.ordersPage} alt="" />
+                            <img className='backgrounds' src={updatedCompanyInformation?.backgroundsPages?.homePage.length > 0 ?updatedCompanyInformation?.backgroundsPages?.homePage : defaultImage?.src} alt="" />
+                            <img className='backgrounds' src={updatedCompanyInformation?.backgroundsPages?.accountPage.length > 0 ?updatedCompanyInformation?.backgroundsPages?.accountPage : defaultImage?.src} alt="" />
+                            <img className='backgrounds' src={updatedCompanyInformation?.backgroundsPages?.registerPage.length > 0 ?updatedCompanyInformation?.backgroundsPages?.registerPage : defaultImage?.src} alt="" />
+                            <img className='backgrounds' src={updatedCompanyInformation?.backgroundsPages?.shoppingCartPage.length > 0 ?updatedCompanyInformation?.backgroundsPages?.shoppingCartPage : defaultImage?.src} alt="" />
+                            <img className='backgrounds' src={updatedCompanyInformation?.backgroundsPages?.ordersPage.length > 0 ?updatedCompanyInformation?.backgroundsPages?.ordersPage : defaultImage?.src} alt="" />
                         </div>
                     </div>
                 </div>
@@ -331,11 +377,31 @@ const CompanyManagement = () => {
                 </div>
 
                 <div className="edit edit-slider">
-
+                    <h4>{activeLanguage?.sliderW}</h4>
+                    <div className='container'>
+                        <p className='p-text'>{activeLanguage?.updateSlider +' : '}</p>
+                        <div className='images-container pointer'>
+                            {updatedSlider?.products?.slice(0, 6).map((products, index) => {
+                                return <img 
+                                    key={index} 
+                                    className='backgrounds' 
+                                    src={products.imagePrincipal} 
+                                    onClick={() => setSliderSectionExist(true)}
+                                />
+                            })}
+                        </div>
+                    </div>
                 </div>
                 
                 <div className="edit edit-categories-section">
-
+                    <h4>{activeLanguage?.theCategoriesW}</h4>
+                    <div className='container'> 
+                       <p className='p-text'>{activeLanguage?.editCategoriesForHomePage}</p>
+                       <h6 
+                            className='p-text edit-sign-in-btn'
+                            onClick={() => setCategoriesSectionExist(true)}
+                        >{activeLanguage?.editW}</h6>
+                    </div>
                 </div>
                 
                 <div className="edit edit-social-media" onClick={() => setSocialMediaSectionExist(true)}>
@@ -364,9 +430,27 @@ const CompanyManagement = () => {
                     </div>
                 </div>
 
+                <div className="edit activate-Account-While-Signin">
+                    <h4>{activeLanguage?.moreW}</h4>
+                    <div className='container'> 
+                       <p className='p-text'>{activeLanguage?.updateinformationAboutTheCompany}</p>
+                       <h6 
+                            className='p-text edit-sign-in-btn'
+                            onClick={() => setMoreInformationSectionExist(true)}
+                        >{activeLanguage?.modifyW}</h6>
+                    </div>
+                </div>
 
-                <h4 className='commit-btn'>
-                    {activeLanguage?.commitChange}
+
+                <h4 className='commit-btn' 
+                    onClick={handleCommitChange}
+                    style={{
+                        backgroundColor: changeHappen ? 'var(--black)' : 'var(--ashen-semi-transparent)',
+                        color: changeHappen ? 'var(--white)' : 'var(--almostblack)',
+                        opacity:  changeHappen ? 1 : 0.5,
+                    }}
+                >
+                        {activeLanguage?.commitChange}
                 </h4>
 
             </section>
@@ -377,6 +461,9 @@ const CompanyManagement = () => {
             <BullentinBoardSection activeBullentinBoard={bullentinBoardSectionExist} setActiveBullentinBoard={setBullentinBoardSectionExist} companyInformation={updatedCompanyInformation} setCompanyInformation={setUpdatedCompanyInformation}/>
             <SignInConditionSection exist={signInConditionSectionExist} setExist={setSignInConditionSectionExist} companyInformation={updatedCompanyInformation} setCompanyInformation={setUpdatedCompanyInformation}/>
             <SocialMediaSection exist={socialMediaSectionExist} setExist={setSocialMediaSectionExist} companyInformation={updatedCompanyInformation} setCompanyInformation={setUpdatedCompanyInformation}/>
+            <SliderSection exist={sliderSectionExist} setExist={setSliderSectionExist} slider={updatedSlider} setSlider={setUpdatedSlider}/>
+            <CategoriesSection exist={categoriesSectionExist} setExist={setCategoriesSectionExist}/>
+            <MoreInformationSection exist={moreInformationSectionExist} setExist={setMoreInformationSectionExist} companyInformation={updatedCompanyInformation} setCompanyInformation={setUpdatedCompanyInformation}/>
         </div>
     )
 }

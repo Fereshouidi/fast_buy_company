@@ -1,5 +1,6 @@
 export interface discountCodeParams {
     _id?: string | undefined,
+    name?: string,
     code?: string,
     target?: 'shoppingCart' | 'product' | 'categorie',
     categorie?: string | null,

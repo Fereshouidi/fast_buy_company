@@ -214,6 +214,7 @@ useEffect(() => {
     width: '100%',
     height: '100%',
     //backgroundColor: 'green'
+
   }
 
   const styleSmallDisplay:CSSProperties = {
@@ -233,7 +234,7 @@ useEffect(() => {
   //   alert(activeLanguage_?.noSmallDisplayP);
   // }
   return (
-    <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin, currencyType: conpanyInformations.currencyType, shippingCost: conpanyInformations.shippingCost, backgroundsPages: conpanyInformations.backgroundsPages, socialMediaLinks: conpanyInformations.socialMediaLinks}} >
+    <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, qualityAssurance: conpanyInformations?.qualityAssurance, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin, currencyType: conpanyInformations.currencyType, shippingCost: conpanyInformations.shippingCost, backgroundsPages: conpanyInformations.backgroundsPages, socialMediaLinks: conpanyInformations.socialMediaLinks}} >
         <LanguageSelectorContext.Provider value={{ activeLanguage, setactiveLanguage }}>
           <activeLanguageContext.Provider value={{activeLanguage: activeLanguage_, setAtiveLanguage: setactiveLanguage_}}>
             <ThemeContext.Provider value={{ theme, setTheme }}>

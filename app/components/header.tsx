@@ -10,6 +10,7 @@ import ParamSection from './paramSection';
 import { paramSectionContext } from '../contexts/paramSection';
 import { ActivePageContext } from '../contexts/activePage';
 import english from '@/app/languages/english.json';
+import LanguageSelector from './smallComponent/language';
 
 
 const Header = () => {
@@ -52,9 +53,14 @@ const Header = () => {
             </div>
 
             <div className='setting-container'>
+                {/* <FontAwesomeIcon icon={faGear} style={styleFaGear} onClick={handleParamSection}/> */}
+
                 <ThemeToggleIcon className='theme-toggle'/>
-                <FontAwesomeIcon icon={faGear} style={styleFaGear} onClick={handleParamSection}/>
-                <ParamSection id='param-section'/>
+                <div style={{width: '10px'}}></div>
+                <LanguageSelector/>
+
+
+                {/* <ParamSection id='param-section'/> */}
             </div>
 
         </header>

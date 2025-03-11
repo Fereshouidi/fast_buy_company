@@ -1,7 +1,7 @@
 'use client';
 
 import { productParams } from "@/app/contexts/productSelectForShowing";
-import { deleteProductById, getCategorieById, getDiscountById, uploadImage } from "@/app/crud";
+import { deleteProductById, getCategorieById, getDiscountById, getDiscountCodeById, uploadImage } from "@/app/crud";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useEffect, useRef, useState } from "react";
@@ -28,6 +28,7 @@ const EditSection = ({productDetails, setProductDetails, allProducts, setAllProd
     const [imagePrincipal, setImagePrincipal] = useState<string | undefined>(productDetails?.imagePrincipal);
     const [isCategorieInputExist, setIsCategorieInputExist] = useState<boolean>(true);
     const [isDiscountInputExist, setIsDiscountInputExist] = useState<boolean>(true);
+    const [isDiscountCodeInputExist, setIsDiscountCodeInputExist] = useState<boolean>(true);
     const [loadingImagePrincipal, setLoadingImagePrincipal] = useState<boolean>(false);
     const [loadingCommit, setLoadingICommit] = useState<boolean>(false);
     const setBanner = useContext(BannerContext)?.setBanner;
@@ -177,6 +178,24 @@ const EditSection = ({productDetails, setProductDetails, allProducts, setAllProd
 
         }
     }
+    const handleDiscountCode = async(e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target) {
+            
+            const discountCode = await getDiscountCodeById(e.target?.value);
+            if (discountCode || !e.target.value) {
+                console.log(discountCode);
+                
+                setProductDetails({
+                    ...productDetails,
+                    discountCode: discountCode
+                });
+                setIsDiscountCodeInputExist(true);
+            } else {
+                setIsDiscountCodeInputExist(false);
+            }
+
+        }
+    }
     const handleDelete = async(e: React.MouseEvent<HTMLSpanElement>) => {
         setLoadingICommit(true);
         const done = await deleteProductById(productDetails?._id);
@@ -265,13 +284,14 @@ const EditSection = ({productDetails, setProductDetails, allProducts, setAllProd
 
         <div id='discount-code' className='item'>
             <h4>{activeLanguage?.discountCodeId}</h4>
-            <input type="text"placeholder="ID..." defaultValue={productDetails?.discountCode?._id?? ''}/>
+            <input type="text"placeholder="ID..." defaultValue={productDetails?.discountCode?._id?? ''} onChange={(e) => handleDiscountCode(e)} />
+            {!isDiscountCodeInputExist && <p>{activeLanguage?.discountCodeNotExist}</p>}
         </div>
 
         <div id='discount' className='item'>
             <h4>{activeLanguage?.discountId}</h4>
-            <input type="text" placeholder="ID..." defaultValue={productDetails?.discount?._id?? ''} onChange={handleDiscount}/>
-            {!isDiscountInputExist && <p>{activeLanguage?.discountW}</p>}
+            <input type="text" placeholder="ID..." defaultValue={productDetails?.discount?._id?? ''} onChange={(e) => handleDiscount(e)}/>
+            {!isDiscountInputExist && <p>{activeLanguage?.discountNotExist}</p>}
         </div>
 
         <div id='size' className='item'>

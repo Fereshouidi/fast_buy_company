@@ -13,8 +13,8 @@ const LoadingIcon = ({className}: params) => {
     const companyInformation = useContext(CompanyInformationContext);
 
     const styleLoadingIcon: CSSProperties = {
-        borderTop: `2px solid ${companyInformation?.primaryColor}`,
-        borderRight: `2px solid ${companyInformation?.primaryColor}`,
+        borderTopColor: companyInformation?.primaryColor,
+        borderRightColor: companyInformation?.primaryColor,
     }
     return (
         <div  className={className} >
